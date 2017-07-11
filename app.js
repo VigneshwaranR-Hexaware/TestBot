@@ -14,10 +14,15 @@ var requestOptions={
       headers: {
         'Authorization':'Bearer fcc2d12400644c589538c72c41a40955 ',
         'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    body: { query: [ 'Hi' ], lang: 'en', sessionId: '1234567' }
+     },
+     body: { 
+         query: [ 'Hi' ], 
+         lang: 'en', 
+         sessionId: '1234567' 
+     }
 };
 
 var requestObj=https.request(requestOptions,function(req,res){
-    console.log(res);
+    console.log("Hi I am Triggered");
+    console.log(req);
 });
