@@ -4,12 +4,8 @@
   "description": "testbotintegration",
   "main": "app.js",
   "scripts": {
-      "start":"node app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VigneshwaranR-Hexaware/TestBot.git"
   },
   "author": "Vigneshwaran Ramanathan",
   "license": "ISC",
@@ -20,7 +16,6 @@
     "async": "^2.0.0",
     "body-parser": "^1.15.2",
     "console-stamp": "^0.2.1",
-    "deasync": "^0.1.10",
     "express": "^4.14.0",
     "html-entities": "^1.2.0",
     "json-bigint": "^0.2.0",
@@ -29,8 +24,13 @@
     "request": "^2.79.0",
     "request-promise": "*"
   },
-  "bugs": {
-    "url": "https://github.com/VigneshwaranR-Hexaware/TestBot/issues"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VigneshwaranR-Hexaware/TestBot.git"
   },
-  "homepage": "https://github.com/VigneshwaranR-Hexaware/TestBot#readme"
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
 }
+
