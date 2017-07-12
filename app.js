@@ -10,6 +10,7 @@ const JSONbig = require('json-bigint');
 
 
 
+<<<<<<< HEAD
 var options = { method: 'POST',
   url: 'https://api.api.ai/v1/query',
   qs: { v: '20150910' },
@@ -25,6 +26,30 @@ request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
   console.log(body);
+=======
+var requestOptions={
+      host:'https://api.api.ai/v1/query?v=20150910',
+      method: 'POST',
+      headers: {
+        'Authorization':'Bearer fcc2d12400644c589538c72c41a40955 ',
+        'Content-Type': 'application/x-www-form-urlencoded'
+     },
+     body: { 
+         query: [ 'Hi' ], 
+         lang: 'en', 
+         sessionId: '1234567' 
+     }
+};
+console.log(requestOptions);
+var requestObj=https.request(requestOptions,function(response){
+    response.on("data",function(data){
+    console.log("Hi I am Triggered");
+    console.log(req);
+    });
+    response.on("error",function(error){
+        console.log(error);
+    });
+>>>>>>> 6f9625f1376901f9c646c64b1f13f7e51243faaf
 });
 
 
