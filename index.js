@@ -1,5 +1,5 @@
 var apiai = require('apiai');
-//var prompt = require('prompt')
+var prompt = require('prompt')
 var access_token = "fcc2d12400644c589538c72c41a40955";
 var app = apiai(access_token);
 
