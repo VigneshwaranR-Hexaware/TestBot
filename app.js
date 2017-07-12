@@ -13,19 +13,23 @@ const JSONbig = require('json-bigint');
 
 var options = { method: 'POST',
   url: 'https://api.api.ai/v1/query',
-  qs: { 
-      v: '20150910' 
+  qs: {
+      v: '20150910'
   },
-  headers: 
-   { 
+  headers:
+   {
      'cache-control': 'no-cache',
      'content-type': 'application/json',
-      authorization: 'Bearer 7842094f16b048ed9e53d81e0264bc87' 
+      authorization: 'Bearer 7842094f16b048ed9e53d81e0264bc87'
    },
-  body: { 
-      query: [ 'Hi' ], lang: 'en', sessionId: '1234567',source:'google'
+  body: {
+      query: [ 'Hi' ], lang: 'en', sessionId: '1234567',
+      result:{
+         source:'agent'}
+
+
   },
-  json: true 
+  json: true
  };
 
 request(options, function (error, response, body) {
@@ -39,10 +43,10 @@ request(options, function (error, response, body) {
 //        'Authorization':'Bearer fcc2d12400644c589538c72c41a40955 ',
 //        'Content-Type': 'application/x-www-form-urlencoded'
 //     },
-//     body: { 
-//         query: [ 'Hi' ], 
-//         lang: 'en', 
-//         sessionId: '1234567' 
+//     body: {
+//         query: [ 'Hi' ],
+//         lang: 'en',
+//         sessionId: '1234567'
 //     }
 //};
 //console.log(requestOptions);
@@ -56,7 +60,3 @@ request(options, function (error, response, body) {
 //    });
 //
 //});
-
-
-
-
