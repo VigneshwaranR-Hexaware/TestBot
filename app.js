@@ -9,11 +9,10 @@ const developerAccesstoken='fcc2d12400644c589538c72c41a40955';
 
 var requestOptions={
       host:'https://api.api.ai/v1/query?v=20150910',
-    
       method: 'POST',
       headers: {
         'Authorization':'Bearer fcc2d12400644c589538c72c41a40955 ',
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/x-www-form-urlencoded'
      },
      body: { 
          query: [ 'Hi' ], 
@@ -28,4 +27,3 @@ var requestObj=https.request(requestOptions,function(req,res){
 });
 
 
-curl -H "Content-Type: application/json; charset=utf-8" -H "Authorization: Bearer fcc2d12400644c589538c72c41a40955" --data "{'query':'Hi', 'timezone':'GMT-5', 'lang':'en', 'sessionId':'1234567890'}" "https://api.api.ai/v1/query?v=20150910"
