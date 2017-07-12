@@ -28,7 +28,7 @@ var options = { method: 'POST',
   json: true 
  };
 
-var requestObj=https.request(options, function (error, response, body) {
+request(options, function (error, response, body) {
   if (error) throw new Error(error);
   console.log(body);
 });
