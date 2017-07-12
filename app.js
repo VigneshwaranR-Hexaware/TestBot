@@ -20,7 +20,7 @@ var options = { method: 'POST',
    { 
      'cache-control': 'no-cache',
      'content-type': 'application/json',
-      authorization: 'Bearer fcc2d12400644c589538c72c41a40955' 
+      authorization: 'Bearer 7842094f16b048ed9e53d81e0264bc87' 
    },
   body: { 
       query: [ 'Hi' ], lang: 'en', sessionId: '1234567' 
