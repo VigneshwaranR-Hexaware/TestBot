@@ -2,27 +2,20 @@
   "name": "testbot",
   "version": "1.0.0",
   "description": "testbotintegration",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Vigneshwaran Ramanathan",
   "license": "ISC",
   "dependencies": {
-    "alexa-sdk": "^1.0.8",
-    "alexa-verifier": "^0.0.5",
     "apiai": "2.0.5",
-    "async": "^2.0.0",
     "body-parser": "^1.15.2",
-    "console-stamp": "^0.2.1",
-    "express": "^4.14.0",
-    "html-entities": "^1.2.0",
+    "express": "^4.15.3",
     "json-bigint": "^0.2.0",
-    "node-uuid": "^1.4.7",
     "nodejs-websocket": "^1.7.1",
-    "request": "^2.79.0",
-    "request-promise": "*"
+    "request": "^2.79.0"
   },
   "repository": {
     "type": "git",
@@ -33,4 +26,3 @@
   },
   "homepage": ""
 }
-
