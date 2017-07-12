@@ -32,3 +32,6 @@ var requestObj=https.request(requestOptions,function(response){
         console.log(error);
     });
 });
+requestObj.on("error",function(error){
+        console.log(error);
+    });
