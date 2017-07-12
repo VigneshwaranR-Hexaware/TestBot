@@ -15,7 +15,8 @@
     "express": "^4.15.3",
     "json-bigint": "^0.2.0",
     "nodejs-websocket": "^1.7.1",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "prompt":"^0.2.13"
   },
   "repository": {
     "type": "git",
