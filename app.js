@@ -22,7 +22,7 @@ var requestOptions={
          sessionId: '1234567' 
      }
 };
-
+console.log(requestOptions);
 var requestObj=https.request(requestOptions,function(response){
     response.on("data",function(data){
     console.log("Hi I am Triggered");
