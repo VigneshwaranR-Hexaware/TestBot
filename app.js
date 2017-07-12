@@ -15,7 +15,7 @@ var options = { method: 'POST',
   url: 'https://api.api.ai/v1/query',
   qs: { v: '20150910' },
   headers: 
-   { 'postman-token': 'e5eba49e-a27c-b135-c064-7c0394e553f0',
+   { 
      'cache-control': 'no-cache',
      'content-type': 'application/json',
      authorization: 'Bearer fcc2d12400644c589538c72c41a40955' },
