@@ -7,7 +7,7 @@ const https= require('https');
 var http = require('http');
 var request = require("request");
 const JSONbig = require('json-bigint');
-
+const assert = require('assert');
 
 
 
@@ -37,6 +37,8 @@ request(options, function (error, response, body) {
       throw new Error(error);
   }
 else{
+    console.log(JSON.parse(body));
+    //if(assert.equals("Welcome to Aitel Network how may i assist you"))
     console.log(body);
 }
   
