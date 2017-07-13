@@ -10,10 +10,10 @@ const JSONbig = require('json-bigint');
 const assert = require('assert');
 
 //Function Call
-queryProcessing('Hi');
+queryProcessing('Hi',developerAccesstoken);
 
 //Processing Query Parameter
-function queryProcessing(queryParameter){
+function queryProcessing(queryParameter,accessToken){
 console.log(queryParameter);
     console.log("Hi I am Developer access token"+developerAccesstoken);
   var options = { 
@@ -24,7 +24,7 @@ console.log(queryParameter);
    { 
      'cache-control': 'no-cache',
      'content-type': 'application/json',
-     authorization: 'Bearer fcc2d12400644c589538c72c41a40955' 
+     authorization: accessToken 
    },
   body: { 
       query: [queryParameter], lang: 'en', sessionId: '1234567'
