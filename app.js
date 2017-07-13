@@ -34,7 +34,7 @@ console.log(queryParameter);
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
   console.log(body);
-   console.log(body.result.fulfillment.speech);
+   console.log("Body Message" + body.result.fulfillment.speech);
     return body;
 });
 
