@@ -1,7 +1,7 @@
 const express = require('express');
 var apiai = require('apiai');
 const bodyParser = require('body-parser');
-const developerAccesstoken=require(./config.js);
+const developerAccesstoken=require('./config.js');
 const app = apiai(developerAccesstoken);
 const https= require('https');
 var http = require('http');
