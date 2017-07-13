@@ -1,14 +1,18 @@
 const express = require('express');
 var apiai = require('apiai');
 const bodyParser = require('body-parser');
-const developerAccesstoken='fcc2d12400644c589538c72c41a40955';
+const developerAccesstoken=require(./config.js);
 const app = apiai(developerAccesstoken);
 const https= require('https');
 var http = require('http');
 var request = require("request");
 const JSONbig = require('json-bigint');
 const assert = require('assert');
+console.log("Hi I am Developer access token"+developerAccesstoken);
+//Function Call
 queryProcessing('Hi');
+
+//Processing Query Parameter
 function queryProcessing(queryParameter){
 console.log(queryParameter);
   var options = { 
@@ -31,6 +35,7 @@ request(options, function (error, response, body) {
   if (error) throw new Error(error);
   console.log(body);
 }); 
+ return body;   
 }
 
 
