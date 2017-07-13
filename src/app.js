@@ -1,7 +1,7 @@
 const express = require('express');
 var apiai = require('apiai');
 const bodyParser = require('body-parser');
-const developerAccesstoken=require('./config.js');
+const developerAccesstoken= require('../config/config');
 const app = apiai(developerAccesstoken);
 const https= require('https');
 var http = require('http');
@@ -16,30 +16,26 @@ queryProcessing('Hi',developerAccesstoken);
 function queryProcessing(queryParameter,accessToken){
 console.log(queryParameter);
     console.log("Hi I am Developer access token"+developerAccesstoken);
-  var options = { 
+  var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
   qs: { v: '20150910' },
-  headers: 
-   { 
+  headers:
+   {
      'cache-control': 'no-cache',
      'content-type': 'application/json',
-     authorization: accessToken 
+     authorization: accessToken
    },
-  body: { 
+  body: {
       query: [queryParameter], lang: 'en', sessionId: '1234567'
   },
-  json: true 
+  json: true
 };
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
   console.log(body);
     return body;
-}); 
-    
+});
+
 }
-
-
-
-
