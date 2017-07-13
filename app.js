@@ -8,13 +8,14 @@ var http = require('http');
 var request = require("request");
 const JSONbig = require('json-bigint');
 const assert = require('assert');
-console.log("Hi I am Developer access token"+developerAccesstoken);
+
 //Function Call
 queryProcessing('Hi');
 
 //Processing Query Parameter
 function queryProcessing(queryParameter){
 console.log(queryParameter);
+    console.log("Hi I am Developer access token"+developerAccesstoken);
   var options = { 
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
