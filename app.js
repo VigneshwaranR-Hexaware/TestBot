@@ -1,7 +1,7 @@
 const express = require('express');
 var apiai = require('apiai');
 const bodyParser = require('body-parser');
-const developerAccesstoken=require('./config.js');
+const developerAccesstoken=require('./config.js);
 const app = apiai(developerAccesstoken);
 const https= require('https');
 var http = require('http');
@@ -35,8 +35,9 @@ console.log(queryParameter);
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
   console.log(body);
+    return body;
 }); 
- return body;   
+    
 }
 
 
