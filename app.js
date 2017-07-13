@@ -20,10 +20,10 @@ var options = { method: 'POST',
    {
      'cache-control': 'no-cache',
      'content-type': 'application/json',
-      authorization: 'Bearer 7842094f16b048ed9e53d81e0264bc87'
+      authorization: 'Bearer fcc2d12400644c589538c72c41a40955'
    },
   body: {
-      query: [ 'look for total cash for ABT for 2014' ], lang: 'en', sessionId: '1234567',
+      query: [ 'Hi' ], lang: 'en', sessionId: '1234567',
       result:{
          source:'agent'}
 
@@ -33,22 +33,15 @@ var options = { method: 'POST',
  };
 
 request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-  console.log(body);
+  if (error){
+      throw new Error(error);
+  }
+else{
+    console.log(body);
+}
+  
 });
-//var requestOptions={
-//      host:'https://api.api.ai/v1/query?v=20150910',
-//      method: 'POST',
-//      headers: {
-//        'Authorization':'Bearer fcc2d12400644c589538c72c41a40955 ',
-//        'Content-Type': 'application/x-www-form-urlencoded'
-//     },
-//     body: {
-//         query: [ 'Hi' ],
-//         lang: 'en',
-//         sessionId: '1234567'
-//     }
-//};
+
 //console.log(requestOptions);
 //var requestObj=https.request(requestOptions,function(response){
 //    response.on("data",function(data){
