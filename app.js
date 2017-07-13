@@ -37,7 +37,7 @@ request(options, function (error, response, body) {
       throw new Error(error);
   }
 else{
-    console.log(JSON.stringify(body));
+    console.log(JSON.stringify(body.result.fulfillment.speech));
     //if(assert.equals("Welcome to Aitel Network how may i assist you"))
     console.log(body);
 }
