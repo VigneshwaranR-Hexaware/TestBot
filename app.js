@@ -8,8 +8,12 @@ const JSONbig = require('json-bigint');
 const assert = require('assert');
 const developerAccesstoken= require('./config/config.js');
 
+preparingResponse();
 //Function Call
-queryProcessing('Hi',developerAccesstoken);
+function preparingResponse(){
+ var response=queryProcessing('Hi',developerAccesstoken);    
+}
+
 
 //Processing Query Parameter
 function queryProcessing(queryParameter,accessToken){
@@ -37,7 +41,7 @@ request(options, function (error, response, body) {
    console.log("Body Message" + body.result.fulfillment.speech);
     var message=JSON.stringify(body.result.fulfillment.speech);
     console.log("message" + message);
-    return body;
+    return message;
 });
 
 }
