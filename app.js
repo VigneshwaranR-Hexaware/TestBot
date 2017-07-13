@@ -9,7 +9,7 @@ var request = require("request");
 const JSONbig = require('json-bigint');
 const assert = require('assert');
 queryProcessing('Hi');
-function queryProcessing(string queryParameter){
+function queryProcessing(queryParameter){
 console.log(queryParameter);
   var options = { 
   method: 'POST',
