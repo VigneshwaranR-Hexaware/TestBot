@@ -1,0 +1,9 @@
+StaticResponse::GoodbyeIntent
+have a nice day
+StaticResponse::WelcomeIntent
+good monring, How may i help you?
+Welcome, How could I assist you?
+Great day
+StaticResponse::testResponse
+super
+all the best
