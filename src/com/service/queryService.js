@@ -12,7 +12,7 @@ preparingResponse();
 //Function Call
 function preparingResponse(){
  var response=queryProcessing('Hi',appConfig.developerAccessToken);
-    console.log("Returned Response" +response);
+
 }
 
 
@@ -44,4 +44,6 @@ request(options, function (error, response, body) {
     console.log("message" + message);
     return message;
 });
+
 }
+module.exports.queryProcessing=queryProcessing;

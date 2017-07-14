@@ -3,6 +3,8 @@
 //var inputfile = require('../data/VFSComplaintRequest.txt');
 var LineReader = require('linereader');
 var appConfig = require('../config/appConfig.js');
+var logService=require('./logService');
+var queryService=require('./queryService');
 //var lr = new LineReader(appConfig.expectedOutputFile);
 console.log('to call function')
 processRequest();
@@ -14,27 +16,29 @@ var currentLine=null;
 var expectedResponse=[];
 var failedLines=[];
 var responseFromApi=null;
-var tcPassCount=null;
-var tcFailCount=null;
+var tcPassCount=0;
+var tcFailCount=0;
   /*const rl = readline.createInterface({
     input: fs.createReadStream(inputfile)
   });*/
+  console.log(appConfig.inputfile);
 var rl = new LineReader(appConfig.inputfile);
   rl.on('line',function(lineno,line) {
     currentLine=line;
-    //console.log(`Line from file: `+ currentLine);
+  //  console.log(`Line from file: `+ currentLine);
         var prefix=currentLine.split(":");
 
 
           if(prefix[0]=='Cust'){
-          //  console.log(prefix[1]);
+          //console.log(prefix[1]);
 // to send to processquery function and get result from api
-                if(prefix[1]=='Hi'){
+responseFromApi=queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken);
+              /*  if(prefix[1]=='Hi'){
                   responseFromApi='How can i help you today?'
                 }else if(prefix[1]=='I am quite annoyed with VFS'){
                   responseFromApi='Sorry for the incovenience caused to youuuuu.'
-                }
-
+                }*/
+console.log('RESPONSE FROM API :'+responseFromApi);
             expectedResponse=new Array();
 
           }else if (prefix[0]=='Bot') {
@@ -62,6 +66,8 @@ var result=checkResponse(responseFromApi,expectedResponse);
   rl.on('end', function () {
     console.log("DATA to log the result");
   console.log("RESULT IS::"+tcPassCount+"FAIL::"+tcFailCount+"FAILED LINES"+failedLines);
+  logService.logResponse(tcPassCount,tcFailCount,failedLines);
+  console.log("DATA LOGGED");
   });
 
 

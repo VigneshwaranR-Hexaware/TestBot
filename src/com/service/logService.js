@@ -1,6 +1,6 @@
 var http = require('http');
 var fs = require('fs');
-var path = require('path'); 
+var path = require('path');
 
 logResponse("Passed 1","0 Failed","8th Line");
 
@@ -16,7 +16,7 @@ function logResult(str){
         return console.log(err);
         }
             console.log("The file was saved!");
-        }); 
+        });
     }
     else{
         fs.appendFile('logfile.txt', '\n' + str, function (err) {
@@ -25,3 +25,4 @@ function logResult(str){
         });
     }
 }
+module.exports.logResponse=logResponse;
