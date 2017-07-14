@@ -29,18 +29,21 @@ var rl = new LineReader(appConfig.inputfile);
         var prefix=currentLine.split(":");
 
 
-          if(prefix[0]=='Cust'){
+        if(prefix[0]=='Cust'){
           //console.log(prefix[1]);
 // to send to processquery function and get result from api
-responseFromApi=queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken);
+  //callExportFile.getToken(contactData, incidentData, function(completeresponse){
+      queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(responseFromApi){
+            console.log('RESPONSE FROM API :'+responseFromApi);
+
+            });
               /*  if(prefix[1]=='Hi'){
                   responseFromApi='How can i help you today?'
                 }else if(prefix[1]=='I am quite annoyed with VFS'){
                   responseFromApi='Sorry for the incovenience caused to youuuuu.'
                 }*/
-console.log('RESPONSE FROM API :'+responseFromApi);
-            expectedResponse=new Array();
 
+                  expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
           //  console.log(prefix[1]);
             expectedResponse.push(prefix[1]);

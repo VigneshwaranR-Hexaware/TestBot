@@ -7,4 +7,4 @@ const appConfig= require('../config/appConfig.js');
 const queryService=require('../service/queryService');
 const logService=require('../service/logService');
 
-queryService.preparingResponse();
+//queryService.preparingResponse();
