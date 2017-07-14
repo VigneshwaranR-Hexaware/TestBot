@@ -1,9 +1,12 @@
 var http = require('http');
 var fs = require('fs');
 var path = require('path'); 
-var str="WelcomeCase" + "," + "2" +"," + "3Failed";
 
+
+function logResponse(passcount,failcount,linenumber){
+var str= passcount +','+ failcount +','+ linenumber;
 logResult(str);
+}
 
 function logResult(str){
     if(!(fs.existsSync('logfile.txt'))){
