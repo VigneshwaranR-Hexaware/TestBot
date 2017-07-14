@@ -2,6 +2,7 @@ var http = require('http');
 var fs = require('fs');
 var path = require('path'); 
 
+logResponse("Passed 1","0 Failed","8th Line");
 
 function logResponse(passcount,failcount,linenumber){
 var str= passcount +','+ failcount +','+ linenumber;
