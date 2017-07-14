@@ -1,5 +1,3 @@
-
-
 //var inputfile = require('../data/VFSComplaintRequest.txt');
 var LineReader = require('linereader');
 var appConfig = require('../config/appConfig.js');
@@ -18,49 +16,28 @@ var failedLines=[];
 var responseFromApi=null;
 var tcPassCount=0;
 var tcFailCount=0;
-  /*const rl = readline.createInterface({
-    input: fs.createReadStream(inputfile)
-  });*/
   console.log(appConfig.inputfile);
 var rl = new LineReader(appConfig.inputfile);
   rl.on('line',function(lineno,line) {
     currentLine=line;
-  //  console.log(`Line from file: `+ currentLine);
         var prefix=currentLine.split(":");
-
-
         if(prefix[0]=='Cust'){
-          //console.log(prefix[1]);
-// to send to processquery function and get result from api
-  //callExportFile.getToken(contactData, incidentData, function(completeresponse){
-      queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(responseFromApi){
+        queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(responseFromApi){
             console.log('RESPONSE FROM API :'+responseFromApi);
-
             });
-              /*  if(prefix[1]=='Hi'){
-                  responseFromApi='How can i help you today?'
-                }else if(prefix[1]=='I am quite annoyed with VFS'){
-                  responseFromApi='Sorry for the incovenience caused to youuuuu.'
-                }*/
-
-                  expectedResponse=new Array();
+          expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
-          //  console.log(prefix[1]);
             expectedResponse.push(prefix[1]);
-          //  console.log(expectedResponse);
           }
-
 if(expectedResponse.length>0){
-
 var result=checkResponse(responseFromApi,expectedResponse);
-
   if(result){
     tcPassCount++;
-  }else{
+  }
+  else{
     failedLines.push(lineno);
     tcFailCount++;
   }
-
 }
 
 
@@ -72,6 +49,10 @@ var result=checkResponse(responseFromApi,expectedResponse);
   logService.logResponse(tcPassCount,tcFailCount,failedLines);
   console.log("DATA LOGGED");
   });
+rl.on('error',function(err){
+    console.log(err);
+});
+    
 
 
 }
