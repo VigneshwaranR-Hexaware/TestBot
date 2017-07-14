@@ -17,7 +17,7 @@ function preparingResponse(){
 
 
 //Processing Query Parameter
-function queryProcessing(queryParameter,accessToken){
+function queryProcessing(queryParameter,accessToken,callback){
 console.log(queryParameter);
     console.log("Hi I am Developer access token"+accessToken);
   var options = {
