@@ -6,12 +6,12 @@ const bodyParser = require('body-parser');
 var request = require("request");
 const JSONbig = require('json-bigint');
 const assert = require('assert');
-const developerAccesstoken= require('../config/config.js');
+const appConfig= require('../config/appConfig.js');
 
 preparingResponse();
 //Function Call
 function preparingResponse(){
- var response=queryProcessing('Hi',developerAccesstoken);
+ var response=queryProcessing('Hi',appConfig.developerAccessToken);
 }
 
 
