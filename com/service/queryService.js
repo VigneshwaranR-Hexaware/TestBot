@@ -18,7 +18,7 @@ function preparingResponse(){
 //Processing Query Parameter
 function queryProcessing(queryParameter,accessToken){
 console.log(queryParameter);
-    console.log("Hi I am Developer access token"+developerAccesstoken);
+    console.log("Hi I am Developer access token"+accessToken);
   var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
