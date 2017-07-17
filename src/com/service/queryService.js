@@ -8,13 +8,11 @@ const JSONbig = require('json-bigint');
 const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
 
-//preparingResponse();
 //Function Call
-function preparingResponse(){
- var response=queryProcessing('Hi',appConfig.developerAccessToken);
-
-}
-
+//function preparingResponse(){
+// var response=queryProcessing('Hi',appConfig.developerAccessToken);
+//
+//}
 
 //Processing Query Parameter
 function queryProcessing(queryParameter,accessToken,handleResp){
@@ -34,8 +32,7 @@ function queryProcessing(queryParameter,accessToken,handleResp){
   },
   json: true
 };
-
-request(options, handleResp);
-
+ request(options,handleResp);
 }
+
 module.exports.queryProcessing=queryProcessing;
