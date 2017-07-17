@@ -23,9 +23,10 @@ fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (li
   currentLine=line;
   var prefix=currentLine.split(":");
   if(prefix[0]=='Cust'){
-      queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(err,responseFromApi){
+      queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(err,responseFromApi)){
         console.log('RESPONSE FROM API :'+responseFromApi);
       });
+  }
     fs.appendFileSync("./output.txt", line.toString() + "\n");
 });
 
