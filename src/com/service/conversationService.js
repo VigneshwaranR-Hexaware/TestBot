@@ -1,6 +1,7 @@
 //var inputfile = require('../data/VFSComplaintRequest.txt');
 var LineReader = require('linereader');
 var request = require("request");
+var jsUtil=require('util');
 
 var appConfig = require('../config/appConfig.js');
 var logService=require('./logService');
@@ -10,7 +11,27 @@ var util=require('../config/util.js');
 console.log('to call function')
 processRequest();
 
-function processRequest(){
+
+
+function conversationReq(lineNo) {
+
+  var lineNumber = lineNo;
+
+  function getMessages(error,response, body){
+     var message= util.getMsgFromResp(error, response, body);
+      console.log(message);
+      console.log("Line number is "+lineNumber);
+  }
+
+}
+
+jsUtil.inherits(conversationReq, request);
+
+
+
+
+
+function processRequest() {
 const fs = require('fs');
 var currentLine=null;
 var expectedResponse=[];
@@ -24,7 +45,7 @@ var rl = new LineReader(appConfig.inputfile);
     currentLine=line;
         var prefix=currentLine.split(":");
         if(prefix[0]=='Cust'){
-                queryService.queryProcessing(prefix[1],request,getMessages);
+                queryService.queryProcessing(prefix[1],conversationReq);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
               expectedResponse.push(prefix[1]);
@@ -67,9 +88,4 @@ else{
 console.log("test case failed");
 return false;
 }
-}
-
-function getMessages(error,response, body){
-   var message= util.getMsgFromResp(error, response, body);
-    console.log(message);
 }

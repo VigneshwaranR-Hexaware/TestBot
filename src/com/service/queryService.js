@@ -15,7 +15,7 @@ const appConfig= require('../config/appConfig.js');
 //}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter, request, handleResp){
+function queryProcessing(queryParameter, request){
  console.log("Query Parameter  ",queryParameter);
   var options = {
   method: 'POST',
@@ -32,7 +32,7 @@ function queryProcessing(queryParameter, request, handleResp){
   },
   json: true
 };
- request(options,handleResp);
+ request(options,request.getMessages);
 }
 
 module.exports.queryProcessing=queryProcessing;
