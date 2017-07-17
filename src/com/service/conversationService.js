@@ -21,7 +21,7 @@ fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (li
     console.log(line);
     console.log(lineno);
   currentLine=line;
-  var prefix=currentLine.split(":");
+  var prefix=currentLine.toString().split(':');
   if(prefix[0]=='Cust'){
       queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(err,responseFromApi){
         console.log('RESPONSE FROM API :'+responseFromApi);
