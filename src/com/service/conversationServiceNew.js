@@ -42,7 +42,7 @@ var custLineNo = -1;
 
                 queryServ.triggerReq();
 
-                setTimeout(console.log("Waiting"), 1000);
+                //setTimeout(console.log("Waiting"), 1000);
 
                 //queryService.queryProcessing(prefix[1], lineno, responseMap);
                 expectedResponse=new Array();
