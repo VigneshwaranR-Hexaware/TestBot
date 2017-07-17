@@ -76,5 +76,5 @@ return false;
 function getMessages(error,response, body){
    var message= util.getMsgFromResp(error, response, body);
     console.log(message);
-    console.log("Line number is "+lineNumber);
+    
 }
