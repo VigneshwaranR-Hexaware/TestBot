@@ -33,9 +33,11 @@ var rl = new LineReader(appConfig.inputfile);
         if(prefix[0]=='Cust'){
                 //var queryServ = new queryProcessing(prefix[1]);
                 custLineNo = lineno;
+                console.log("LINE NO"+custLineNo);
                 queryService.queryProcessing(prefix[1], lineno, responseMap);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
+              console.log("LINE NO in bot"+custLineNo);
                 pushToMap(custLineNo, prefix[1]);
           }
 /*if(expectedResponse.length>0){
