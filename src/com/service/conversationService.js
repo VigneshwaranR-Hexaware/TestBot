@@ -22,8 +22,8 @@ var rl = new LineReader(appConfig.inputfile);
     currentLine=line;
         var prefix=currentLine.split(":");
         if(prefix[0]=='Cust'){
-        queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(err,responseFromApi){
-            console.log('RESPONSE FROM API :'+responseFromApi);
+    var response= queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(err,responseFromApi){
+            console.log('RESPONSE FROM API :'+(responseFromApi== null));
             });
           expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
