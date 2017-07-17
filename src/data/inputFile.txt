@@ -1,0 +1,11 @@
+i am an intent tester
+whoooooo
+super
+StaticReq::WelcomeIntent
+Hi
+Good morniing
+Welcome
+StaticReq::GoodbyeIntent
+Goodbye
+thank you
+meet you next time
