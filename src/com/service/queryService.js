@@ -35,14 +35,18 @@ function queryProcessing(queryParameter,accessToken,callback){
   json: true
 };
 
-request(options, function (error, response, body,callback) {
+request(options, function (error, response, body) {
   if (error) throw new Error(error);
   console.log(body);
    console.log("Body Message" + body.result.fulfillment.speech);
     var message=JSON.stringify(body.result.fulfillment.speech);
     console.log("message" + message);
+    
+    process.nextTick(function(){
+        callback(message);
+    });
   //return message;
-  callback(message);
+  
 });
 
 }
