@@ -70,5 +70,5 @@ return false;
 }
 
 function getMessages(error,response, body){
-    util.getMessageResponse(error, response, body)
+    util.getMsgFromResp(error, response, body)
 }

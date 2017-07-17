@@ -7,8 +7,9 @@ var getMessage = function getMessageResponse (error, response, body) {
     console.log("message" + message);
     if (!error && response.statusCode === 200) {
       var message=JSON.stringify(body.result.fulfillment.speech);
-        console.log(message);
+        return message;
    }
+    return null;
 }
 
-modules.exports.getMessageResponse=getMessage;
+module.exports.getMsgFromResp=getMessage;
