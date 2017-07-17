@@ -29,7 +29,8 @@ function queryProcessing(queryParameter, handleResp){
      authorization: appConfig.vfsAccessToken
    },
   body: {
-      query: [queryParameter], lang: 'en', sessionId: '1234567'
+      query: [queryParameter], lang: 'en', sessionId: '1234567',
+      parameters: [24]
   },
   json: true
 };
