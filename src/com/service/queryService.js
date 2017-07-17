@@ -4,24 +4,19 @@ var http = require('http');
 var apiai = require('apiai');
 const bodyParser = require('body-parser');
 var request = require("request");
-
 const JSONbig = require('json-bigint');
 const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
-var util=require('../config/util.js');
 
-
-
-
+//preparingResponse();
 //Function Call
-//function preparingResponse(){
-// var response=queryProcessing('Hi',appConfig.developerAccessToken);
-//
-//}
+function preparingResponse(){
+ var response=queryProcessing('I am quite annoyed with VFS',appConfig.developerAccessToken,null);
+}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter, lineNumber, responseMap){
-
+function queryProcessing(queryParameter,accessToken,callback){
+ console.log("Query Parameter  ",queryParameter);
   var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
@@ -30,7 +25,7 @@ function queryProcessing(queryParameter, lineNumber, responseMap){
    {
      'cache-control': 'no-cache',
      'content-type': 'application/json',
-     authorization: appConfig.vfsAccessToken
+     authorization: accessToken
    },
   body: {
       query: [queryParameter], lang: 'en', sessionId: '1234567'
@@ -38,16 +33,19 @@ function queryProcessing(queryParameter, lineNumber, responseMap){
   json: true
 };
 
-var handleResp = function(error,response, body){
-   var message= util.getMsgFromResp(error, response, body);
-    console.log(message+" lin nu is "+lineNumber);
-    console.log("Resp map is "+responseMap);
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
+  console.log(body);
+   console.log("Body Message" + body.result.fulfillment.speech);
+    var message=JSON.stringify(body.result.fulfillment.speech);
+    console.log("message" + message);
+    if (!error && response.statusCode === 200) {
+      // some code    
+      callback(message); 
+   }
+  //return message;
+  
+});
+
 }
-
- request(options,handleResp);
-}
-
-
-
-
 module.exports.queryProcessing=queryProcessing;
