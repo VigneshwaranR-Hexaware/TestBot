@@ -54,15 +54,15 @@ fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (li
 
 //   });
 
-  rl.on('end', function () {
-    console.log("DATA to log the result");
-  console.log("RESULT IS::"+tcPassCount+"FAIL::"+tcFailCount+"FAILED LINES"+failedLines);
-  logService.logResponse(tcPassCount,tcFailCount,failedLines);
-  console.log("DATA LOGGED");
-  });
-rl.on('error',function(err){
-    console.log(err);
-});
+ // rl.on('end', function () {
+   // console.log("DATA to log the result");
+  //console.log("RESULT IS::"+tcPassCount+"FAIL::"+tcFailCount+"FAILED LINES"+failedLines);
+  //logService.logResponse(tcPassCount,tcFailCount,failedLines);
+  //console.log("DATA LOGGED");
+  //});
+//rl.on('error',function(err){
+  //  console.log(err);
+//});
     
 
 
