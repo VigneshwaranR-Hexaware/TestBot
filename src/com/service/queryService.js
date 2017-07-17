@@ -32,7 +32,7 @@ function queryProcessing(queryParameter, convRequest){
   },
   json: true
 };
- convRequest.request(options,request.getMessages);
+ convRequest.request(options,convRequest.getMessages);
 }
 
 module.exports.queryProcessing=queryProcessing;
