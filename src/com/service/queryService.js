@@ -42,7 +42,8 @@ request(options, function (error, response, body) {
     var message=JSON.stringify(body.result.fulfillment.speech);
     console.log("message" + message);
     if (!error && response.statusCode === 200) {
-      // some code    
+      // some code
+      var message=JSON.stringify(body.result.fulfillment.speech);
       callback(message); 
    }
   return message;
