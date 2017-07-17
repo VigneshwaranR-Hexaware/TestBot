@@ -17,7 +17,7 @@ const appConfig= require('../config/appConfig.js');
 
 //Processing Query Parameter
 function queryProcessing(queryParameter, handleResp){
-  console.log(handleResp.getMessage);
+
   var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
@@ -33,7 +33,7 @@ function queryProcessing(queryParameter, handleResp){
   },
   json: true
 };
- request(options,handleResp.getMessage);
+ request(options,handleResp);
 }
 
 module.exports.queryProcessing=queryProcessing;
