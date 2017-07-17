@@ -26,6 +26,9 @@ fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (li
         console.log('RESPONSE FROM API :'+responseFromApi);
       });
   }
+  else if (prefix[0]=='Bot') {
+             expectedResponse.push(prefix[1]);
+          }
     //fs.appendFileSync("./output.txt", line.toString() + "\n");
 });
 
