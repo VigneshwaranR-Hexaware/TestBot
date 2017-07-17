@@ -21,7 +21,7 @@ var rl = new LineReader(appConfig.inputfile);
     currentLine=line;
         var prefix=currentLine.split(":");
         if(prefix[0]=='Cust'){
-queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,getMessages(error,response,body);
+queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,getMessages(error,response,body));
                                               
                                               
                                              
