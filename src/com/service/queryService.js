@@ -8,16 +8,14 @@ const JSONbig = require('json-bigint');
 const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
 
-//preparingResponse();
 //Function Call
-function preparingResponse(){
- var response=queryProcessing('Hi',appConfig.developerAccessToken);
-
-}
-
+//function preparingResponse(){
+// var response=queryProcessing('Hi',appConfig.developerAccessToken);
+//
+//}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter,accessToken,callback){
+function queryProcessing(queryParameter,accessToken,handleResp){
  console.log("Query Parameter  ",queryParameter);
   var options = {
   method: 'POST',
@@ -34,20 +32,7 @@ function queryProcessing(queryParameter,accessToken,callback){
   },
   json: true
 };
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-  console.log(body);
-   console.log("Body Message" + body.result.fulfillment.speech);
-    var message=JSON.stringify(body.result.fulfillment.speech);
-    console.log("message" + message);
-    if (!error && response.statusCode === 200) {
-      // some code    
-      callback(message); 
-   }
-  //return message;
-  
-});
-
+ request(options,handleResp);
 }
+
 module.exports.queryProcessing=queryProcessing;
