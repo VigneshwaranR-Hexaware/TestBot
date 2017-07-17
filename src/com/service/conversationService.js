@@ -25,9 +25,10 @@ var tcPassCount=0;
 var tcFailCount=0;
 
 var rl = new LineReader(appConfig.inputfile);
+var custLineNo = -1;
   rl.on('line',function(lineno,line) {
     currentLine=line;
-      var custLineNo = -1;
+
         var prefix=currentLine.split(":");
 
         if(prefix[0]=='Cust'){
