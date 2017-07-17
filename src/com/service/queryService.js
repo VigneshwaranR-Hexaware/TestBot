@@ -33,7 +33,7 @@ function queryProcessing(queryParameter, handleResp){
   },
   json: true
 };
- request(options,handleResp);
+ request(options,handleResp.getMessage);
 }
 
 module.exports.queryProcessing=queryProcessing;

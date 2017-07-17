@@ -28,7 +28,7 @@ var rl = new LineReader(appConfig.inputfile);
 
         if(prefix[0]=='Cust'){
 
-                queryService.queryProcessing(prefix[1], getMessages);
+                queryService.queryProcessing(prefix[1], testMet);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
               expectedResponse.push(prefix[1]);
@@ -73,8 +73,10 @@ return false;
 }
 }
 
-function getMessages(error,response, body){
-   var message= util.getMsgFromResp(error, response, body);
-    console.log(message);
-    
+var testMet = function(lineNum) {
+  function getMessages(error,response, body){
+     var message= util.getMsgFromResp(error, response, body);
+      console.log(message+" no is "+lineNum);
+
+  }
 }
