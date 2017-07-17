@@ -5,7 +5,7 @@ var jsUtil=require('util');
 
 var appConfig = require('../config/appConfig.js');
 var logService=require('./logService');
-var queryService=require('./queryService');
+var QueryService=require('./queryService');
 var util=require('../config/util.js');
 
 const responseMap = new Map();
@@ -35,7 +35,16 @@ var custLineNo = -1;
                 //var queryServ = new queryProcessing(prefix[1]);
                 custLineNo = lineno;
                 console.log("LINE NO"+custLineNo);
-                queryService.queryProcessing(prefix[1], lineno, responseMap);
+
+                var queryServ = new QueryService.QueryProcessor();
+                queryServ.lineNumber = lineno;
+                queryServ.queryParameter = prefix[1];
+
+                queryServ.triggerReq();
+
+                setTimeout(console.log("Waiting"), 1000);
+
+                //queryService.queryProcessing(prefix[1], lineno, responseMap);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
               console.log("LINE NO in bot"+custLineNo);

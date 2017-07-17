@@ -20,7 +20,15 @@ var util=require('../config/util.js');
 //}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter, lineNumber, responseMap){
+function QueryProcessor() {
+
+  var queryParameter = null;
+  var lineNumber = null;
+  var processCompleted = false;
+
+  function isProcessCompleted() {
+      return processCompleted;
+  }
 
   var options = {
   method: 'POST',
@@ -42,12 +50,16 @@ var handleResp = function(error,response, body){
    var message= util.getMsgFromResp(error, response, body);
     console.log(message+" lin nu is "+lineNumber);
     console.log("Resp map is "+responseMap);
+    processCompleted = true;
 }
 
- request(options,handleResp);
+var triggerReq() {
+    request(options,handleResp);
+}
+
 }
 
 
 
 
-module.exports.queryProcessing=queryProcessing;
+module.exports.QueryProcessor=QueryProcessor;
