@@ -41,9 +41,9 @@ request(options, function (error, response, body) {
     console.log("message" + message);
     if (!error && response.statusCode === 200) {
       // some code    
-      callback(message); 
+      //callback(message); 
    }
-  //return message;
+  return message;
   
 });
 
