@@ -1,6 +1,6 @@
 //var inputfile = require('../data/VFSComplaintRequest.txt');
 var LineReader = require('linereader');
-var request = require("request");
+
 var jsUtil=require('util');
 
 var appConfig = require('../config/appConfig.js');
@@ -9,24 +9,6 @@ var queryService=require('./queryService');
 var util=require('../config/util.js');
 
 processRequest();
-
-
-
-function conversationReq(lineNo) {
-
-  var lineNumber = lineNo;
-
-  function getMessages(error,response, body){
-     var message= util.getMsgFromResp(error, response, body);
-      console.log(message);
-      console.log("Line number is "+lineNumber);
-  }
-
-}
-
-jsUtil.inherits(conversationReq, request);
-
-
 
 
 
@@ -45,13 +27,13 @@ var rl = new LineReader(appConfig.inputfile);
         var prefix=currentLine.split(":");
 
         if(prefix[0]=='Cust'){
-                var convReq = new conversationReq(lineno);
-                queryService.queryProcessing(prefix[1],convReq);
+
+                queryService.queryProcessing(prefix[1], getMessages);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
               expectedResponse.push(prefix[1]);
           }
-if(expectedResponse.length>0){
+/*if(expectedResponse.length>0){
 var result=checkResponse(responseFromApi,expectedResponse);
   if(result){
     tcPassCount++;
@@ -60,7 +42,7 @@ var result=checkResponse(responseFromApi,expectedResponse);
     failedLines.push(lineno);
     tcFailCount++;
   }
-}
+}*/
 
 
   });
@@ -89,4 +71,10 @@ else{
 console.log("test case failed");
 return false;
 }
+}
+
+function getMessages(error,response, body){
+   var message= util.getMsgFromResp(error, response, body);
+    console.log(message);
+    console.log("Line number is "+lineNumber);
 }
