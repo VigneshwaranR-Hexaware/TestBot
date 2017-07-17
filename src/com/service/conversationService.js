@@ -28,7 +28,7 @@ var rl = new LineReader(appConfig.inputfile);
 
         if(prefix[0]=='Cust'){
                 //var queryServ = new queryProcessing(prefix[1]);
-                queryService.queryProcessing(prefix[1], lineno);
+                queryService.queryProcessing(prefix[1], lineno, getMessage);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
               expectedResponse.push(prefix[1]);
@@ -71,4 +71,9 @@ else{
 console.log("test case failed");
 return false;
 }
+}
+
+function getMessage(error,response, body){
+   var message= util.getMsgFromResp(error, response, body);
+    console.log(message+" lin nu is "+lineNumber);
 }

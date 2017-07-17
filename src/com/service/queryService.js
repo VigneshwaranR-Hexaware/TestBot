@@ -17,7 +17,7 @@ var util=require('../config/util.js');
 //}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter, lineNumber){
+function queryProcessing(queryParameter, lineNumber, handleResp){
 
   var options = {
   method: 'POST',
@@ -34,11 +34,6 @@ function queryProcessing(queryParameter, lineNumber){
   },
   json: true
 };
-
-var handleResp = function(error,response, body){
-   var message= util.getMsgFromResp(error, response, body);
-    console.log(message+" lin nu is "+lineNumber);
-}
 
  request(options,handleResp);
  console.log("I am running asnc");
