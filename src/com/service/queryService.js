@@ -41,7 +41,6 @@ var handleResp = function(error,response, body){
 }
 
  request(options,handleResp);
- console.log("I am running asnc");
 }
 
 
