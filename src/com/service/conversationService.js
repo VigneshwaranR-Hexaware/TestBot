@@ -8,6 +8,9 @@ var logService=require('./logService');
 var queryService=require('./queryService');
 var util=require('../config/util.js');
 
+const responseMap = new Map();
+
+
 processRequest();
 
 
@@ -24,14 +27,16 @@ var tcFailCount=0;
 var rl = new LineReader(appConfig.inputfile);
   rl.on('line',function(lineno,line) {
     currentLine=line;
+      var custLineNo = -1;
         var prefix=currentLine.split(":");
 
         if(prefix[0]=='Cust'){
                 //var queryServ = new queryProcessing(prefix[1]);
-                queryService.queryProcessing(prefix[1], lineno);
+                custLineNo = lineno;
+                queryService.queryProcessing(prefix[1], lineno, responseMap);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
-              expectedResponse.push(prefix[1]);
+                pushToMap(custLineNo, prefix[1]);
           }
 /*if(expectedResponse.length>0){
 var result=checkResponse(responseFromApi,expectedResponse);
@@ -71,4 +76,13 @@ else{
 console.log("test case failed");
 return false;
 }
+}
+
+function pushToMap(lineNumber, respString) {
+    var respArray = responseMap.get(lineNumber);
+    if(!respString) {
+        respArray = new Array();
+        responseMap.set(lineNumber. respArray);
+    }
+    respArray.push(respString);
 }

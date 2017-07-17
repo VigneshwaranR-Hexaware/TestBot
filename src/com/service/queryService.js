@@ -10,6 +10,9 @@ const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
 var util=require('../config/util.js');
 
+
+
+
 //Function Call
 //function preparingResponse(){
 // var response=queryProcessing('Hi',appConfig.developerAccessToken);
@@ -17,7 +20,7 @@ var util=require('../config/util.js');
 //}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter, lineNumber, handleResp){
+function queryProcessing(queryParameter, lineNumber, responseMap){
 
   var options = {
   method: 'POST',
@@ -38,10 +41,12 @@ function queryProcessing(queryParameter, lineNumber, handleResp){
 var handleResp = function(error,response, body){
    var message= util.getMsgFromResp(error, response, body);
     console.log(message+" lin nu is "+lineNumber);
+    console.log("Resp map is "+responseMap);
 }
 
  request(options,handleResp);
 }
+
 
 
 
