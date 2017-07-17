@@ -27,8 +27,8 @@ var rl = new LineReader(appConfig.inputfile);
         var prefix=currentLine.split(":");
 
         if(prefix[0]=='Cust'){
-
-                queryService.queryProcessing(prefix[1], getMessages);
+                //var queryServ = new queryProcessing(prefix[1]);
+                queryService.queryProcessing(prefix[1]);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
               expectedResponse.push(prefix[1]);
@@ -71,10 +71,4 @@ else{
 console.log("test case failed");
 return false;
 }
-}
-
-function getMessages(error,response, body){
-   var message= util.getMsgFromResp(error, response, body);
-    console.log(message);
-
 }

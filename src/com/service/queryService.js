@@ -8,6 +8,7 @@ var request = require("request");
 const JSONbig = require('json-bigint');
 const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
+var util=require('../config/util.js');
 
 //Function Call
 //function preparingResponse(){
@@ -16,7 +17,9 @@ const appConfig= require('../config/appConfig.js');
 //}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter, handleResp){
+function queryProcessing(queryParameter){
+
+  var lineNumber = 24;
 
   var options = {
   method: 'POST',
@@ -29,12 +32,20 @@ function queryProcessing(queryParameter, handleResp){
      authorization: appConfig.vfsAccessToken
    },
   body: {
-      query: [queryParameter], lang: 'en', sessionId: '1234567',
-      parameters: [24]
+      query: [queryParameter], lang: 'en', sessionId: '1234567'
   },
   json: true
 };
- request(options,handleResp);
+
+var handleResp = function(error,response, body){
+   var message= util.getMsgFromResp(error, response, body);
+    console.log(message+" lin nu is "+lineNumber);
 }
+
+ request(options,handleResp);
+ console.log("I am running asnc");
+}
+
+
 
 module.exports.queryProcessing=queryProcessing;
