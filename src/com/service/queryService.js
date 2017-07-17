@@ -4,6 +4,7 @@ var http = require('http');
 var apiai = require('apiai');
 const bodyParser = require('body-parser');
 var request = require("request");
+
 const JSONbig = require('json-bigint');
 const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
@@ -15,8 +16,8 @@ const appConfig= require('../config/appConfig.js');
 //}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter,handleResp){
- console.log("Query Parameter  ",queryParameter);
+function queryProcessing(queryParameter, handleResp){
+
   var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
@@ -28,7 +29,8 @@ function queryProcessing(queryParameter,handleResp){
      authorization: appConfig.vfsAccessToken
    },
   body: {
-      query: [queryParameter], lang: 'en', sessionId: '1234567'
+      query: [queryParameter], lang: 'en', sessionId: '1234567',
+      parameters: [24]
   },
   json: true
 };
