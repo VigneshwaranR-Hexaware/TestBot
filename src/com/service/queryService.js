@@ -11,7 +11,7 @@ const appConfig= require('../config/appConfig.js');
 preparingResponse();
 //Function Call
 function preparingResponse(){
- var response=queryProcessing('I am quite annoyed with VFS',appConfig.developerAccessToken,null);
+ var response=queryProcessing("i am quite annoyed with VFS",appConfig.developerAccessToken,null);
 }
 
 //Processing Query Parameter
