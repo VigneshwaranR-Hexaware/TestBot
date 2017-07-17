@@ -35,6 +35,11 @@ function queryProcessing(queryParameter, lineNumber, handleResp){
   json: true
 };
 
+var handleResp = function(error,response, body){
+   var message= util.getMsgFromResp(error, response, body);
+    console.log(message+" lin nu is "+lineNumber);
+}
+
  request(options,handleResp);
  console.log("I am running asnc");
 }
