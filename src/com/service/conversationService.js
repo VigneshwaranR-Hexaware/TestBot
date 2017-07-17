@@ -20,8 +20,10 @@ var tcFailCount=0;
 fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (lineno,line) { 
     console.log(line);
     console.log(lineno);
-  currentLine=line;
-  var prefix=currentLine.toString().split(':');
+  
+  
+  var prefix=line.toString().split(":");
+  console.log("Prefix"+""+prefix);
   if(prefix[0]=='Cust'){
       queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(err,responseFromApi){
         console.log('RESPONSE FROM API :'+responseFromApi);
