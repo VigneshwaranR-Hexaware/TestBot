@@ -3,13 +3,12 @@ var LineReader = require('linereader');
 var appConfig = require('../config/appConfig.js');
 var logService=require('./logService');
 var queryService=require('./queryService');
-//var lr = new LineReader(appConfig.expectedOutputFile);
+var util=require('../config/util.js');
 console.log('to call function')
 processRequest();
 
 function processRequest(){
-//  const readline = require('readline');
-  const fs = require('fs');
+const fs = require('fs');
 var currentLine=null;
 var expectedResponse=[];
 var failedLines=[];
@@ -22,21 +21,10 @@ var rl = new LineReader(appConfig.inputfile);
     currentLine=line;
         var prefix=currentLine.split(":");
         if(prefix[0]=='Cust'){
-    var response= queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function (error, response, body) {
-  if (error) throw new Error(error);
-  console.log(body);
-   console.log("Body Message" + body.result.fulfillment.speech);
-    var message=JSON.stringify(body.result.fulfillment.speech);
-    console.log("message" + message);
-    if (!error && response.statusCode === 200) {
-      // some code
-      var message=JSON.stringify(body.result.fulfillment.speech);
-//      callback(message); 
-        console.log(message);
-   }
-  
-  
-});
+queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,getMessages(error,response,body);
+                                              
+                                              
+                                             
           expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
             expectedResponse.push(prefix[1]);
@@ -79,4 +67,8 @@ else{
 console.log("test case failed");
 return false;
 }
+}
+
+function getMessages(error,response, body){
+    util.getMessageResponse(error, response, body)
 }
