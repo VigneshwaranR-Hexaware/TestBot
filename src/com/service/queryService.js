@@ -15,7 +15,7 @@ const appConfig= require('../config/appConfig.js');
 //}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter,accessToken,handleResp){
+function queryProcessing(queryParameter,handleResp){
  console.log("Query Parameter  ",queryParameter);
   var options = {
   method: 'POST',
@@ -25,7 +25,7 @@ function queryProcessing(queryParameter,accessToken,handleResp){
    {
      'cache-control': 'no-cache',
      'content-type': 'application/json',
-     authorization: accessToken
+     authorization: appConfig.vfsAccessToken
    },
   body: {
       query: [queryParameter], lang: 'en', sessionId: '1234567'
