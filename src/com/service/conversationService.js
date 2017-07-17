@@ -22,9 +22,21 @@ var rl = new LineReader(appConfig.inputfile);
     currentLine=line;
         var prefix=currentLine.split(":");
         if(prefix[0]=='Cust'){
-    var response= queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(err,responseFromApi){
-            console.log('RESPONSE FROM API :'+(responseFromApi== null));
-            });
+    var response= queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function (error, response, body) {
+  if (error) throw new Error(error);
+  console.log(body);
+   console.log("Body Message" + body.result.fulfillment.speech);
+    var message=JSON.stringify(body.result.fulfillment.speech);
+    console.log("message" + message);
+    if (!error && response.statusCode === 200) {
+      // some code
+      var message=JSON.stringify(body.result.fulfillment.speech);
+//      callback(message); 
+        console.log(message);
+   }
+  
+  
+});
           expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
             expectedResponse.push(prefix[1]);
