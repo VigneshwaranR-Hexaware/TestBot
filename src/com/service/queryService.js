@@ -3,7 +3,7 @@ const https= require('https');
 var http = require('http');
 var apiai = require('apiai');
 const bodyParser = require('body-parser');
-var request = require("request");
+
 const JSONbig = require('json-bigint');
 const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
@@ -15,7 +15,7 @@ const appConfig= require('../config/appConfig.js');
 //}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter,handleResp){
+function queryProcessing(queryParameter, request, handleResp){
  console.log("Query Parameter  ",queryParameter);
   var options = {
   method: 'POST',

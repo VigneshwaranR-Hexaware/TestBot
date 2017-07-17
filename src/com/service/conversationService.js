@@ -1,9 +1,12 @@
 //var inputfile = require('../data/VFSComplaintRequest.txt');
 var LineReader = require('linereader');
+var request = require("request");
+
 var appConfig = require('../config/appConfig.js');
 var logService=require('./logService');
 var queryService=require('./queryService');
 var util=require('../config/util.js');
+
 console.log('to call function')
 processRequest();
 
@@ -21,10 +24,10 @@ var rl = new LineReader(appConfig.inputfile);
     currentLine=line;
         var prefix=currentLine.split(":");
         if(prefix[0]=='Cust'){
-queryService.queryProcessing(prefix[1],getMessages);
-          expectedResponse=new Array();
+                queryService.queryProcessing(prefix[1],request,getMessages);
+                expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
-            expectedResponse.push(prefix[1]);
+              expectedResponse.push(prefix[1]);
           }
 if(expectedResponse.length>0){
 var result=checkResponse(responseFromApi,expectedResponse);
