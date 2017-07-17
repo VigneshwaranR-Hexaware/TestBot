@@ -18,8 +18,7 @@ function preparingResponse(){
 
 //Processing Query Parameter
 function queryProcessing(queryParameter,accessToken,callback){
-console.log(queryParameter);
-    console.log("Hi I am Developer access token"+accessToken);
+ console.log("Query Parameter  ",queryParameter);
   var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
@@ -36,7 +35,7 @@ console.log(queryParameter);
   json: true
 };
 
-request(options, function (error, response, body) {
+request(options, function (error, response, body,callback) {
   if (error) throw new Error(error);
   console.log(body);
    console.log("Body Message" + body.result.fulfillment.speech);
