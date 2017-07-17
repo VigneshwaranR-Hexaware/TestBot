@@ -28,7 +28,7 @@ var rl = new LineReader(appConfig.inputfile);
 
         if(prefix[0]=='Cust'){
                 //var queryServ = new queryProcessing(prefix[1]);
-                queryService.queryProcessing(prefix[1]);
+                queryService.queryProcessing(prefix[1], lineno);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
               expectedResponse.push(prefix[1]);

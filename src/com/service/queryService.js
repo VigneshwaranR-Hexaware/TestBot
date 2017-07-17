@@ -17,9 +17,7 @@ var util=require('../config/util.js');
 //}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter){
-
-  var lineNumber = 24;
+function queryProcessing(queryParameter, lineNumber){
 
   var options = {
   method: 'POST',
