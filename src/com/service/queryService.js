@@ -45,7 +45,7 @@ request(options, function (error, response, body) {
       // some code    
       callback(message); 
    }
-  //return message;
+  return message;
   
 });
 
