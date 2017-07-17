@@ -17,7 +17,7 @@ var responseFromApi=null;
 var tcPassCount=0;
 var tcFailCount=0;
   console.log(appConfig.inputfile);
-fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (lineno,line) { 
+fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (line) { 
     console.log(line);
     console.log(lineno);
   
