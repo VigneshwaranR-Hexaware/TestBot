@@ -8,7 +8,6 @@ var logService=require('./logService');
 var queryService=require('./queryService');
 var util=require('../config/util.js');
 
-console.log('to call function')
 processRequest();
 
 
@@ -39,13 +38,15 @@ var failedLines=[];
 var responseFromApi=null;
 var tcPassCount=0;
 var tcFailCount=0;
-  console.log(appConfig.inputfile);
+
 var rl = new LineReader(appConfig.inputfile);
   rl.on('line',function(lineno,line) {
     currentLine=line;
         var prefix=currentLine.split(":");
+
         if(prefix[0]=='Cust'){
-                queryService.queryProcessing(prefix[1],conversationReq);
+                var convReq = new conversationReq(lineno);
+                queryService.queryProcessing(prefix[1],convReq);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
               expectedResponse.push(prefix[1]);
@@ -65,10 +66,10 @@ var result=checkResponse(responseFromApi,expectedResponse);
   });
 
   rl.on('end', function () {
-    console.log("DATA to log the result");
-  console.log("RESULT IS::"+tcPassCount+"FAIL::"+tcFailCount+"FAILED LINES"+failedLines);
-  logService.logResponse(tcPassCount,tcFailCount,failedLines);
-  console.log("DATA LOGGED");
+
+
+        logService.logResponse(tcPassCount,tcFailCount,failedLines);
+
   });
 rl.on('error',function(err){
     console.log(err);

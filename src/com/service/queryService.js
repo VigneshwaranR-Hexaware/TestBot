@@ -16,7 +16,7 @@ const appConfig= require('../config/appConfig.js');
 
 //Processing Query Parameter
 function queryProcessing(queryParameter, request){
- console.log("Query Parameter  ",queryParameter);
+ 
   var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
