@@ -80,7 +80,7 @@ return false;
 
 function pushToMap(lineNumber, respString) {
     var respArray = responseMap.get(lineNumber);
-    if(!respString) {
+    if(!respArray) {
         respArray = new Array();
         responseMap.set(lineNumber. respArray);
     }
