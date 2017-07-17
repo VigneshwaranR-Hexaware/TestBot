@@ -15,8 +15,8 @@ const appConfig= require('../config/appConfig.js');
 //}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter, request){
- 
+function queryProcessing(queryParameter, convRequest){
+
   var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
@@ -32,7 +32,7 @@ function queryProcessing(queryParameter, request){
   },
   json: true
 };
- request(options,request.getMessages);
+ convRequest.request(options,request.getMessages);
 }
 
 module.exports.queryProcessing=queryProcessing;
