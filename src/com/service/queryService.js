@@ -41,10 +41,10 @@ request(options, function (error, response, body) {
    console.log("Body Message" + body.result.fulfillment.speech);
     var message=JSON.stringify(body.result.fulfillment.speech);
     console.log("message" + message);
-    
-    process.nextTick(function(){
-        callback(message);
-    });
+    if (!error && response.statusCode === 200) {
+      // some code    
+      callback(message); 
+   }
   //return message;
   
 });
