@@ -8,7 +8,7 @@ const JSONbig = require('json-bigint');
 const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
 
-//preparingResponse();
+preparingResponse();
 //Function Call
 function preparingResponse(){
  var response=queryProcessing('I am quite annoyed with VFS',appConfig.developerAccessToken,null);
