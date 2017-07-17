@@ -19,17 +19,14 @@ var tcFailCount=0;
   console.log(appConfig.inputfile);
 fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (line) { 
     //console.log(line);
-    
-  
-  
   var prefix=line.toString().split(":");
   console.log("Prefix"+""+prefix);
   if(prefix[0]=='Cust'){
-      queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(err,responseFromApi){
+      queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,function(responseFromApi){
         console.log('RESPONSE FROM API :'+responseFromApi);
       });
   }
-    fs.appendFileSync("./output.txt", line.toString() + "\n");
+    //fs.appendFileSync("./output.txt", line.toString() + "\n");
 });
 
 
