@@ -40,8 +40,8 @@ request(options, function (error, response, body) {
    console.log("Body Message" + body.result.fulfillment.speech);
     var message=JSON.stringify(body.result.fulfillment.speech);
     console.log("message" + message);
-    //return message;
-      callback(message);
+    return message;
+      //callback(message);
 });
 
 }
