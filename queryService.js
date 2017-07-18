@@ -11,7 +11,7 @@ const developerAccesstoken= require('./config/config.js');
 
 //Function Call
 
- sendQuery('Hi',developerAccesstoken);
+ sendQuery('i am frustrated with vfs',developerAccesstoken);
 
 //Processing Query Parameter
 function sendQuery(queryParameter,accessToken){
