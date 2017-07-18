@@ -52,6 +52,16 @@ var handleResp = function(error,response, body){
 
     request(options,handleResp);
 
+    while(!processCompleted) {
+
+        console.log(processCompleted+" line no "+lineNumber);
+        var waittime = 10000000;
+        var sleptTime =0;
+        while(sleptTime < waittime) {
+            sleptTime++;
+    }
+  }
+
 }
 
 

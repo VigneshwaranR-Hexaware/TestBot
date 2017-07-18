@@ -37,16 +37,10 @@ var custLineNo = -1;
                 console.log("LINE NO"+custLineNo);
 
                 var queryServ = new QueryService.QueryProcessor(prefix[1], lineno);
+                //console.log(queryServ.processCompleted);
+                /*
 
-                while(!queryServ.processCompleted) {
-
-                    console.log(queryServ.processCompleted+" line no "+lineno);
-                    var waittime = 10000000;
-                    var sleptTime =0;
-                    while(sleptTime < waittime) {
-                        sleptTime++;
-                    }
-                }
+                }*/
 
                 //setTimeout(console.log("Waiting"), 1000);
 
