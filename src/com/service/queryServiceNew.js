@@ -20,12 +20,12 @@ var util=require('../config/util.js');
 //}
 
 //Processing Query Parameter
-function QueryProcessor(queryParameter, lineNumber, questArray) {
+function QueryProcessor(responseMap, lineNumber, questArray) {
 
 
   var processCompleted = false;
 
-  if(questArray) {
+  if(questArray.length > 0 ) {
     var questAndLine = questArray.shift().split("::");
 
 
@@ -49,6 +49,10 @@ function QueryProcessor(queryParameter, lineNumber, questArray) {
   var handleResp = function(error,response, body){
      var message= util.getMsgFromResp(error, response, body);
       console.log(message+" lin nu is "+questAndLine[0]);
+
+
+
+
       QueryProcessor(null, null, questArray);
   }
 

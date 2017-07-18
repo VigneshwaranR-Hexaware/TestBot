@@ -43,7 +43,7 @@ var quest = new Array();
 
                 if(readQuestiong == 2) {
                   //console.log("Giving call "+quest);
-                    var queryServ = new QueryService.QueryProcessor(prefix[1], lineno, quest);
+                    var queryServ = new QueryService.QueryProcessor(responseMap, lineno, quest);
                 }
                 readQuestiong++;
                 //var queryServ = new QueryService.QueryProcessor(prefix[1], lineno);
@@ -73,6 +73,8 @@ var result=checkResponse(responseFromApi,expectedResponse);
 
 
   });
+
+
 
   rl.on('end', function () {
 
