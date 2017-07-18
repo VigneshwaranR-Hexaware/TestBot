@@ -55,8 +55,8 @@ console.log("LINE NO AFTER SPLIT::"+questAndLine);
       //console.log(key + " : " + value);
     });
     var linetempno=questAndLine[0];
-    console.log("line temp no::"+linetempno);
-    expectedResponse= responseMap.get(linetempno);
+    console.log("line temp no::"+linetempno+typeOf(linetempno)));
+    expectedResponse= responseMap.get(1);
 console.log("EXPECTED RESPONSE::"+expectedResponse);
     var result=checkResponse(message,expectedResponse);
 
