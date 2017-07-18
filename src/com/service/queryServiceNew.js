@@ -76,7 +76,8 @@ function QueryProcessor(responseMap, lineNumber, questArray) {
 
 function checkResponse(responseFromApi,expectedResponse ){
   console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
-if(expectedResponse.indexOf(responseFromApi) > -1) {
+
+if(expectedResponse && expectedResponse.indexOf(responseFromApi) > -1) {
   console.log("test case passed");
   return true;
 }
