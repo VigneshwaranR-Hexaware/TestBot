@@ -11,13 +11,14 @@
   "license": "ISC",
   "dependencies": {
     "apiai": "2.0.5",
+    "async": "^2.5.0",
     "body-parser": "^1.15.2",
     "express": "^4.15.3",
     "json-bigint": "^0.2.0",
+    "linereader": "^1.1.0",
     "nodejs-websocket": "^1.7.1",
-    "request": "^2.79.0",
-    "prompt":"^0.2.13",
-    "linereader":"^1.1.0"
+    "prompt": "^0.2.13",
+    "request": "^2.79.0"
   },
   "repository": {
     "type": "git",

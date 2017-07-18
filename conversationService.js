@@ -2,6 +2,7 @@ var LineReader = require('linereader');
 var appConfig = require('./appConfig.js');
 //var logService=require('./logService');
 var queryService=require('./queryService.js');
+var async=require('async');
 //var util=require('../config/util.js');
 
 console.log('to call function')
