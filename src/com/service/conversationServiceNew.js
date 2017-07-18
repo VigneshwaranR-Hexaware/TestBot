@@ -106,7 +106,7 @@ function pushToMap(lineNumber, respString) {
     var respArray = responseMap.get(lineNumber);
     if(!respArray) {
         respArray = new Array();
-        responseMap.set(lineNumber. respArray);
+        responseMap.set(lineNumber, respArray);
     }
     respArray.push(respString);
 }
