@@ -10,10 +10,9 @@ var async=require('async');
 const developerAccesstoken= 'Bearer 2236694c3ac943ce93d21afe990b841d';
 
 //Function Call
+ //sendQuery('i am quite frustrated with VFS',developerAccesstoken);
 
- sendQuery('i am quite frustrated with VFS',developerAccesstoken);
-
-//Processing Query Parameter
+ //Processing Query Parameter
 function sendQuery(queryParameter,accessToken,callback){
 console.log("QueryParameter =" + queryParameter);
   var options = {
@@ -32,7 +31,7 @@ console.log("QueryParameter =" + queryParameter);
   json: true
 };
 
-async.waterfall([
+
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
   console.log(body);
@@ -41,12 +40,7 @@ request(options, function (error, response, body) {
     console.log("message" + message);
     //return message;
       callback(message);
-})
-]),function (err, result) {
-    // result now equals 'done'
-    console.log("result ="+result);
-}
-
+});
 }
 
 module.exports.queryProcessing=sendQuery;
