@@ -8,10 +8,12 @@ var request = require("request");
 const JSONbig = require('json-bigint');
 const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
+const logger= require('./logService.js');
 var util=require('../config/util.js');
 
 var expectedResponse=[];
-
+var tcPassCount=0;
+var tcFailCount=0;
 
 //Function Call
 //function preparingResponse(){
@@ -59,8 +61,12 @@ function QueryProcessor(responseMap,questArray) {
     //console.log("type is "+(parseInt(linetempno)));
 //console.log("EXPECTED RESPONSE::"+expectedResponse);
     var result=checkResponse(message,expectedResponse);
+    var status = "failed";
+    if(result) {
+        status = "Passed";
+    }
 
-
+    logger.logConvResult(linetempno, null, null, null, status);
 
       QueryProcessor(responseMap, questArray);
   }

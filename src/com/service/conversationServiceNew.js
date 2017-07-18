@@ -77,8 +77,6 @@ var result=checkResponse(responseFromApi,expectedResponse);
 
   });
 
-
-
   rl.on('end', function () {
 
 var queryServ = new QueryService.QueryProcessor(responseMap, quest);
