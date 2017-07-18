@@ -9,6 +9,10 @@ var str= "TestCases"+" "+"Passed =" + passcount + ','+ "Failed =" + failcount + 
 logResult(str);
 }
 
+function logConvResult(lineNo, question, expResult, recResult, status) {
+    logResult("Line Number "+lineNo+" status is "+status);
+}
+
 function logResult(str){
     if(!(fs.existsSync('logfile.txt'))){
         fs.writeFile("logfile.txt",str, function(err) {
@@ -26,3 +30,5 @@ function logResult(str){
     }
 }
 module.exports.logResponse=logResponse;
+
+module.exports.logConvResult=logConvResult;
