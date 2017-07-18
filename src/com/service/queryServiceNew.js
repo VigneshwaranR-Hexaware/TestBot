@@ -94,7 +94,7 @@ function checkResponse(responseFromApi,expectedResponse ){
 }
 
 var logMsg = function(str) {
-    console.log(str);
+    //console.log(str);
 }
 
 

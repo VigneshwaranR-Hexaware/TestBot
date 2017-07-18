@@ -113,5 +113,5 @@ function pushToMap(lineNumber, respString) {
 }
 
 var logMsg = function(str) {
-    console.log(str);
+    //console.log(str);
 }

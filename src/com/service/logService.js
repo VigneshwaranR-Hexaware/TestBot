@@ -10,7 +10,8 @@ logResult(str);
 }
 
 function logConvResult(lineNo, question, expResult, recResult, status) {
-    logResult("Line Number "+lineNo+" status is "+status);
+    //logResult("Line Number "+lineNo+" status is "+status);
+    logOnConsole("Line Number "+lineNo+" status is "+status);
 }
 
 function logOnConsole(str) {
@@ -35,7 +36,7 @@ function logResult(str){
 }
 
 var logMsg = function(str) {
-    console.log(str);
+    //console.log(str);
 }
 
 
