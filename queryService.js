@@ -6,12 +6,11 @@ const bodyParser = require('body-parser');
 var request = require("request");
 const JSONbig = require('json-bigint');
 const assert = require('assert');
-const developerAccesstoken= require('./config/config.js');
-
+const developerAccesstoken= 'Bearer 2236694c3ac943ce93d21afe990b841d';
 
 //Function Call
 
- sendQuery('Hi',developerAccesstoken);
+ sendQuery('i am quite frustrated with VFS',developerAccesstoken);
 
 //Processing Query Parameter
 function sendQuery(queryParameter,accessToken){
@@ -44,3 +43,5 @@ request(options, function (error, response, body) {
 });
 
 }
+
+module.exports.queryProcessing=sendQuery;

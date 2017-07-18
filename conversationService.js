@@ -1,15 +1,14 @@
-//var inputfile = require('../data/VFSComplaintRequest.txt');
 var LineReader = require('linereader');
-var appConfig = require('../config/appConfig.js');
-var logService=require('./logService');
-var queryService=require('./queryService');
-//var lr = new LineReader(appConfig.expectedOutputFile);
+var appConfig = require('./appConfig.js');
+//var logService=require('./logService');
+var queryService=require('./queryService.js');
+//var util=require('../config/util.js');
+
 console.log('to call function')
 processRequest();
 
 function processRequest(){
-//  const readline = require('readline');
-  const fs = require('fs');
+const fs = require('fs');
 var currentLine=null;
 var expectedResponse=[];
 var failedLines=[];
@@ -18,7 +17,6 @@ var tcPassCount=0;
 var tcFailCount=0;
   console.log(appConfig.inputfile);
 fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (line) { 
-    //console.log(line);
   var prefix=line.toString().split(":");
   console.log("Prefix"+""+prefix);
   if(prefix[0]=='Cust'){
@@ -31,11 +29,6 @@ fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (li
           }
     //fs.appendFileSync("./output.txt", line.toString() + "\n");
 });
-
-
-
-
-
 
 // var rl = new LineReader(appConfig.inputfile);
 //   rl.on('line',function(lineno,line) {

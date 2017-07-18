@@ -3,7 +3,7 @@ var LineReader = require('linereader');
 
 var jsUtil=require('util');
 
-var appConfig = require('../config/appConfig.js');
+var appConfig = require('./appConfig.js');
 var logService=require('./logService');
 var QueryService=require('./queryService');
 var util=require('../config/util.js');
