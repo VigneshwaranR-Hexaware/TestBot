@@ -9,7 +9,7 @@ const JSONbig = require('json-bigint');
 const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
 var util=require('../config/util.js');
-
+var expectedResponse=[];
 
 
 
@@ -40,14 +40,14 @@ function queryProcessing(queryParameter, lineNumber, responseMap){
 
 var handleResp = function(error,response, body){
    var message= util.getMsgFromResp(error, response, body);
-    console.log(message+" lin nu for cust is::: "+lineNumber);
+    console.log("FROM API MSG:::"+message+" lin nu for cust is::: "+lineNumber);
 
 
     console.log("RESP MAP SIZE IN in query servixce::"+responseMap.size);
     responseMap.forEach(function(value, key) {
-    console.log(key + " : " + value);
+    //console.log(key + " : " + value);
 });
-var expectedResponse= responseMap.get(lineNumber);
+ expectedResponse= responseMap.get(lineNumber).toString();
 
 var result=checkResponse(message,expectedResponse);
 
