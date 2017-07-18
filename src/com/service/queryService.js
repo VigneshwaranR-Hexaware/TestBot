@@ -47,7 +47,7 @@ var handleResp = function(error,response, body){
     responseMap.forEach(function(value, key) {
     //console.log(key + " : " + value);
 });
- expectedResponse= responseMap.get(lineNumber);
+ expectedResponse= responseMap.get(lineNumber).toString();
 
 var result=checkResponse(message,expectedResponse);
 
