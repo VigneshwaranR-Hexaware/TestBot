@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 var request = require("request");
 const JSONbig = require('json-bigint');
 const assert = require('assert');
-const developerAccesstoken= require('./config/config.js');
+const developerAccesstoken= require('./config/appconfig.js');
 
 
 //Function Call
