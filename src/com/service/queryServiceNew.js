@@ -20,11 +20,10 @@ var util=require('../config/util.js');
 //}
 
 //Processing Query Parameter
-function QueryProcessor(queryParameter, lineNumber) {
+function QueryProcessor(queryParameter, lineNumber, questArray) {
 
 
   var processCompleted = false;
-
 
 
   var options = {
@@ -38,7 +37,7 @@ function QueryProcessor(queryParameter, lineNumber) {
      authorization: appConfig.vfsAccessToken
    },
   body: {
-      query: [queryParameter], lang: 'en', sessionId: '1234567'
+      query: [questArray.shift()], lang: 'en', sessionId: '1234567'
   },
   json: true
 };
@@ -46,21 +45,13 @@ function QueryProcessor(queryParameter, lineNumber) {
 var handleResp = function(error,response, body){
    var message= util.getMsgFromResp(error, response, body);
     console.log(message+" lin nu is "+lineNumber);
-    processCompleted = true;
+    QueryProcessor(null, null, questArray);
 }
 
 
     request(options,handleResp);
 
-    while(!processCompleted) {
 
-        console.log(processCompleted+" line no "+lineNumber);
-        var waittime = 10000000;
-        var sleptTime =0;
-        while(sleptTime < waittime) {
-            sleptTime++;
-    }
-  }
 
 }
 

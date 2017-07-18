@@ -26,17 +26,27 @@ var tcFailCount=0;
 
 var rl = new LineReader(appConfig.inputfile);
 var custLineNo = -1;
+var readQuestiong = -1;
+var quest = new Array();
   rl.on('line',function(lineno,line) {
     currentLine=line;
 
         var prefix=currentLine.split(":");
 
+
+
         if(prefix[0]=='Cust'){
                 //var queryServ = new queryProcessing(prefix[1]);
                 custLineNo = lineno;
-                console.log("LINE NO"+custLineNo);
+                //console.log("LINE NO"+custLineNo);
+                quest.push(prefix[1]);
 
-                var queryServ = new QueryService.QueryProcessor(prefix[1], lineno);
+                if(readQuestiong == 5) {
+                  //console.log("Giving call "+quest);
+                    QueryService.QueryProcessor(prefix[1], lineno, quest);
+                }
+                readQuestiong++;
+                //var queryServ = new QueryService.QueryProcessor(prefix[1], lineno);
                 //console.log(queryServ.processCompleted);
                 /*
 
@@ -47,7 +57,7 @@ var custLineNo = -1;
                 //queryService.queryProcessing(prefix[1], lineno, responseMap);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
-              console.log("LINE NO in bot"+custLineNo);
+              //console.log("LINE NO in bot"+custLineNo);
                 pushToMap(custLineNo, prefix[1]);
           }
 /*if(expectedResponse.length>0){
