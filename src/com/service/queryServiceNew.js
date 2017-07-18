@@ -57,7 +57,7 @@ console.log("LINE NO AFTER SPLIT::"+questAndLine);
     var linetempno=questAndLine[0];
     console.log("line temp no::"+linetempno);
     expectedResponse= responseMap.get(linetempno);
-    console.log("type is "(typeof linetempno));
+    console.log("type is "+(typeof linetempno));
 console.log("EXPECTED RESPONSE::"+expectedResponse);
     var result=checkResponse(message,expectedResponse);
 
