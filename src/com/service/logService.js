@@ -11,7 +11,7 @@ logResult(str);
 
 function logConvResult(lineNo, question, expResult, recResult, status) {
     //logResult("Line Number "+lineNo+" status is "+status);
-    logOnConsole("Line Number "+lineNo+" status is "+status);
+    logOnConsole("Line Number :: "+lineNo+"\n status is "+status);
 }
 
 function logOnConsole(str) {
