@@ -16,6 +16,7 @@ var responseFromApi=null;
 var tcPassCount=0;
 var tcFailCount=0;
   console.log(appConfig.inputfile);
+  async.waterfall([
 fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (line) { 
   var prefix=line.toString().split(":");
   console.log("Prefix"+""+prefix);
@@ -33,7 +34,11 @@ var result=checkResponse(responseFromApi,expectedResponse);
  
             }
     //fs.appendFileSync("./output.txt", line.toString() + "\n");
-});
+})
+  ]),function (err, result) {
+    // result now equals 'done'
+    console.log("result ="+result);
+}
 
 // var rl = new LineReader(appConfig.inputfile);
 //   rl.on('line',function(lineno,line) {
