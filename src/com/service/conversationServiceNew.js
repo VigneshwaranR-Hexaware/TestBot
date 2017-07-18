@@ -39,8 +39,9 @@ var custLineNo = -1;
                 var queryServ = new QueryService.QueryProcessor(prefix[1], lineno);
 
                 while(!queryServ.processCompleted) {
-                    console.log("Waiting");
-                    var waittime = 10000;
+
+                    console.log(queryServ.processCompleted+" line no "+lineno);
+                    var waittime = 10000000;
                     var sleptTime =0;
                     while(sleptTime < waittime) {
                         sleptTime++;
