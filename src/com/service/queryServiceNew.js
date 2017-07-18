@@ -66,7 +66,7 @@ function QueryProcessor(responseMap,questArray) {
             status = "Passed";
         }
 
-          logger.logConvResult(linetempno, null, null, null, status);
+          logger.logConvResult(linetempno, questAndLine[1], expectedResponse, message, status);
 
           QueryProcessor(responseMap, questArray);
   }
