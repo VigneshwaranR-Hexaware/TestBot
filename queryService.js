@@ -31,6 +31,7 @@ console.log("QueryParameter =" + queryParameter);
   json: true
 };
 
+async.waterfall([
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
   console.log(body);
@@ -39,7 +40,11 @@ request(options, function (error, response, body) {
     console.log("message" + message);
     //return message;
       callback(message);
-});
+})
+]),function (err, result) {
+    // result now equals 'done'
+    console.log("result ="+result);
+}
 
 }
 
