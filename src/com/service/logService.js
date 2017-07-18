@@ -9,9 +9,14 @@ var str= "TestCases"+" "+"Passed =" + passcount + ','+ "Failed =" + failcount + 
 logResult(str);
 }
 
-function logConvResult(lineNo, question, expResult, recResult, status) {
+function logConvResult(lineNo, quest, expResult, recResult, status) {
     //logResult("Line Number "+lineNo+" status is "+status);
-    logOnConsole("Line Number :: "+lineNo+"\n status is "+status);
+    logOnConsole("Line Number :: "+lineNo
+          +"\n       Custumer Asks     : " + quest
+          +"\n       Bot Response      : " + recResult
+          +"\n       Expected Response : " + expResult
+          +"\n       Test Case Status  : " + status
+          +"\n_____________________________________________________");
 }
 
 function logOnConsole(str) {
