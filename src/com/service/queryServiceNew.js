@@ -54,7 +54,9 @@ console.log("LINE NO AFTER SPLIT::"+questAndLine);
       responseMap.forEach(function(value, key) {
       //console.log(key + " : " + value);
     });
-    expectedResponse= responseMap.get(questAndLine[0]);
+    var linetempno=questAndLine[0];
+    console.log("line temp no::"+linetempno);
+    expectedResponse= responseMap.get(linetempno);
 console.log("EXPECTED RESPONSE::"+expectedResponse);
     var result=checkResponse(message,expectedResponse);
 
@@ -65,9 +67,7 @@ console.log("EXPECTED RESPONSE::"+expectedResponse);
 
 
       request(options,handleResp);
-      responseMap.forEach(function(value, key) {
-      console.log(key + " : " + value);
-    });
+
   }
 
 
