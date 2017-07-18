@@ -21,7 +21,7 @@ var expectedResponse=[];
 
 //Processing Query Parameter
 function queryProcessing(queryParameter, lineNumber, responseMap){
-
+console.log("QUERY TO API in query servixce::"+queryParameter);
   var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
