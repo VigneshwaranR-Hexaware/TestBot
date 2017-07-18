@@ -10,7 +10,7 @@ const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
 var util=require('../config/util.js');
 
-
+var expectedResponse=[];
 
 
 //Function Call
@@ -50,6 +50,13 @@ function QueryProcessor(responseMap, lineNumber, questArray) {
      var message= util.getMsgFromResp(error, response, body);
       console.log(message+" lin nu is "+questAndLine[0]);
 
+      console.log("RESP MAP SIZE IN in query servixce::"+responseMap.size);
+      responseMap.forEach(function(value, key) {
+      //console.log(key + " : " + value);
+    });
+    expectedResponse= responseMap.get(lineNumber);
+
+    var result=checkResponse(message,expectedResponse);
 
 
 
