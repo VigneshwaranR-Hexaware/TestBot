@@ -13,9 +13,8 @@ const developerAccesstoken= 'Bearer 2236694c3ac943ce93d21afe990b841d';
  sendQuery('i am quite frustrated with VFS',developerAccesstoken);
 
 //Processing Query Parameter
-function sendQuery(queryParameter,accessToken){
-console.log(queryParameter);
-    console.log("Hi I am Developer access token"+developerAccesstoken);
+function sendQuery(queryParameter,accessToken,callback){
+console.log("QueryParameter =" + queryParameter);
   var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
