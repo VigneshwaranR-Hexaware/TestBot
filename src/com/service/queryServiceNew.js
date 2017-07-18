@@ -55,7 +55,7 @@ console.log("LINE NO AFTER SPLIT::"+questAndLine);
       //console.log(key + " : " + value);
     });
     expectedResponse= responseMap.get(questAndLine[0]);
-
+console.log("EXPECTED RESPONSE::"+expectedResponse);
     var result=checkResponse(message,expectedResponse);
 
 
@@ -65,7 +65,9 @@ console.log("LINE NO AFTER SPLIT::"+questAndLine);
 
 
       request(options,handleResp);
-      console.log("MAP RESP TEMP::"+responseMap.get(1));
+      responseMap.forEach(function(value, key) {
+      console.log(key + " : " + value);
+    });
   }
 
 
