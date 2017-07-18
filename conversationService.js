@@ -29,13 +29,8 @@ fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (li
           }
             if(expectedResponse.length>0){
 var result=checkResponse(responseFromApi,expectedResponse);
- if(result){
-   tcPassCount++;
- }
- else{
-   failedLines.push(lineno);
-   tcFailCount++;
- }
+ console.log(result);
+ 
             }
     //fs.appendFileSync("./output.txt", line.toString() + "\n");
 });
