@@ -20,15 +20,12 @@ var util=require('../config/util.js');
 //}
 
 //Processing Query Parameter
-function QueryProcessor() {
+function QueryProcessor(queryParameter, lineNumber) {
 
-  var queryParameter = null;
-  var lineNumber = null;
+
   var processCompleted = false;
 
-  function isProcessCompleted() {
-      return processCompleted;
-  }
+
 
   var options = {
   method: 'POST',
@@ -53,9 +50,8 @@ var handleResp = function(error,response, body){
     processCompleted = true;
 }
 
-var triggerReq() {
+
     request(options,handleResp);
-}
 
 }
 

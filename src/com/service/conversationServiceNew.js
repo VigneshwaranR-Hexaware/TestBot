@@ -5,7 +5,7 @@ var jsUtil=require('util');
 
 var appConfig = require('../config/appConfig.js');
 var logService=require('./logService');
-var QueryService=require('./queryService');
+var QueryService=require('./queryServiceNew');
 var util=require('../config/util.js');
 
 const responseMap = new Map();
@@ -36,11 +36,9 @@ var custLineNo = -1;
                 custLineNo = lineno;
                 console.log("LINE NO"+custLineNo);
 
-                var queryServ = new QueryService.QueryProcessor();
-                queryServ.lineNumber = lineno;
-                queryServ.queryParameter = prefix[1];
+                var queryServ = new QueryService.QueryProcessor(prefix[1], lineno);
 
-                queryServ.triggerReq();
+                //queryServ.isProcessCompleted();
 
                 //setTimeout(console.log("Waiting"), 1000);
 
