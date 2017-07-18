@@ -60,7 +60,7 @@ function QueryProcessor(responseMap, lineNumber, questArray) {
 
 
 
-      QueryProcessor(null, null, questArray);
+      QueryProcessor(responseMap, null, questArray);
   }
 
 

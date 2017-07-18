@@ -43,6 +43,9 @@ var quest = new Array();
 
                 if(readQuestiong == 2) {
                   //console.log("Giving call "+quest);
+                  responseMap.forEach(function(value, key) {
+                  //console.log(key + " : " + value);
+                  });
                     var queryServ = new QueryService.QueryProcessor(responseMap, lineno, quest);
                 }
                 readQuestiong++;
