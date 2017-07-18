@@ -48,7 +48,7 @@ function QueryProcessor(responseMap, lineNumber, questArray) {
 
   var handleResp = function(error,response, body){
      var message= util.getMsgFromResp(error, response, body);
-      console.log(message+" lin nu is "+questAndLine[0]);
+      console.log(message+" lin nu is::"+questAndLine[0]);
 
       console.log("RESP MAP SIZE IN in query servixce::"+responseMap.size);
       responseMap.forEach(function(value, key) {
@@ -64,7 +64,8 @@ function QueryProcessor(responseMap, lineNumber, questArray) {
   }
 
 
-      request(options,handleResp);
+      //request(options,handleResp);
+      console.log("MAP RESP TEMP::"+responseMap.get(1));
   }
 
 
