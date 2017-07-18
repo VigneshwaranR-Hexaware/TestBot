@@ -54,7 +54,7 @@ function QueryProcessor(responseMap, lineNumber, questArray) {
       responseMap.forEach(function(value, key) {
       //console.log(key + " : " + value);
     });
-    expectedResponse= responseMap.get(lineNumber);
+    expectedResponse= responseMap.get(questAndLine[0]);
 
     var result=checkResponse(message,expectedResponse);
 
