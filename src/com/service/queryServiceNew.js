@@ -63,7 +63,7 @@ console.log("EXPECTED RESPONSE::"+expectedResponse);
 
 
 
-      QueryProcessor(responseMap, null, questArray);
+      QueryProcessor(responseMap, questArray);
   }
 
 
