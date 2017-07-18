@@ -27,6 +27,16 @@ fs.readFileSync(appConfig.inputfile).toString().split('\n').forEach(function (li
   else if (prefix[0]=='Bot') {
              expectedResponse.push(prefix[1]);
           }
+            if(expectedResponse.length>0){
+var result=checkResponse(responseFromApi,expectedResponse);
+ if(result){
+   tcPassCount++;
+ }
+ else{
+   failedLines.push(lineno);
+   tcFailCount++;
+ }
+            }
     //fs.appendFileSync("./output.txt", line.toString() + "\n");
 });
 
