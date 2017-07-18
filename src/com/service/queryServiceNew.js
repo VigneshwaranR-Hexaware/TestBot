@@ -20,7 +20,7 @@ var expectedResponse=[];
 //}
 
 //Processing Query Parameter
-function QueryProcessor(responseMap, lineNumber, questArray) {
+function QueryProcessor(responseMap,questArray) {
 
 console.log("QUERY TO API in query servixce::"+questArray);
   var processCompleted = false;

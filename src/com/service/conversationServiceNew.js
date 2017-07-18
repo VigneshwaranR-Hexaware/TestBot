@@ -81,7 +81,7 @@ var result=checkResponse(responseFromApi,expectedResponse);
 
   rl.on('end', function () {
 
-var queryServ = new QueryService.QueryProcessor(responseMap, lineno, quest);
+var queryServ = new QueryService.QueryProcessor(responseMap, quest);
       //  logService.logResponse(tcPassCount,tcFailCount,failedLines);
 
   });
