@@ -22,13 +22,12 @@ var expectedResponse=[];
 //Processing Query Parameter
 function QueryProcessor(responseMap,questArray) {
 
-console.log("QUERY TO API in query servixce::"+questArray);
   var processCompleted = false;
 
   if(questArray.length > 0 ) {
     var questAndLine = questArray.shift().split("::");
 
-console.log("LINE NO AFTER SPLIT::"+questAndLine);
+
 
     var options = {
     method: 'POST',
@@ -58,7 +57,7 @@ console.log("LINE NO AFTER SPLIT::"+questAndLine);
     //console.log("line temp no::"+linetempno);
     expectedResponse= responseMap.get(parseInt(linetempno));
     //console.log("type is "+(parseInt(linetempno)));
-console.log("EXPECTED RESPONSE::"+expectedResponse);
+//console.log("EXPECTED RESPONSE::"+expectedResponse);
     var result=checkResponse(message,expectedResponse);
 
 
