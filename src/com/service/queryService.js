@@ -40,14 +40,35 @@ function queryProcessing(queryParameter, lineNumber, responseMap){
 
 var handleResp = function(error,response, body){
    var message= util.getMsgFromResp(error, response, body);
-    console.log(message+" lin nu is "+lineNumber);
-    console.log("Resp map is "+responseMap);
+    console.log(message+" lin nu for cust is::: "+lineNumber);
+
+
+    console.log("RESP MAP SIZE IN in query servixce::"+responseMap.size);
+    responseMap.forEach(function(value, key) {
+    console.log(key + " : " + value);
+});
+var expectedResponse= responseMap.get(lineNumber);
+
+var result=checkResponse(message,expectedResponse);
+
+
 }
 
  request(options,handleResp);
 }
 
 
+function checkResponse(responseFromApi,expectedResponse ){
+  console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+if(expectedResponse.indexOf(responseFromApi) > -1) {
+  console.log("test case passed");
+  return true;
+}
+else{
+console.log("test case failed");
+return false;
+}
+}
 
 
 module.exports.queryProcessing=queryProcessing;

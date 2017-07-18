@@ -34,7 +34,7 @@ var custLineNo = -1;
         if(prefix[0]=='Cust'){
                 //var queryServ = new queryProcessing(prefix[1]);
                 custLineNo = lineno;
-                console.log("LINE NO"+custLineNo);
+                console.log("CUST LINE NO"+custLineNo);
                 queryService.queryProcessing(prefix[1], lineno, responseMap);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
@@ -57,8 +57,7 @@ var result=checkResponse(responseFromApi,expectedResponse);
 
   rl.on('end', function () {
 
-
-        logService.logResponse(tcPassCount,tcFailCount,failedLines);
+    logService.logResponse(tcPassCount,tcFailCount,failedLines);
 
   });
 rl.on('error',function(err){
@@ -69,23 +68,13 @@ rl.on('error',function(err){
 
 }
 
-function checkResponse(responseFromApi,expectedResponse ){
-  console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
-if(expectedResponse.indexOf(responseFromApi) > -1) {
-  console.log("test case passed");
-  return true;
-}
-else{
-console.log("test case failed");
-return false;
-}
-}
 
 function pushToMap(lineNumber, respString) {
+
     var respArray = responseMap.get(lineNumber);
     if(!respArray) {
         respArray = new Array();
         responseMap.set(lineNumber, respArray);
-    }
+            }
     respArray.push(respString);
 }
