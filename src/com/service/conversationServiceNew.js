@@ -41,13 +41,13 @@ var quest = new Array();
                 //console.log("LINE NO"+custLineNo);
                 quest.push(lineno+'::'+prefix[1]);
 
-                if(readQuestiong == 2) {
+                /*if(readQuestiong == 2) {
                   //console.log("Giving call "+quest);
                   responseMap.forEach(function(value, key) {
                       console.log(key + " : " + value);
                   });
                     var queryServ = new QueryService.QueryProcessor(responseMap, lineno, quest);
-                }
+                }*/
                 readQuestiong++;
                 //var queryServ = new QueryService.QueryProcessor(prefix[1], lineno);
                 //console.log(queryServ.processCompleted);
@@ -81,8 +81,8 @@ var result=checkResponse(responseFromApi,expectedResponse);
 
   rl.on('end', function () {
 
-
-        logService.logResponse(tcPassCount,tcFailCount,failedLines);
+var queryServ = new QueryService.QueryProcessor(responseMap, lineno, quest);
+      //  logService.logResponse(tcPassCount,tcFailCount,failedLines);
 
   });
 rl.on('error',function(err){
