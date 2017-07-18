@@ -13,22 +13,32 @@ function logConvResult(lineNo, question, expResult, recResult, status) {
     logResult("Line Number "+lineNo+" status is "+status);
 }
 
+function logOnConsole(str) {
+    console.log(str);
+}
+
 function logResult(str){
     if(!(fs.existsSync('logfile.txt'))){
         fs.writeFile("logfile.txt",str, function(err) {
         if(err) {
-        return console.log(err);
+        return logMsg(err);
         }
-            console.log("The file was saved!");
+            logMsg("The file was saved!");
         });
     }
     else{
         fs.appendFile('logfile.txt', '\n' + str, function (err) {
         if (err) throw err;
-        console.log('Saved!');
+        logMsg('Saved!');
         });
     }
 }
+
+var logMsg = function(str) {
+    console.log(str);
+}
+
+
 module.exports.logResponse=logResponse;
 
 module.exports.logConvResult=logConvResult;

@@ -38,29 +38,29 @@ var quest = new Array();
         if(prefix[0]=='Cust'){
                 //var queryServ = new queryProcessing(prefix[1]);
                 custLineNo = lineno;
-                //console.log("LINE NO"+custLineNo);
+                //logMsg("LINE NO"+custLineNo);
                 quest.push(lineno+'::'+prefix[1]);
 
                 /*if(readQuestiong == 2) {
-                  //console.log("Giving call "+quest);
+                  //logMsg("Giving call "+quest);
                   responseMap.forEach(function(value, key) {
-                      console.log(key + " : " + value);
+                      logMsg(key + " : " + value);
                   });
                     var queryServ = new QueryService.QueryProcessor(responseMap, lineno, quest);
                 }*/
                 readQuestiong++;
                 //var queryServ = new QueryService.QueryProcessor(prefix[1], lineno);
-                //console.log(queryServ.processCompleted);
+                //logMsg(queryServ.processCompleted);
                 /*
 
                 }*/
 
-                //setTimeout(console.log("Waiting"), 1000);
+                //setTimeout(logMsg("Waiting"), 1000);
 
                 //queryService.queryProcessing(prefix[1], lineno, responseMap);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
-              //console.log("LINE NO in bot"+custLineNo);
+              //logMsg("LINE NO in bot"+custLineNo);
                 pushToMap(custLineNo, prefix[1]);
           }
 /*if(expectedResponse.length>0){
@@ -84,7 +84,7 @@ var queryServ = new QueryService.QueryProcessor(responseMap, quest);
 
   });
 rl.on('error',function(err){
-    console.log(err);
+    logMsg(err);
 });
 
 
@@ -92,13 +92,13 @@ rl.on('error',function(err){
 }
 
 function checkResponse(responseFromApi,expectedResponse ){
-  console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+  logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 if(expectedResponse.indexOf(responseFromApi) > -1) {
-  console.log("test case passed");
+  logMsg("test case passed");
   return true;
 }
 else{
-console.log("test case failed");
+logMsg("test case failed");
 return false;
 }
 }
@@ -110,4 +110,8 @@ function pushToMap(lineNumber, respString) {
         responseMap.set(lineNumber, respArray);
     }
     respArray.push(respString);
+}
+
+var logMsg = function(str) {
+    console.log(str);
 }

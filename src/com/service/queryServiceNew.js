@@ -49,17 +49,17 @@ function QueryProcessor(responseMap,questArray) {
 
   var handleResp = function(error,response, body){
          var message= util.getMsgFromResp(error, response, body);
-          //console.log(message+" lin nu is::"+questAndLine[0]);
+          //logMsg(message+" lin nu is::"+questAndLine[0]);
 
-          console.log("RESP MAP SIZE IN in query servixce::"+responseMap.size);
+          logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           responseMap.forEach(function(value, key) {
-          //console.log(key + " : " + value);
+          //logMsg(key + " : " + value);
           });
           var linetempno=questAndLine[0];
-          //console.log("line temp no::"+linetempno);
+          //logMsg("line temp no::"+linetempno);
           expectedResponse= responseMap.get(parseInt(linetempno));
-        //console.log("type is "+(parseInt(linetempno)));
-    //console.log("EXPECTED RESPONSE::"+expectedResponse);
+        //logMsg("type is "+(parseInt(linetempno)));
+    //logMsg("EXPECTED RESPONSE::"+expectedResponse);
         var result=checkResponse(message,expectedResponse);
         var status = "failed";
         if(result) {
@@ -81,16 +81,21 @@ function QueryProcessor(responseMap,questArray) {
 
 
 function checkResponse(responseFromApi,expectedResponse ){
-      console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+      logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
     if(expectedResponse && expectedResponse.indexOf(responseFromApi) > -1) {
-      console.log("test case passed");
+      logMsg("test case passed");
       return true;
     }
     else{
-    console.log("test case failed");
+    logMsg("test case failed");
     return false;
 }
 }
+
+var logMsg = function(str) {
+    console.log(str);
+}
+
 
 module.exports.QueryProcessor=QueryProcessor;
