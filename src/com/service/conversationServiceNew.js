@@ -41,9 +41,9 @@ var quest = new Array();
                 //console.log("LINE NO"+custLineNo);
                 quest.push(prefix[1]);
 
-                if(readQuestiong == 5) {
+                if(readQuestiong == 2) {
                   //console.log("Giving call "+quest);
-                    QueryService.QueryProcessor(prefix[1], lineno, quest);
+                    var queryServ = new QueryService.QueryProcessor(prefix[1], lineno, quest);
                 }
                 readQuestiong++;
                 //var queryServ = new QueryService.QueryProcessor(prefix[1], lineno);
