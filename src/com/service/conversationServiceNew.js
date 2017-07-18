@@ -38,7 +38,14 @@ var custLineNo = -1;
 
                 var queryServ = new QueryService.QueryProcessor(prefix[1], lineno);
 
-                //queryServ.isProcessCompleted();
+                while(!queryServ.processCompleted) {
+                    console.log("Waiting");
+                    var waittime = 10000;
+                    var sleptTime =0;
+                    while(sleptTime < waittime) {
+                        sleptTime++;
+                    }
+                }
 
                 //setTimeout(console.log("Waiting"), 1000);
 

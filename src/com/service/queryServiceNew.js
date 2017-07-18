@@ -46,7 +46,6 @@ function QueryProcessor(queryParameter, lineNumber) {
 var handleResp = function(error,response, body){
    var message= util.getMsgFromResp(error, response, body);
     console.log(message+" lin nu is "+lineNumber);
-    console.log("Resp map is "+responseMap);
     processCompleted = true;
 }
 
