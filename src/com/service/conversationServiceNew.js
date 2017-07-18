@@ -39,7 +39,7 @@ var quest = new Array();
                 //var queryServ = new queryProcessing(prefix[1]);
                 custLineNo = lineno;
                 //console.log("LINE NO"+custLineNo);
-                quest.push(prefix[1]);
+                quest.push(lineno+'::'+prefix[1]);
 
                 if(readQuestiong == 2) {
                   //console.log("Giving call "+quest);

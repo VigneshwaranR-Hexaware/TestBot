@@ -25,6 +25,9 @@ function QueryProcessor(queryParameter, lineNumber, questArray) {
 
   var processCompleted = false;
 
+  var questAndLine = questArray.shift().split("::");
+
+
 
   var options = {
   method: 'POST',
@@ -37,14 +40,14 @@ function QueryProcessor(queryParameter, lineNumber, questArray) {
      authorization: appConfig.vfsAccessToken
    },
   body: {
-      query: [questArray.shift()], lang: 'en', sessionId: '1234567'
+      query: [questAndLine[1]], lang: 'en', sessionId: '1234567'
   },
   json: true
 };
 
 var handleResp = function(error,response, body){
    var message= util.getMsgFromResp(error, response, body);
-    console.log(message+" lin nu is "+lineNumber);
+    console.log(message+" lin nu is "+questAndLine[0]);
     QueryProcessor(null, null, questArray);
 }
 
@@ -56,6 +59,16 @@ var handleResp = function(error,response, body){
 }
 
 
-
+function checkResponse(responseFromApi,expectedResponse ){
+  console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+if(expectedResponse.indexOf(responseFromApi) > -1) {
+  console.log("test case passed");
+  return true;
+}
+else{
+console.log("test case failed");
+return false;
+}
+}
 
 module.exports.QueryProcessor=QueryProcessor;
