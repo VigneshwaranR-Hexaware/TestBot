@@ -48,27 +48,27 @@ function QueryProcessor(responseMap,questArray) {
   };
 
   var handleResp = function(error,response, body){
-     var message= util.getMsgFromResp(error, response, body);
-      //console.log(message+" lin nu is::"+questAndLine[0]);
+         var message= util.getMsgFromResp(error, response, body);
+          //console.log(message+" lin nu is::"+questAndLine[0]);
 
-      console.log("RESP MAP SIZE IN in query servixce::"+responseMap.size);
-      responseMap.forEach(function(value, key) {
-      //console.log(key + " : " + value);
-    });
-    var linetempno=questAndLine[0];
-    //console.log("line temp no::"+linetempno);
-    expectedResponse= responseMap.get(parseInt(linetempno));
-    //console.log("type is "+(parseInt(linetempno)));
-//console.log("EXPECTED RESPONSE::"+expectedResponse);
-    var result=checkResponse(message,expectedResponse);
-    var status = "failed";
-    if(result) {
-        status = "Passed";
-    }
+          console.log("RESP MAP SIZE IN in query servixce::"+responseMap.size);
+          responseMap.forEach(function(value, key) {
+          //console.log(key + " : " + value);
+          });
+          var linetempno=questAndLine[0];
+          //console.log("line temp no::"+linetempno);
+          expectedResponse= responseMap.get(parseInt(linetempno));
+        //console.log("type is "+(parseInt(linetempno)));
+    //console.log("EXPECTED RESPONSE::"+expectedResponse);
+        var result=checkResponse(message,expectedResponse);
+        var status = "failed";
+        if(result) {
+            status = "Passed";
+        }
 
-    logger.logConvResult(linetempno, null, null, null, status);
+          logger.logConvResult(linetempno, null, null, null, status);
 
-      QueryProcessor(responseMap, questArray);
+          QueryProcessor(responseMap, questArray);
   }
 
 
@@ -81,15 +81,15 @@ function QueryProcessor(responseMap,questArray) {
 
 
 function checkResponse(responseFromApi,expectedResponse ){
-  console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+      console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
-if(expectedResponse && expectedResponse.indexOf(responseFromApi) > -1) {
-  console.log("test case passed");
-  return true;
-}
-else{
-console.log("test case failed");
-return false;
+    if(expectedResponse && expectedResponse.indexOf(responseFromApi) > -1) {
+      console.log("test case passed");
+      return true;
+    }
+    else{
+    console.log("test case failed");
+    return false;
 }
 }
 
