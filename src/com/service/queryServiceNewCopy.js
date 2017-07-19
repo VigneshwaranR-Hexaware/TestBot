@@ -15,13 +15,6 @@ var expectedResponse=[];
 var tcPassCount=0;
 var tcFailCount=0;
 
-//Function Call
-//function preparingResponse(){
-// var response=queryProcessing('Hi',appConfig.developerAccessToken);
-//
-//}
-
-//Processing Query Parameter
 function QueryProcessor(responseMap,questArray) {
 
   var processCompleted = false;
@@ -49,39 +42,28 @@ function QueryProcessor(responseMap,questArray) {
 
   var handleResp = function(error,response, body){
          var message= util.getMsgFromResp(error, response, body);
-          //logMsg(message+" lin nu is::"+questAndLine[0]);
-
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           responseMap.forEach(function(value, key) {
-          //logMsg(key + " : " + value);
           });
           var linetempno=questAndLine[0];
-          //logMsg("line temp no::"+linetempno);
           expectedResponse= responseMap.get(parseInt(linetempno));
-        //logMsg("type is "+(parseInt(linetempno)));
-    //logMsg("EXPECTED RESPONSE::"+expectedResponse);
         var result=checkResponse(message,expectedResponse);
         var status = "failed";
         if(result) {
             status = "Passed";
         }
-
           logger.logConvResult(linetempno, questAndLine[1], expectedResponse, message, status);
-
           QueryProcessor(responseMap, questArray);
   }
-
 
       request(options,handleResp);
 
   }
-
-
 }
-
 
 function checkResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+
 
     if(expectedResponse && expectedResponse.indexOf(responseFromApi) > -1) {
       logMsg("test case passed");

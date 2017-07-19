@@ -43,17 +43,7 @@ rl.on('error',function(err){
 });
 }
 
-function checkResponse(responseFromApi,expectedResponse ){
-  logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
-  if(expectedResponse.indexOf(responseFromApi) > -1) {
-  logMsg("test case passed");
-  return true;
-  }
-  else{
-    logMsg("test case failed");
-    return false;
-  }
-}
+
 
 function pushToMap(lineNumber, respString) {
     var respArray = responseMap.get(lineNumber);
