@@ -45,7 +45,7 @@ function QueryProcessor(responseMap,questArray) {
           expectedResponse= responseMap.get(parseInt(linetempno));
         var result=assert.equal(message,(expectedResponse).toString());
         
-
+        console.log("message type ="+typeof(message));
         console.log("expected response="+ expectedResponse)
         console.log("expected response Type="+ typeof(expectedResponse));
         console.log("assertResult ="+ assert.message);
