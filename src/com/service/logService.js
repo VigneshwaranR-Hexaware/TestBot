@@ -1,8 +1,8 @@
 var http = require('http');
 var fs = require('fs');
 var path = require('path');
-
-logResponse("Passed 1","0 Failed","8th Line");
+//TestFunction
+//logResponse("Passed 1","0 Failed","8th Line");
 
 function logResponse(passcount,failcount,linenumber){
 var str= "TestCases"+" "+"Passed =" + passcount + ','+ "Failed =" + failcount + ',' + "linenumber" + linenumber;
@@ -10,7 +10,6 @@ logResult(str);
 }
 
 function logConvResult(lineNo, quest, expResult, recResult, status) {
-    //logResult("Line Number "+lineNo+" status is "+status);
     logOnConsole("Line Number :: "+lineNo
           +"\n       Custumer Asks     : " + quest
           +"\n       Bot Response      : " + recResult
@@ -27,23 +26,18 @@ function logResult(str){
     if(!(fs.existsSync('logfile.txt'))){
         fs.writeFile("logfile.txt",str, function(err) {
         if(err) {
-        return logMsg(err);
+            console.log(err);
         }
-            logMsg("The file was saved!");
+            console.log("The file was saved!");
         });
     }
     else{
         fs.appendFile('logfile.txt', '\n' + str, function (err) {
         if (err) throw err;
-        logMsg('Saved!');
+        console.log('Saved!');
         });
     }
 }
-
-var logMsg = function(str) {
-    //console.log(str);
-}
-
 
 module.exports.logResponse=logResponse;
 
