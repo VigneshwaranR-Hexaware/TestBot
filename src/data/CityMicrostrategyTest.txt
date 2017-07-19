@@ -3,7 +3,7 @@ Bot:Greetings! I am Citi assistant
 Bot:Good day! I am citi assistant ..how may i help you
 Bot:Hello! I am citi assistant... i can look up share details for you
 Cust:please look for data for ABT for total cash for 2015
-Bot:It is 6125
+Bot:  It is 6125
 Cust:great,can you get it for 2014 as well
 Bot:  It is 4460
 Cust:what about data for PFE
