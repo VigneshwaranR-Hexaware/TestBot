@@ -5,7 +5,7 @@ var jsUtil=require('util');
 
 var appConfig = require('../config/appConfig.js');
 var logService=require('./logService');
-var queryService=require('./queryService');
+var QueryService=require('./queryServiceNew');
 var util=require('../config/util.js');
 
 const responseMap = new Map();
@@ -26,19 +26,41 @@ var tcFailCount=0;
 
 var rl = new LineReader(appConfig.inputfile);
 var custLineNo = -1;
+var readQuestiong = -1;
+var quest = new Array();
   rl.on('line',function(lineno,line) {
     currentLine=line;
 
         var prefix=currentLine.split(":");
 
+
+
         if(prefix[0]=='Cust'){
                 //var queryServ = new queryProcessing(prefix[1]);
                 custLineNo = lineno;
-                console.log("CUST LINE NO"+custLineNo+"QUERY TO API::"+prefix[1]);
-                queryService.queryProcessing(prefix[1], lineno, responseMap);
+                //logMsg("LINE NO"+custLineNo);
+                quest.push(lineno+'::'+prefix[1]);
+
+                /*if(readQuestiong == 2) {
+                  //logMsg("Giving call "+quest);
+                  responseMap.forEach(function(value, key) {
+                      logMsg(key + " : " + value);
+                  });
+                    var queryServ = new QueryService.QueryProcessor(responseMap, lineno, quest);
+                }*/
+                readQuestiong++;
+                //var queryServ = new QueryService.QueryProcessor(prefix[1], lineno);
+                //logMsg(queryServ.processCompleted);
+                /*
+
+                }*/
+
+                //setTimeout(logMsg("Waiting"), 1000);
+
+                //queryService.queryProcessing(prefix[1], lineno, responseMap);
                 expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
-              console.log("LINE NO in bot"+custLineNo);
+              //logMsg("LINE NO in bot"+custLineNo);
                 pushToMap(custLineNo, prefix[1]);
           }
 /*if(expectedResponse.length>0){
@@ -57,24 +79,39 @@ var result=checkResponse(responseFromApi,expectedResponse);
 
   rl.on('end', function () {
 
-    logService.logResponse(tcPassCount,tcFailCount,failedLines);
+var queryServ = new QueryService.QueryProcessor(responseMap, quest);
+      //  logService.logResponse(tcPassCount,tcFailCount,failedLines);
 
   });
 rl.on('error',function(err){
-    console.log(err);
+    logMsg(err);
 });
 
 
 
 }
 
+function checkResponse(responseFromApi,expectedResponse ){
+  logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+if(expectedResponse.indexOf(responseFromApi) > -1) {
+  logMsg("test case passed");
+  return true;
+}
+else{
+logMsg("test case failed");
+return false;
+}
+}
 
 function pushToMap(lineNumber, respString) {
-
     var respArray = responseMap.get(lineNumber);
     if(!respArray) {
         respArray = new Array();
         responseMap.set(lineNumber, respArray);
-            }
+    }
     respArray.push(respString);
+}
+
+var logMsg = function(str) {
+    //console.log(str);
 }

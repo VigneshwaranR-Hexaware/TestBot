@@ -4,21 +4,24 @@ var http = require('http');
 var apiai = require('apiai');
 const bodyParser = require('body-parser');
 var request = require("request");
+
 const JSONbig = require('json-bigint');
 const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
+var util=require('../config/util.js');
+var expectedResponse=[];
 
-//preparingResponse();
+
+
 //Function Call
-function preparingResponse(){
- var response=queryProcessing('Hi',appConfig.developerAccessToken);
-
-}
-
+//function preparingResponse(){
+// var response=queryProcessing('Hi',appConfig.developerAccessToken);
+//
+//}
 
 //Processing Query Parameter
-function queryProcessing(queryParameter,accessToken,callback){
- console.log("Query Parameter  ",queryParameter);
+function queryProcessing(queryParameter, lineNumber, responseMap){
+console.log("QUERY TO API in query servixce::"+queryParameter);
   var options = {
   method: 'POST',
   url: 'https://api.api.ai/v1/query',
@@ -27,7 +30,7 @@ function queryProcessing(queryParameter,accessToken,callback){
    {
      'cache-control': 'no-cache',
      'content-type': 'application/json',
-     authorization: accessToken
+     authorization: appConfig.vfsAccessToken
    },
   body: {
       query: [queryParameter], lang: 'en', sessionId: '1234567'
@@ -35,19 +38,37 @@ function queryProcessing(queryParameter,accessToken,callback){
   json: true
 };
 
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-  console.log(body);
-   console.log("Body Message" + body.result.fulfillment.speech);
-    var message=JSON.stringify(body.result.fulfillment.speech);
-    console.log("message" + message);
-    if (!error && response.statusCode === 200) {
-      // some code    
-      callback(message); 
-   }
-  //return message;
-  
+var handleResp = function(error,response, body){
+   var message= util.getMsgFromResp(error, response, body);
+    console.log("FROM API MSG:::"+message+" lin nu for cust is::: "+lineNumber);
+
+
+    console.log("RESP MAP SIZE IN in query servixce::"+responseMap.size);
+    responseMap.forEach(function(value, key) {
+    //console.log(key + " : " + value);
 });
+ expectedResponse= responseMap.get(lineNumber).toString();
+
+var result=checkResponse(message,expectedResponse);
+
 
 }
+
+ request(options,handleResp);
+}
+
+
+function checkResponse(responseFromApi,expectedResponse ){
+  console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+if(expectedResponse.indexOf(responseFromApi) > -1) {
+  console.log("test case passed");
+  return true;
+}
+else{
+console.log("test case failed");
+return false;
+}
+}
+
+
 module.exports.queryProcessing=queryProcessing;
