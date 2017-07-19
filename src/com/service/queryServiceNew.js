@@ -43,11 +43,12 @@ function QueryProcessor(responseMap,questArray) {
           });
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
-        var result=assert.equal(message,(expectedResponse).toString());
+          var respObj=expectedResponse.toString();
+        var result=assert.equal(message,respObj);
         
         console.log("message type ="+typeof(message));
         console.log("expected response="+ expectedResponse)
-        console.log("expected response Type="+ typeof(expectedResponse));
+        console.log("expected response Type="+ typeof(respObj));
         console.log("assertResult ="+ assert.message);
         var status = "failed";
         if(result) {
