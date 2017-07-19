@@ -47,24 +47,14 @@ function QueryProcessor(responseMap,questArray) {
           });
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
-            var respObj=expectedResponse.toString();
-        //var result=checkResponse(message,expectedResponse);
-      /*  var status = "failed";
+          //  var respObj=expectedResponse.toString();
+        var result=checkResponse(message,expectedResponse);
+        var status = "failed";
         if(result) {
             status = "Passed";
-        }*/
-
-        var status="";
-        try
-        {
-          assert.deepEqual(message,respObj);
-          status = "Passed";
         }
-      catch(e){
-        logMsg(e.message);
-        status = "failed";
-      }
-          logger.logConvResult(linetempno, questAndLine[1], expectedResponse, message, status);
+
+        logger.logConvResult(linetempno, questAndLine[1], expectedResponse, message, status);
           QueryProcessor(responseMap, questArray);
   }
 
