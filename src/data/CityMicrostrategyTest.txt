@@ -1,0 +1,8 @@
+Cust:Hi
+Bot:Greetings! I am Citi assistant
+Bot:Good day! I am citi assistant ..how may i help you
+Bot:Hello! I am citi assistant... i can look up share details for you
+Cust:please look for data for ABT for total cash for 2015
+Bot:It is 6125
+Cust:thanks
+Bot:bye..have a nice day!!!!
