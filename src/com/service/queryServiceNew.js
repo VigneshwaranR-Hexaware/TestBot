@@ -44,17 +44,20 @@ function QueryProcessor(responseMap,questArray) {
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
           var respObj=expectedResponse.toString();
-        var result=assert.deepEqual(message,respObj);
-        console.log(assert.deepEqual(message,respObj));
-        
-        console.log("message type ="+typeof(message));
-        console.log("expected response="+ expectedResponse)
-        console.log("expected response Type="+ typeof(respObj));
-        console.log("assertResult ="+ assert.message);
-        var status = "failed";
-        if(result) {
+          var status="";
+          try
+          {
+            assert.deepEqual(message,respObj);
             status = "Passed";
+          }
+        catch(e){
+          console.log(e.message);
+          status = "failed";
         }
+//        var status = "failed";
+//        if(result) {
+//            status = "Passed";
+//        }
           logger.logConvResult(linetempno, questAndLine[1], expectedResponse, message, status);
           QueryProcessor(responseMap, questArray);
   }
