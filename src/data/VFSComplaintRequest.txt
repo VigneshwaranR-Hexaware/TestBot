@@ -7,9 +7,9 @@ Bot:Can you please provide me with some details on what went wrong?
 Cust:My Visa application document was missing.
 Bot:I will help you to log a complaint here but before proceeding any further will need some additional information?
 Cust:Proceed
-Bot:Can you please provide me your Full Name
+Bot:  Can you please provide me your full Name
 Cust:Jacob Allan
-Bot:Can you also help me with your contact Number Where we can reach you, If required.
+Bot:Can you also help me with your Contact Number Where we can reach you, If required.
 Cust:7894561230
 Bot:Please provide your email id
 Cust:jacoballan@gmail.com
