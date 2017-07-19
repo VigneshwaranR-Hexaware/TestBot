@@ -39,8 +39,7 @@ function QueryProcessor(responseMap,questArray) {
   var handleResp = function(error,response, body){
          var message= util.getMsgFromResp(error, response, body);
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
-          responseMap.forEach(function(value, key) {
-          });
+
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
           var respObj=expectedResponse.toString();
@@ -51,7 +50,7 @@ function QueryProcessor(responseMap,questArray) {
             status = "Passed";
           }
         catch(e){
-          console.log(e.message);
+          logMsg(e.message);
           status = "failed";
         }
 //        var status = "failed";
