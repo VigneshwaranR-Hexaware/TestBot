@@ -4,6 +4,7 @@ var http = require('http');
 var apiai = require('apiai');
 const bodyParser = require('body-parser');
 var request = require("request");
+var stringSimilarity = require('string-similarity');
 
 const JSONbig = require('json-bigint');
 const assert = require('assert');
@@ -70,14 +71,22 @@ function QueryProcessor(responseMap,questArray) {
 
 function checkResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
-    if(expectedResponse && expectedResponse.indexOf(responseFromApi) > -1) {
+
+      if(responseFromApi && expectedResponse) {
+        var bstMatch = stringSimilarity.findBestMatch(responseFromApi, expectedResponse);
+
+        return (bstMatch.bestMatch.rating > 7.5);
+      }
+
+      return false;
+  /*  if(expectedResponse && expectedResponse.indexOf(responseFromApi) > -1) {
       logMsg("test case passed");
       return true;
     }
     else{
     logMsg("test case failed");
     return false;
-}
+}*/
 }
 
 var logMsg = function(str) {}
