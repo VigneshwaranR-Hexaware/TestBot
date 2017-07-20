@@ -47,7 +47,7 @@ function QueryProcessor(responseMap,questArray) {
           var inputMessage=convertArrayToString(message);
           try
           {
-            assert.deepEqual(inputMessage,respObj);
+            assert.deepEqual(inputMessage,expectedResponse);
             status = "Passed";
           }
         catch(e){
