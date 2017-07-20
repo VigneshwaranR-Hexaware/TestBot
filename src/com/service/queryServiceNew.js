@@ -59,10 +59,7 @@ function QueryProcessor(responseMap,questArray) {
           logMsg(e.message);
           status = "failed";
         }*/
-//        var status = "failed";
-//        if(result) {
-//            status = "Passed";
-//        }
+
           logger.logConvResult(linetempno, questAndLine[1], expectedResponse, message, status);
           QueryProcessor(responseMap, questArray);
   }
@@ -79,7 +76,7 @@ function checkResponse(responseFromApi,expectedResponse ){
 
       if(responseFromApi && expectedResponse) {
         var bstMatch = stringSimilarity.findBestMatch(responseFromApi, expectedResponse);
-console.log("RESULT COMPARE:"+bstMatch.bestMatch.rating );
+        console.log("RESULT COMPARE:"+bstMatch.bestMatch.rating );
         return (bstMatch.bestMatch.rating > 0.75);
       }
 
