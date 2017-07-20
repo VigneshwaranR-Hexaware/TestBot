@@ -1,72 +1,61 @@
 //var inputfile = require('../data/VFSComplaintRequest.txt');
 var LineReader = require('linereader');
+
+var jsUtil=require('util');
+
 var appConfig = require('../config/appConfig.js');
 var logService=require('./logService');
-var queryService=require('./queryService');
+var QueryService=require('./queryService');
 var util=require('../config/util.js');
-console.log('to call function')
+
+const responseMap = new Map();
+
+
 processRequest();
 
-function processRequest(){
+function processRequest() {
 const fs = require('fs');
 var currentLine=null;
-var expectedResponse=[];
 var failedLines=[];
 var responseFromApi=null;
 var tcPassCount=0;
 var tcFailCount=0;
-  console.log(appConfig.inputfile);
-var rl = new LineReader(appConfig.inputfile);
+var rl = new LineReader(appConfig.citiinputfile);
+var custLineNo = -1;
+var readQuestiong = -1;
+var quest = new Array();
   rl.on('line',function(lineno,line) {
     currentLine=line;
         var prefix=currentLine.split(":");
         if(prefix[0]=='Cust'){
-queryService.queryProcessing(prefix[1],appConfig.vfsAccessToken,getMessages);
-          expectedResponse=new Array();
+                custLineNo = lineno;
+                quest.push(lineno+'::'+prefix[1]);
+                readQuestiong++;
           }else if (prefix[0]=='Bot') {
-            expectedResponse.push(prefix[1]);
+              pushToMap(custLineNo, prefix[1]);
           }
-if(expectedResponse.length>0){
-var result=checkResponse(responseFromApi,expectedResponse);
-  if(result){
-    tcPassCount++;
-  }
-  else{
-    failedLines.push(lineno);
-    tcFailCount++;
-  }
-}
-
-
   });
 
   rl.on('end', function () {
-    console.log("DATA to log the result");
-  console.log("RESULT IS::"+tcPassCount+"FAIL::"+tcFailCount+"FAILED LINES"+failedLines);
-  logService.logResponse(tcPassCount,tcFailCount,failedLines);
-  console.log("DATA LOGGED");
+
+var queryServ = new QueryService.QueryProcessor(responseMap, quest);
+
   });
 rl.on('error',function(err){
-    console.log(err);
+    logMsg(err);
 });
-    
-
-
 }
 
-function checkResponse(responseFromApi,expectedResponse ){
-  console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
-if(expectedResponse.indexOf(responseFromApi) > -1) {
-  console.log("test case passed");
-  return true;
-}
-else{
-console.log("test case failed");
-return false;
-}
+
+function pushToMap(lineNumber, respString) {
+    var respArray = responseMap.get(lineNumber);
+    if(!respArray) {
+        respArray = new Array();
+        responseMap.set(lineNumber, respArray);
+    }
+    respArray.push(respString);
 }
 
-function getMessages(error,response, body){
-   var message= util.getMsgFromResp(error, response, body);
-    console.log(message);
+var logMsg = function(str) {
+    //console.log(str);
 }
