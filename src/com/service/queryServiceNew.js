@@ -74,7 +74,7 @@ function checkResponse(responseFromApi,expectedResponse ){
 
       if(responseFromApi && expectedResponse) {
         var bstMatch = stringSimilarity.findBestMatch(responseFromApi, expectedResponse);
-
+console.log("RESULT COMPARE:"+bstMatch.bestMatch.rating );
         return (bstMatch.bestMatch.rating > 0.75);
       }
 
