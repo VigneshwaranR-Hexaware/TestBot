@@ -65,6 +65,9 @@ function QueryProcessor(responseMap,questArray) {
 
 }
 
+
+
+
 function checkResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
     if(expectedResponse && expectedResponse.indexOf(responseFromApi) > -1) {
