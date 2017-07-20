@@ -28,7 +28,7 @@ function QueryProcessor(responseMap,questArray) {
      {
        'cache-control': 'no-cache',
        'content-type': 'application/json',
-       authorization: appConfig.vfsAccessToken
+       authorization: appConfig.developerAccessToken
      },
     body: {
         query: [questAndLine[1]], lang: 'en', sessionId: '1234567'
