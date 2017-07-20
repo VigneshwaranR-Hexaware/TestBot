@@ -44,9 +44,10 @@ function QueryProcessor(responseMap,questArray) {
           expectedResponse= responseMap.get(parseInt(linetempno));
           var respObj=expectedResponse.toString();
           var status="";
+          var inputMessage=convertArrayToString(message);
           try
           {
-            assert.deepEqual(message,respObj);
+            assert.deepEqual(inputMessage,respObj);
             status = "Passed";
           }
         catch(e){
@@ -64,6 +65,16 @@ function QueryProcessor(responseMap,questArray) {
   }
 
 }
+
+function convertArrayToString(string){
+  var tempArray=[];
+  if(string.indexOf('')>0){
+    var temp=string.split("");
+    tempArray.push(temp);
+    return tempArray;
+  }
+}
+
 
 function checkResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
