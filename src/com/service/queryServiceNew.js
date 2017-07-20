@@ -44,7 +44,12 @@ function QueryProcessor(responseMap,questArray) {
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
           var respObj=expectedResponse.toString();
-          var status="";
+            var result=checkResponse(message,expectedResponse);
+            var status = "failed";
+            if(result) {
+                status = "Passed";
+            }
+        /*  var status="";
           try
           {
             assert.deepEqual(message,respObj);
@@ -53,7 +58,7 @@ function QueryProcessor(responseMap,questArray) {
         catch(e){
           logMsg(e.message);
           status = "failed";
-        }
+        }*/
 //        var status = "failed";
 //        if(result) {
 //            status = "Passed";
