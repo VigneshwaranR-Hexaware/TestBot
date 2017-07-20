@@ -5,7 +5,7 @@ var jsUtil=require('util');
 
 var appConfig = require('../config/appConfig.js');
 var logService=require('./logService');
-var QueryService=require('./queryServiceNewCopy');
+var QueryService=require('./queryService');
 var util=require('../config/util.js');
 
 const responseMap = new Map();
@@ -16,7 +16,6 @@ processRequest();
 function processRequest() {
 const fs = require('fs');
 var currentLine=null;
-var expectedResponse=[];
 var failedLines=[];
 var responseFromApi=null;
 var tcPassCount=0;
@@ -32,7 +31,6 @@ var quest = new Array();
                 custLineNo = lineno;
                 quest.push(lineno+'::'+prefix[1]);
                 readQuestiong++;
-                expectedResponse=new Array();
           }else if (prefix[0]=='Bot') {
               pushToMap(custLineNo, prefix[1]);
           }

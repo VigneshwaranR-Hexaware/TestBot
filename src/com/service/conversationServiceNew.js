@@ -27,7 +27,6 @@ var quest = new Array();
                 custLineNo = lineno;
                 quest.push(lineno+'::'+prefix[1]);
                 readQuestiong++;
-                expectedResponse=new Array();
         }
         else if (prefix[0]=='Bot') {
                 pushToMap(custLineNo, prefix[1]);
