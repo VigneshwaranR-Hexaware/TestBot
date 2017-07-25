@@ -10,12 +10,20 @@ logResult(str);
 }
 
 function logConvResult(lineNo, quest, expResult, recResult, status) {
+  var strformat="Line Number :: "+lineNo
+        +"\n       Custumer Asks     : " + quest
+        +"\n       Bot Response      : " + recResult
+        +"\n       Expected Response : " + expResult
+        +"\n       Test Case Status  : " + status
+        +"\n_____________________________________________________";
+
     logOnConsole("Line Number :: "+lineNo
           +"\n       Custumer Asks     : " + quest
           +"\n       Bot Response      : " + recResult
           +"\n       Expected Response : " + expResult
           +"\n       Test Case Status  : " + status
           +"\n_____________________________________________________");
+          logResult(strformat);
 }
 
 function logOnConsole(str) {
