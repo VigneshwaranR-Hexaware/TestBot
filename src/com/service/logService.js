@@ -23,7 +23,7 @@ function logConvResult(lineNo, quest, expResult, recResult, status) {
           +"\n       Expected Response : " + expResult
           +"\n       Test Case Status  : " + status
           +"\n_____________________________________________________");
-          logResult(strformat);
+    logResult(strformat);
 }
 
 function logOnConsole(str) {
@@ -31,8 +31,8 @@ function logOnConsole(str) {
 }
 
 function logResult(str){
-    if(!(fs.existsSync('logfile.txt'))){
-        fs.writeFile("logfile.txt",str, function(err) {
+    if(!(fs.existsSync(appConfig.inputfile))){
+        fs.writeFile(appConfig.inputfile,str, function(err) {
         if(err) {
             console.log(err);
         }
