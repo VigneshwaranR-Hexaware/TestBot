@@ -47,7 +47,7 @@ function QueryProcessor(responseMap,questArray) {
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
           var respObj=expectedResponse.toString();
-            var result=checkResponse(message,expectedResponse);
+            var result=checkResponse(apiRespObj,expectedResponse);
             var status = "failed";
             if(result) {
                 status = "Passed";
