@@ -17,4 +17,4 @@ var lookupResp=function(body){
   }
 }
 
-module.exports.fbResp= lookupResp;
+module.exports.getFbResp= lookupResp;
