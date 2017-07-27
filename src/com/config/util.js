@@ -2,7 +2,7 @@
 var getMessage = function getMessageResponse (error, response, body) {
    if (error) throw new Error(error);
    var type=[];
-   var obj=body.result.fulfillment.messages[0].type
+   var obj=type.push(body.result.fulfillment.messages[0].type);
    obj.forEach(function(element) {
      console.log("element=" + element);
    }, this);
