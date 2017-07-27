@@ -40,8 +40,9 @@ function QueryProcessor(responseMap,questArray) {
   };
 
   var handleResp = function(error,response, body){
+    var platform="slack";
     var  apiRespObj = new responsePojo.apiResponseObject();
-         apiRespObj = switchRespose.getApiResp(error, response, body);
+         apiRespObj = switchRespose.getApiResp(error, response, body,platform);
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
 
           var linetempno=questAndLine[0];
