@@ -37,7 +37,7 @@ function QueryProcessor(responseMap,questArray) {
   };
 
   var handleResp = function(error,response, body){
-         var message= util.getMsgFromResp(error, response, body);
+         var message= util.getMsgFromResp(error, response, body,platformType);
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
 
           var linetempno=questAndLine[0];
