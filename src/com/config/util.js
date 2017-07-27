@@ -1,9 +1,9 @@
 
 var getMessage = function getMessageResponse (error, response, body) {
    if (error) throw new Error(error);
-   var obj=JSON.stringify(body.result.fulfillment.messages);
+   var obj=JSON.stringify(body.result.fulfillment.messages[0]);
    var msg=JSON.parse(obj);
-    console.log("Messages"+ msg[0]);
+    console.log("Messages"+ obj);
     var message=JSON.stringify(body.result.fulfillment.speech);
     //console.log(JSON.stringify(body.result));
     if (!error && response.statusCode === 200) {
