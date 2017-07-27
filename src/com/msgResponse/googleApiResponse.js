@@ -1,5 +1,5 @@
-var googleResp=function(body){
+var lookupResp=function(body){
 
 }
 
-module.exports.gAResp=googleResp;
+module.exports.getGaResp=lookupResp;
