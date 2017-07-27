@@ -11,6 +11,8 @@ const assert = require('assert');
 const appConfig= require('../config/appConfig.js');
 const logger= require('./logService.js');
 var util=require('../config/util.js');
+var responsePojo=require('../config/apiResponsePOJO.js');
+var switchRespose=require('../msgResponse/respSwitch.js');
 
 var expectedResponse=[];
 var tcPassCount=0;
@@ -38,7 +40,8 @@ function QueryProcessor(responseMap,questArray) {
   };
 
   var handleResp = function(error,response, body){
-         var message= util.getMsgFromResp(error, response, body);
+    var  apiRespObj = new responsePojo.apiResponseObject();
+         apiRespObj = switchRespose.getApiResp(error, response, body);
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
 
           var linetempno=questAndLine[0];
