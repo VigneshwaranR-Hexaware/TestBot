@@ -2,4 +2,4 @@ var lookupResp=function(body){
 
 }
 
-module.exports.slackResp=lookupResp;
+module.exports.getslackResp=lookupResp;
