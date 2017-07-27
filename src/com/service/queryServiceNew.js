@@ -97,3 +97,5 @@ function checkResponse(responseFromApi,expectedResponse ){
 var logMsg = function(str) {}
 
 module.exports.QueryProcessor=QueryProcessor;
+
+
