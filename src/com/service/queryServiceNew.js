@@ -37,26 +37,23 @@ function QueryProcessor(responseMap,questArray) {
   };
 
   var handleResp = function(error,response, body){
-         var message= util.getMsgFromResp(error, response, body);
+         var message= util.getMsgFromResp(error, response, body,platformType);
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
 
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
-          var respObj=expectedResponse.toString();
+          var respObj=convertArrayToString(expectedResponse.toString());
           var status="";
+          var inputMessage=convertArrayToString(message);
           try
           {
-            assert.deepEqual(message,respObj);
+            assert.deepEqual(inputMessage,respObj);
             status = "Passed";
           }
         catch(e){
           logMsg(e.message);
           status = "failed";
         }
-//        var status = "failed";
-//        if(result) {
-//            status = "Passed";
-//        }
           logger.logConvResult(linetempno, questAndLine[1], expectedResponse, message, status);
           QueryProcessor(responseMap, questArray);
   }
@@ -65,7 +62,14 @@ function QueryProcessor(responseMap,questArray) {
 
 }
 
-
+function convertArrayToString(string){
+  var tempArray=[];
+  if(string.indexOf('')>0){
+    var temp=string.split("");
+    tempArray.push(temp);
+    return tempArray;
+  }
+}
 
 
 function checkResponse(responseFromApi,expectedResponse ){
