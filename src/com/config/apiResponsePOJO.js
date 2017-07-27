@@ -1,5 +1,5 @@
 function apiResponseObject() {
-  var sppech = null;
+  var speech = null;
   var title = null;
   var subtitle = null;
   var imageUrl = null;

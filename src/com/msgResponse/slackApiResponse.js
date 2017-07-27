@@ -10,6 +10,7 @@ var lookupResp=function(body){
         
           if (!error && response.statusCode === 200) {
              apiRespObj.sppech=JSON.stringify(body.result.fulfillment.speech);
+             console.log("SPEECH:::"+apiRespObj.speech);
              return apiRespObj;
           }
            break;
@@ -21,6 +22,7 @@ var lookupResp=function(body){
             apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
             apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.subtitle);
             apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
+            console.log("TITLE:::"+apiRespObj.title);
              return apiRespObj;
           }
                  break;

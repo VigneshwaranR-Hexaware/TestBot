@@ -10,6 +10,7 @@ function getApiResp(error,response,body,platform){
      gAResp.getGaResp(body);
   }
   else{
+    console.log("inside switchresp")
      slackResp.getslackResp(body);
   }
 }
