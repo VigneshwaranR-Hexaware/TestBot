@@ -14,10 +14,8 @@ var lookupResp=function(body){
              return apiRespObj;
           }
            break;
-        case 1:
-        // card
-        
-        
+        case 1:// card
+               
           if (!error && response.statusCode === 200) {
             apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
             apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.subtitle);
@@ -58,4 +56,4 @@ var lookupResp=function(body){
 
 }
 
-module.exports.slackResp=lookupResp;
+module.exports.lookupResp=lookupResp;

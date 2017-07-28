@@ -11,7 +11,7 @@ function getApiResp(error,response,body,platform){
   }
   else{
     console.log("inside switchresp")
-     slackResp.getslackResp(body);
+     slackResp.lookupResp(body);
   }
 }
 module.exports.getApiResp=getApiResp;
