@@ -68,9 +68,6 @@ function QueryProcessor(responseMap,questArray) {
 
 }
 
-
-
-
 function checkResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
