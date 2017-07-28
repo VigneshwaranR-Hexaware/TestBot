@@ -9,7 +9,7 @@ var lookupResp=function(body){
        
         case 0:// text response
         
-          if (!error && response.statusCode === 200) {
+          if ( response.statusCode === 200) {
              apiRespObj.sppech=JSON.stringify(body.result.fulfillment.speech);
              console.log("SPEECH:::"+apiRespObj.speech);
              return apiRespObj;
@@ -17,7 +17,7 @@ var lookupResp=function(body){
            break;
         case 1:// card
                
-          if (!error && response.statusCode === 200) {
+          if ( response.statusCode === 200) {
             apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
             apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.subtitle);
             apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
@@ -27,21 +27,21 @@ var lookupResp=function(body){
                  break;
         case 2:// quickreply
         
-            if (!error && response.statusCode === 200) {
+            if ( response.statusCode === 200) {
                 apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
             return apiRespObj;
           }
                  break;
         case 3://imageUrl
             
-                if (!error && response.statusCode === 200) {
+                if (response.statusCode === 200) {
                     apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
                 return apiRespObj;
             }
                  break;
         case 4:// custome payload
             
-                    if (!error && response.statusCode === 200) {
+                    if ( response.statusCode === 200) {
                         apiRespObj.payload=JSON.stringify(body.result.fulfillment.payload);
                     return apiRespObj;
                 }
