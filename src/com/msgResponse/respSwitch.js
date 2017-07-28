@@ -14,3 +14,4 @@ function getApiResp(error,response,body,platform){
      slackResp.getslackResp(body);
   }
 }
+module.exports.getApiResp=getApiResp;
