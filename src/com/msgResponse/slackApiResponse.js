@@ -1,4 +1,5 @@
 var apiResponsePOJO=require('../config/apiResponsePOJO.js');
+var response = require("response");
 var lookupResp=function(body){
   var type=[];
   var obj=(body.result.fulfillment.messages.length);
@@ -10,7 +11,7 @@ var lookupResp=function(body){
         case 0:// text response
         
           if ( response.statusCode === 200) {
-             apiRespObj.sppech=JSON.stringify(body.result.fulfillment.speech);
+             apiRespObj.speech=JSON.stringify(body.result.fulfillment.speech);
              console.log("SPEECH:::"+apiRespObj.speech);
              return apiRespObj;
           }
