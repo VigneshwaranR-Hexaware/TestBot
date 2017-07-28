@@ -4,8 +4,10 @@ var lookupResp=function(error,response,body){
      console.log("INSIDE SLACK FILE");
   var type=[];
   var obj=(body.result.fulfillment.messages.length);
-     console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[0]));
+     
   for(i=0;i<=obj;i++){
+      console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[obj]));
+      
    var typeOf = body.result.fulfillment.messages[i].type;
    console.log("INSIDE SLACK FILE--TYPE::"+typeOf);
    var  apiRespObj = new apiResponsePOJO.apiResponseObject(); 
