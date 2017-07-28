@@ -1,10 +1,12 @@
 var apiResponsePOJO=require('../config/apiResponsePOJO.js');
 
 var lookupResp=function(error,response,body){
+     console.log("INSIDE SLACK FILE");
   var type=[];
   var obj=(body.result.fulfillment.messages.length);
   for(i=0;i<=obj;i++){
    var typeOf = body.result.fulfillment.messages[i].type;
+   console.log("INSIDE SLACK FILE--TYPE::"+typeOf);
    var  apiRespObj = new apiResponsePOJO.apiResponseObject(); 
    switch(typeOf){
        
@@ -30,6 +32,7 @@ var lookupResp=function(error,response,body){
         
             if (!error && response.statusCode === 200) {
                 apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
+                 console.log("TITLEwwww:::"+apiRespObj.title);
             return apiRespObj;
           }
                  break;
