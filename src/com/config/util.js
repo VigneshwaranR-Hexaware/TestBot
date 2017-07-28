@@ -1,4 +1,3 @@
-
 var getMessage = function getMessageResponse (error, response, body) {
    if (error) throw new Error(error);
 
