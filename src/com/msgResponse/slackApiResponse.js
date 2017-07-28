@@ -5,7 +5,9 @@ var lookupResp=function(error,response,body){
   var type=[];
   var obj=(body.result.fulfillment.messages.length);
    console.log("INSIDE SLACK FILE--MESSAGE LENGTH::"+obj);
-    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[0]));  
+    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[0])); 
+    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[1]));   
+    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[2]));  
   for(i=0;i<=obj;i++){
      
 
