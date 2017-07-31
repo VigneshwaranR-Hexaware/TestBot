@@ -9,9 +9,9 @@ var lookupResp=function(error,response,body){
     console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[1]));   
     console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[2]));  
   
-  var compare=(body.result.fulfillment.messages.platform);
+  /*var compare=(body.result.fulfillment.messages.platform);
   if (compare=="slack")
-  {
+  {*/
   for(i=0;i<=obj;i++){
      
 
@@ -70,5 +70,5 @@ var lookupResp=function(error,response,body){
 //module.exports.fbResp= lookupResp; 
 
 }
-}
+//}
 module.exports.lookupResp=lookupResp;
