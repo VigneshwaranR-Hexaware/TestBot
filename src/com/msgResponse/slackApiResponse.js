@@ -7,11 +7,12 @@ var lookupResp=function(error,response,body){
    console.log("INSIDE SLACK FILE--MESSAGE LENGTH::"+obj);
     console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[0])); 
     console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[1]));   
-    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[2]));  
+   
   
-  /*var compare=(body.result.fulfillment.messages.platform);
-  if (compare=="slack")
-  {*/
+  var platform_compare=(body.result.fulfillment.messages.platform);
+   console.log("PLATFORM:::"+platform_compare);
+  if (platform_compare=="slack")
+  {
   for(i=0;i<=obj;i++){
      
 
@@ -70,5 +71,5 @@ var lookupResp=function(error,response,body){
 //module.exports.fbResp= lookupResp; 
 
 }
-//}
+}
 module.exports.lookupResp=lookupResp;
