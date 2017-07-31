@@ -39,16 +39,17 @@ function QueryProcessor(responseMap,questArray) {
     json: true
   };
 
-  var handleResp = function(error,response, body){
-    var platform="slack";
+   var handleResp = function(error,response, body){
     var  apiRespObj = new responsePojo.apiResponseObject();
+        var platform="slack";
          apiRespObj = switchRespose.getApiResp(error, response, body,platform);
-          console.log("RESP MAP SIZE IN in query servixce::"+responseMap.size);
-          console.log("OBJ SIZE"+JSON.stringify(apiRespObj));
+         var apiResp=processObj(apiRespObj);
+          logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
+
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
           var respObj=expectedResponse.toString();
-            var result=checkResponse(apiRespObj,expectedResponse);
+            var result=checkResponse(apiResp,apiResp);
             var status = "failed";
             if(result) {
                 status = "Passed";
@@ -72,7 +73,27 @@ function QueryProcessor(responseMap,questArray) {
 
 }
 
+function processObj(resp){
+    console.log(resp);
+    var response="";
+      if(resp.speech != null){
+        console.log("Entered into loop");
+         response= JSON.stringify(resp.speech);
+      }
+      else if(resp.title || resp.subtitle != null){
+          response = (resp.title && resp.subtitle != null)?JSON.stringify(resp.title) + JSON.stringify(resp.subtitle):JSON.stringify(resp.title);
+          console.log(response);
+      }
+     else if(resp.imageUrl !=null){
+       response=resp.imageUrl;
+       console.log("Image response ="+ response);
+     }
+    else if(resp.payload !=null){
+        response=resp.payload;
+    }
 
+     return response;
+}
 
 
 function checkResponse(responseFromApi,expectedResponse ){
