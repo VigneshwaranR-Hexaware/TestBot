@@ -9,13 +9,13 @@ var lookupResp=function(error,response,body){
     console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[1]));
 
 
-  var platform_compare=(body.result.fulfillment.messages.platform);
-   console.log("PLATFORM:::"+platform_compare);
-  if (platform_compare=="slack")
-  {
+
+
   for(i=0;i<=obj;i++){
-
-
+var platform_compare=(body.result.fulfillment.messages[i].platform);
+console.log("PLATFORM:::"+platform_compare);
+if (platform_compare=="slack")
+{
    var typeOf = body.result.fulfillment.messages[i].type;
    console.log("INSIDE SLACK FILE--TYPE::"+typeOf);
    var  apiRespObj = new apiResponsePOJO.apiResponseObject();
