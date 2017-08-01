@@ -14,6 +14,7 @@ var lookupResp=function(error,response,body){
   for(i=0;i<=obj;i++){
 var platform_compare=(body.result.fulfillment.messages[i].platform);
 console.log("PLATFORM:::"+platform_compare);
+if(platform_compare != undefined || platform_compare!=null){
 if (platform_compare=="slack")
 {
    var typeOf = body.result.fulfillment.messages[i].type;
@@ -66,6 +67,7 @@ if (platform_compare=="slack")
            break;
      }
 
+}
 }
 
 //module.exports.fbResp= lookupResp;
