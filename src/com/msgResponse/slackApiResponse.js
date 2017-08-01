@@ -10,8 +10,12 @@ var lookupResp=function(error,response,body){
 
   for(i=0;i<=obj;i++){
     console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[i]));
-    var platform_compare=(body.result.fulfillment.messages[i][platform]);
-  //  console.log("PLATFORM:::"+platform_compare);
+    var platform_msg = body.result.fulfillment.messages[i];
+    if(platform_msg) {
+          var platform_compare=platform_msg.platform;
+    }
+
+    console.log("PLATFORM:::"+platform_compare);
     if(platform_compare){
         if (platform_compare=="slack")
         {
