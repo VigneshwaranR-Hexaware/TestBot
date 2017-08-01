@@ -49,7 +49,7 @@ function QueryProcessor(responseMap,questArray) {
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
           var respObj=expectedResponse.toString();
-            var result=checkResponse(apiResp,apiResp);
+            var result=checkResponse(apiResp,respObj);
             var status = "failed";
             if(result) {
                 status = "Passed";
@@ -79,6 +79,7 @@ function processObj(resp){
       if((resp.speech != null) || (resp.speech!=undefined)){
         console.log("Entered into loop");
          response= JSON.stringify(resp.speech);
+         console.log(response);
       }
       else if((resp.title || resp.subtitle != null)|| (resp.title || resp.subtitle != undefined)){
           response = (resp.title && resp.subtitle != null)?JSON.stringify(resp.title) + JSON.stringify(resp.subtitle):JSON.stringify(resp.title);
