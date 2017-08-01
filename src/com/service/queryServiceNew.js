@@ -47,26 +47,13 @@ function QueryProcessor(responseMap,questArray) {
          var apiRespToCompare=processObj(apiRespObj);
          console.log("STRING TO BE COMPARED FROM API::;"+apiRespToCompare);
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
-
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
-        //  var respObj=expectedResponse.toString();
             var result=checkResponse(apiRespToCompare,expectedResponse);
             var status = "failed";
             if(result) {
                 status = "Passed";
             }
-        /*  var status="";
-          try
-          {
-            assert.deepEqual(message,respObj);
-            status = "Passed";
-          }
-        catch(e){
-          logMsg(e.message);
-          status = "failed";
-        }*/
-
           logger.logConvResult(linetempno, questAndLine[1], expectedResponse, apiRespToCompare, status);
           QueryProcessor(responseMap, questArray);
   }
@@ -109,14 +96,7 @@ function checkResponse(responseFromApi,expectedResponse ){
       }
 
       return false;
-  /*  if(expectedResponse && expectedResponse.indexOf(responseFromApi) > -1) {
-      logMsg("test case passed");
-      return true;
-    }
-    else{
-    logMsg("test case failed");
-    return false;
-}*/
+  
 }
 
 var logMsg = function(str) {}
