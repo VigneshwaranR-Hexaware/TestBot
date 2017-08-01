@@ -43,13 +43,15 @@ function QueryProcessor(responseMap,questArray) {
     var  apiRespObj = new responsePojo.apiResponseObject();
         var platform="slack";
          apiRespObj = switchRespose.getApiResp(error, response, body,platform);
-         var apiResp=processObj(apiRespObj);
+         console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(apiRespObj));
+         var apiRespToCompare=processObj(apiRespObj);
+         console.log("STRING TO BE COMPARED FROM API::;"+apiRespToCompare);
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
 
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
-          var respObj=expectedResponse.toString();
-            var result=checkResponse(apiResp,respObj);
+        //  var respObj=expectedResponse.toString();
+            var result=checkResponse(apiRespToCompare,expectedResponse);
             var status = "failed";
             if(result) {
                 status = "Passed";
@@ -120,5 +122,3 @@ function checkResponse(responseFromApi,expectedResponse ){
 var logMsg = function(str) {}
 
 module.exports.QueryProcessor=QueryProcessor;
-
-
