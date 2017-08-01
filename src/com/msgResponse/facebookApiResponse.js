@@ -11,7 +11,7 @@ var lookupResp=function(body){
                  if(!error && response.statusCode === 200) {
                   apiRespObj.speech=JSON.stringify(body.result.fulfillment.speech).replace(/"/g, "");
                   console.log("SPEECH:::"+apiRespObj.speech);
-                    return apiRespObj;
+                  //  return apiRespObj;
              }
               break;
 
@@ -21,15 +21,15 @@ var lookupResp=function(body){
                 apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.subtitle);
                 apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
                 console.log("card:::"+apiRespObj.title);
-                return apiRespObj;
+                //return apiRespObj;
                 }
                  break;
 
-        case 2:// quest repl
+        case 2:// queck repl
               if(!error && response.statusCode === 200) {
                 apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
                 console.log("quest repl:::"+apiRespObj.title);
-               return apiRespObj;
+               //return apiRespObj;
                }
                  break;
 
@@ -37,7 +37,7 @@ var lookupResp=function(body){
                if(!error && response.statusCode === 200) {
                apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
                console.log("imageUrl:::"+apiRespObj.imageUrl);
-              return apiRespObj;
+              //return apiRespObj;
                 }
                break;
 
@@ -45,7 +45,7 @@ var lookupResp=function(body){
                 if(!error && response.statusCode === 200) {
                 apiRespObj.payload=JSON.stringify(body.result.fulfillment.payload);
                 console.log("custome:::"+apiRespObj.payload);
-                return apiRespObj;
+                //return apiRespObj;
               }
 
           break;
@@ -56,5 +56,6 @@ var lookupResp=function(body){
      }
 
 }
+return apiRespObj;
 };
 module.exports.fbResp= lookupResp;
