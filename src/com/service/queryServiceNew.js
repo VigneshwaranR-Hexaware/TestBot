@@ -67,7 +67,7 @@ function QueryProcessor(responseMap,questArray) {
           status = "failed";
         }*/
 
-          logger.logConvResult(linetempno, questAndLine[1], expectedResponse, message, status);
+          logger.logConvResult(linetempno, questAndLine[1], expectedResponse, apiRespToCompare, status);
           QueryProcessor(responseMap, questArray);
   }
       request(options,handleResp);
