@@ -76,19 +76,19 @@ function QueryProcessor(responseMap,questArray) {
 function processObj(resp){
     console.log(resp);
     var response="";
-      if(resp.speech != null){
+      if((resp.speech != null) || (resp.speech!=undefined)){
         console.log("Entered into loop");
          response= JSON.stringify(resp.speech);
       }
-      else if(resp.title || resp.subtitle != null){
+      else if((resp.title || resp.subtitle != null)|| (resp.title || resp.subtitle != undefined)){
           response = (resp.title && resp.subtitle != null)?JSON.stringify(resp.title) + JSON.stringify(resp.subtitle):JSON.stringify(resp.title);
           console.log(response);
       }
-     else if(resp.imageUrl !=null){
+     else if((resp.imageUrl !=null)||(resp.imageUrl != undefined)){
        response=resp.imageUrl;
        console.log("Image response ="+ response);
      }
-    else if(resp.payload !=null){
+    else if((resp.payload !=null)||(resp.payload != undefined)){
         response=resp.payload;
     }
 
