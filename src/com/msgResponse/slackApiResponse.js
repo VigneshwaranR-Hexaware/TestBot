@@ -24,7 +24,7 @@ var lookupResp=function(error,response,body){
                 if (!error && response.statusCode === 200) {
                     apiRespObj.speech=JSON.stringify(body.result.fulfillment.speech);
                     console.log("SPEECH:::"+apiRespObj.speech);
-                    return apiRespObj;
+                    //return apiRespObj;
                 }
             break;
             case 1:// card
@@ -33,26 +33,26 @@ var lookupResp=function(error,response,body){
                     apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.subtitle);
                     apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
                     console.log("TITLE:::"+apiRespObj.title);
-                    return apiRespObj;
+                  //  return apiRespObj;
                 }
             break;
             case 2:// quickreply
                 if (!error && response.statusCode === 200) {
                     apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
                     console.log("TITLEwwww:::"+apiRespObj.title);
-                return apiRespObj;
+                //return apiRespObj;
                 }
             break;
             case 3://imageUrl
                 if (!error &&response.statusCode === 200) {
                     apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
-                return apiRespObj;
+              //  return apiRespObj;
                  }
             break;
             case 4:// custome payload
                     if (!error && response.statusCode === 200) {
                         apiRespObj.payload=JSON.stringify(body.result.fulfillment.payload);
-                    return apiRespObj;
+                  //  return apiRespObj;
                     }
             break;
             default:
@@ -65,5 +65,6 @@ var lookupResp=function(error,response,body){
 //module.exports.fbResp= lookupResp;
 
 }
+  return apiRespObj;
 }
 module.exports.lookupResp=lookupResp;
