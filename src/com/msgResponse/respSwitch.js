@@ -4,13 +4,13 @@ let slackResp= require("./slackApiResponse.js");
 
 function getApiResp(error,response,body,platform){
   if(platform == "facebook"){
-    return fbResp.getFbResp(body);
+    return fbResp.getFbResp(error,response,body);
   }
   else if(platform == "google"){
-    return gAResp.getGaResp(body);
+    return gAResp.getGaResp(error,response,body);
   }
   else{
-     return slackResp.getslackResp(body);
+     return slackResp.lookupResp(error,response,body);
   }
 }
 

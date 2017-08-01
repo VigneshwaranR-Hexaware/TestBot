@@ -5,24 +5,24 @@ var lookupResp=function(error,response,body){
   var type=[];
   var obj=(body.result.fulfillment.messages.length);
    console.log("INSIDE SLACK FILE--MESSAGE LENGTH::"+obj);
-    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[0])); 
-    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[1]));   
-   
-  
+    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[0]));
+    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[1]));
+
+
   var platform_compare=(body.result.fulfillment.messages.platform);
    console.log("PLATFORM:::"+platform_compare);
   if (platform_compare=="slack")
   {
   for(i=0;i<=obj;i++){
-     
+
 
    var typeOf = body.result.fulfillment.messages[i].type;
    console.log("INSIDE SLACK FILE--TYPE::"+typeOf);
-   var  apiRespObj = new apiResponsePOJO.apiResponseObject(); 
+   var  apiRespObj = new apiResponsePOJO.apiResponseObject();
    switch(typeOf){
-       
+
         case 0:// text response
-        
+
           if (!error && response.statusCode === 200) {
              apiRespObj.speech=JSON.stringify(body.result.fulfillment.speech);
              console.log("SPEECH:::"+apiRespObj.speech);
@@ -30,7 +30,7 @@ var lookupResp=function(error,response,body){
           }
            break;
         case 1:// card
-               
+
           if ( !error &&response.statusCode === 200) {
             apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
             apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.subtitle);
@@ -40,7 +40,7 @@ var lookupResp=function(error,response,body){
           }
                  break;
         case 2:// quickreply
-        
+
             if (!error && response.statusCode === 200) {
                 apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
                  console.log("TITLEwwww:::"+apiRespObj.title);
@@ -48,14 +48,14 @@ var lookupResp=function(error,response,body){
           }
                  break;
         case 3://imageUrl
-            
+
                 if (!error &&response.statusCode === 200) {
                     apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
                 return apiRespObj;
             }
                  break;
         case 4:// custome payload
-            
+
                     if (!error && response.statusCode === 200) {
                         apiRespObj.payload=JSON.stringify(body.result.fulfillment.payload);
                     return apiRespObj;
@@ -68,7 +68,7 @@ var lookupResp=function(error,response,body){
 
 }
 
-//module.exports.fbResp= lookupResp; 
+//module.exports.fbResp= lookupResp;
 
 }
 }
