@@ -5,10 +5,11 @@ var lookupResp=function(error,response,body){
   var type=[];
   var obj=(body.result.fulfillment.messages.length);
    console.log("INSIDE SLACK FILE--MESSAGE LENGTH::"+obj);
-    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[0]));
-    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[1]));
+    //console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[0]));
+
 
   for(i=0;i<=obj;i++){
+    console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[i]));
     var platform_compare=(body.result.fulfillment.messages[i].platform);
   //  console.log("PLATFORM:::"+platform_compare);
     if(platform_compare != undefined || platform_compare!=null){
@@ -61,7 +62,14 @@ var lookupResp=function(error,response,body){
 
     }
 }
+else{
 
+  if (!error && response.statusCode === 200) {
+      apiRespObj.speech=JSON.stringify(body.result.fulfillment.speech);
+      console.log("SPEECH:::"+apiRespObj.apispeech);
+      //return apiRespObj;
+  }
+}
 //module.exports.fbResp= lookupResp;
 
 }

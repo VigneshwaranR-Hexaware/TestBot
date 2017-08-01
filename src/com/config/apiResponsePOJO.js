@@ -4,6 +4,7 @@ function apiResponseObject() {
   var subtitle = null;
   var imageUrl = null;
   var payload=null;
+  var apispeech = null;
 }
 
   module.exports.apiResponseObject = apiResponseObject;
