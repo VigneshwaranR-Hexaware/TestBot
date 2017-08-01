@@ -81,11 +81,11 @@ function processObj(resp){
       if((resp.speech != null) || (resp.speech!=undefined)){
         console.log("Entered into loop");
          response= JSON.stringify(resp.speech);
-         console.log(response);
+         console.log("RESPONSE INSIDE PROCESSOBJ SPEEch:::"+response);
       }
       else if((resp.title || resp.subtitle != null)|| (resp.title || resp.subtitle != undefined)){
           response = (resp.title && resp.subtitle != null)?JSON.stringify(resp.title) + JSON.stringify(resp.subtitle):JSON.stringify(resp.title);
-          console.log(response);
+          console.log("RESPONSE INSIDE PROCESSOBJ CARD:::"+response);
       }
      else if((resp.imageUrl !=null)||(resp.imageUrl != undefined)){
        response=resp.imageUrl;
