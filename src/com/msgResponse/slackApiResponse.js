@@ -8,66 +8,58 @@ var lookupResp=function(error,response,body){
     console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[0]));
     console.log("INSIDE SLACK FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[1]));
 
-
-
-
   for(i=0;i<=obj;i++){
-var platform_compare=(body.result.fulfillment.messages[i].platform);
-console.log("PLATFORM:::"+platform_compare);
-if(platform_compare != undefined || platform_compare!=null){
-if (platform_compare=="slack")
-{
-   var typeOf = body.result.fulfillment.messages[i].type;
-   console.log("INSIDE SLACK FILE--TYPE::"+typeOf);
-   var  apiRespObj = new apiResponsePOJO.apiResponseObject();
-   switch(typeOf){
+    var platform_compare=(body.result.fulfillment.messages[i].platform);
+    console.log("PLATFORM:::"+platform_compare);
+    if(platform_compare != undefined || platform_compare!=null){
+        if (platform_compare=="slack")
+        {
+            var typeOf = body.result.fulfillment.messages[i].type;
+            console.log("INSIDE SLACK FILE--TYPE::"+typeOf);
+            var  apiRespObj = new apiResponsePOJO.apiResponseObject();
+            switch(typeOf){
 
-        case 0:// text response
+            case 0:// text response
 
-          if (!error && response.statusCode === 200) {
-             apiRespObj.speech=JSON.stringify(body.result.fulfillment.speech);
-             console.log("SPEECH:::"+apiRespObj.speech);
-             return apiRespObj;
-          }
-           break;
-        case 1:// card
-
-          if ( !error &&response.statusCode === 200) {
-            apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
-            apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.subtitle);
-            apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
-            console.log("TITLE:::"+apiRespObj.title);
-             return apiRespObj;
-          }
-                 break;
-        case 2:// quickreply
-
-            if (!error && response.statusCode === 200) {
-                apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
-                 console.log("TITLEwwww:::"+apiRespObj.title);
-            return apiRespObj;
-          }
-                 break;
-        case 3://imageUrl
-
+                if (!error && response.statusCode === 200) {
+                    apiRespObj.speech=JSON.stringify(body.result.fulfillment.speech);
+                    console.log("SPEECH:::"+apiRespObj.speech);
+                    return apiRespObj;
+                }
+            break;
+            case 1:// card
+                if ( !error &&response.statusCode === 200) {
+                    apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
+                    apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.subtitle);
+                    apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
+                    console.log("TITLE:::"+apiRespObj.title);
+                    return apiRespObj;
+                }
+            break;
+            case 2:// quickreply
+                if (!error && response.statusCode === 200) {
+                    apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
+                    console.log("TITLEwwww:::"+apiRespObj.title);
+                return apiRespObj;
+                }
+            break;
+            case 3://imageUrl
                 if (!error &&response.statusCode === 200) {
                     apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
                 return apiRespObj;
-            }
-                 break;
-        case 4:// custome payload
-
+                 }
+            break;
+            case 4:// custome payload
                     if (!error && response.statusCode === 200) {
                         apiRespObj.payload=JSON.stringify(body.result.fulfillment.payload);
                     return apiRespObj;
-                }
-                break;
-       default:
+                    }
+            break;
+            default:
+            break;
+        }
 
-           break;
-     }
-
-}
+    }
 }
 
 //module.exports.fbResp= lookupResp;
