@@ -1,15 +1,21 @@
 let fbResp= require("./facebookApiResponse.js");
 let gAResp= require("./googleApiResponse.js");
 let slackResp= require("./slackApiResponse.js");
+let apiaiResp= require("./apiAiResponse.js");
 
 function getApiResp(error,response,body,platform){
   if(platform == "facebook"){
-     fbResp.getFbResp(body);
+    return fbResp.getFbResp(error,response,body);
   }
   else if(platform == "google"){
-     gAResp.getGaResp(body);
+    return gAResp.getGaResp(error,response,body);
+  }
+  else if(platform == "slack"){
+     return slackResp.lookupResp(error,response,body);
   }
   else{
-     slackResp.getslackResp(body);
+    return apiaiResp.getApiResp(error,response,body);
   }
 }
+
+module.exports.getApiResp=getApiResp;
