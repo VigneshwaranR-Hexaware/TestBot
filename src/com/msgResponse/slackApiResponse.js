@@ -57,7 +57,7 @@ var lookupResp=function(error,response,body){
                                 if (!error && response.statusCode === 200) {
                                     apiRespObj.payload=JSON.stringify(platform_msg.payload);
                                     respObjArr.push(apiRespObj);
-                          z      }
+                              }
                         break;
                         default:
                         break;
