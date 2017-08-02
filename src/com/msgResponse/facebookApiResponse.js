@@ -1,4 +1,6 @@
-var lookupResp=function(body){
+var apiResponsePOJO=require('../config/apiResponsePOJO.js');
+
+var lookupResp=function(error,response,body){
 
   var responceObject=[];
   var obj=(body.result.fulfillment.messages.length);
