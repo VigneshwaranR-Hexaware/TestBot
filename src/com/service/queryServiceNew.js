@@ -86,8 +86,14 @@ function processObj(resp){
      return response;
 }
 
+function checkResponse(botResponse, expectedResp) {
 
-function checkResponse(responseFromApi,expectedResponse ){
+      
+
+}
+
+
+function checkSpeechResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
       if(responseFromApi && expectedResponse) {

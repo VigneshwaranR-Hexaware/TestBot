@@ -4,6 +4,9 @@ var appConfig = require('../config/appConfig.js');
 var logService=require('./logService');
 var QueryService=require('./queryServiceNew');
 var util=require('../config/util.js');
+var appConst = require('../util/appConstants.js');
+var expectedRespObj = require('../config/apiResponsePOJO.js');
+
 const responseMap = new Map();
 
 processRequest();
@@ -46,18 +49,45 @@ rl.on('error',function(err){
 
 function pushToMap(lineNumber, respString) {
 
+    if(respString) {
+      var respPOJOArray = responseMap.get(lineNumber);
+      if(!respPOJOArray) {
+          respPOJOArray = new Array();
+          responseMap.set(lineNumber, respPOJOArray);
+      }
 
-if(respString)
+      var expRespObj = parseExpectedResp(respString);
 
 
-
-
-    var respArray = responseMap.get(lineNumber);
-    if(!respArray) {
-        respArray = new Array();
-        responseMap.set(lineNumber, respArray);
+      respArray.push(respString);
     }
-    respArray.push(respString);
 }
 
 var logMsg = function(str) {}
+
+var parseExpectedResp = function(respString) {
+    var expRespObj = new expectedRespObj.apiResponseObject();
+    if(respString.startsWith(appConst.IMAGE_TOKEN)) {
+        var imageTokens = respString.split(appConst.RESPONSE_SPLITER);
+        if(imageTokens.length > 1) {
+            if(imageTokens.length == 2) {
+                if(imageTokens[1].indexOf('//') >= 0) {
+                    expRespObj.imageUrl = imageTokens[1];
+                } else {
+                    expRespObj.title = imageTokens[1];
+                }
+            } else {
+                expRespObj.title = imageTokens[1];
+                expRespObj.subtitle = imageTokens[2];
+            }
+        } else if(respString === appConst.IMAGE_TOKEN) {
+            expRespObj.printImage = true;
+        } else {
+            expRespObj.expectedSpeech = respString.split(appConst.RESPONSE_SPLITER);
+        }
+
+    } else {
+          expRespObj.expectedSpeech = respString.split(appConst.RESPONSE_SPLITER);
+    }
+    return expRespObj;
+}

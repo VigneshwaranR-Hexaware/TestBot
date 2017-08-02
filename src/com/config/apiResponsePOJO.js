@@ -5,6 +5,8 @@ function apiResponseObject() {
   var imageUrl = null;
   var payload=null;
   var apispeech = null;
+  var expectedSpeech = null;
+  var printImage = false;
 }
 
   module.exports.apiResponseObject = apiResponseObject;
