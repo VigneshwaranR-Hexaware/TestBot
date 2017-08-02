@@ -45,6 +45,13 @@ rl.on('error',function(err){
 
 
 function pushToMap(lineNumber, respString) {
+
+
+if(respString)
+
+
+
+
     var respArray = responseMap.get(lineNumber);
     if(!respArray) {
         respArray = new Array();

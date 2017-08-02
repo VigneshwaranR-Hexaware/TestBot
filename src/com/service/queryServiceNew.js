@@ -42,8 +42,9 @@ function QueryProcessor(responseMap,questArray) {
    var handleResp = function(error,response, body){
     var  apiRespObj = new responsePojo.apiResponseObject();
         var platform="slack";
-         apiRespObj = switchRespose.getApiResp(error, response, body,platform);
-         console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(apiRespObj));
+          var respObjArrTemp=[];
+         respObjArrTemp = switchRespose.getApiResp(error, response, body,platform);
+         console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
          var apiRespToCompare=processObj(apiRespObj);
          console.log("STRING TO BE COMPARED FROM API::;"+apiRespToCompare);
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
@@ -96,7 +97,7 @@ function checkResponse(responseFromApi,expectedResponse ){
       }
 
       return false;
-  
+
 }
 
 var logMsg = function(str) {}
