@@ -17,7 +17,7 @@ var lookupResp=function(error,response,body){
                 {
                     var typeOf = body.result.fulfillment.messages[i].type;
                     console.log("INSIDE SLACK FILE--TYPE::"+typeOf);
-                    var  apiRespObj = new apiResponsePOJO.apiResponseObject();
+                    //var  apiRespObj = new apiResponsePOJO.apiResponseObject();
                     switch(typeOf){
                         case 0:// text response
                             if (!error && response.statusCode === 200) {
