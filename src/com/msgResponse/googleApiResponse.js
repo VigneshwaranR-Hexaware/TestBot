@@ -1,74 +1,81 @@
 var apiResponsePOJO=require('../config/apiResponsePOJO.js');
 
 var lookupResp=function(error,response,body){
-  var type=[];
-  var obj=(body.result.fulfillment.messages.length);
-  for(i=0;i<=obj;i++){
-   var typeOf = body.result.fulfillment.messages[i].type;
-   var  apiRespObj = new apiResponsePOJO.apiResponseObject(); 
-   switch(typeOf){
-       
-        case 0:// text response
-        
-          if (!error && response.statusCode === 200) {
-             apiRespObj.speech=JSON.stringify(body.result.fulfillment.speech);
-             console.log("SPEECH:::"+apiRespObj.speech);
-             return apiRespObj;
-          }
-           break;
-        case 1:// card
-               
-          if ( !error &&response.statusCode === 200) {
-            apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
-            apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.subtitle);
-         //   apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
-         //  image.url
-              apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.image.url);
-           
-            console.log("TITLE:::"+apiRespObj.title);
-             return apiRespObj;
-          }
-                 break;
-        case 2:// suggestion chips
-        
-            if (!error && response.statusCode === 200) {
-                apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.title);
-                  apiRespObj.title=JSON.stringify(body.result.fulfillment.suggestions[i].title);
-            apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.subtitle);
-         //   apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
-         //  image.url
-              apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.image.url);
-           
-            return apiRespObj;
-          }
-                 break;
-        case 3://link_out_chip
-            
-                if (!error &&response.statusCode === 200) {
-             //       apiRespObj.type=JSON.stringify(body.result.fulfillment.type);
-             //       apiRespObj.platform=JSON.stringify(body.result.fulfillment.platform);
-                     apiRespObj.destinationName=JSON.stringify(body.result.fulfillment.destinationName);
-                        apiRespObj.imageurl=JSON.stringify(body.result.fulfillment.url);
-           
-                return apiRespObj;
+    console.log("INSIDE GOOGLE ACTIONS FILE");
+    var respObjArr=[];
+    var obj=(body.result.fulfillment.messages.length);
+    console.log("INSIDE GOOGLE ACTIONS FILE--MESSAGE LENGTH::"+obj);
+
+    for(i=0;i<=obj;i++){
+        console.log("INSIDE GOOGLE ACTIONS FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[i]));
+        var platform_msg = body.result.fulfillment.messages[i];
+        if(platform_msg) {
+            var platform_compare=platform_msg.platform;
+            console.log("PLATFORM:::"+platform_compare);
+            if(platform_compare){
+                if (platform_compare=="google")
+                {
+                    var typeOf = body.result.fulfillment.messages[i].type;
+                    console.log("INSIDE GOOGLE ACTIONS FILE--TYPE::"+typeOf);
+                    var  apiRespObj = new apiResponsePOJO.apiResponseObject();
+                    switch(typeOf){
+                        case 0:// simple_response
+                            if (!error && response.statusCode === 200) {
+                                var  apiRespObj = new apiResponsePOJO.apiResponseObject();
+                                apiRespObj.speech=JSON.stringify(platform_msg.speech);
+                                console.log("SPEECH:::"+apiRespObj.speech);
+                                respObjArr.push(apiRespObj);
+                            }
+                        break;
+                        case 1:// basic_card
+                            if ( !error &&response.statusCode === 200) {
+                                var  apiRespObj = new apiResponsePOJO.apiResponseObject();
+                                apiRespObj.title = platform_msg.title;
+                                apiRespObj.subtitle = platform_msg.subtitle;
+                                apiRespObj.imageUrl = platform_msg.imageUrl;
+                                respObjArr.push(apiRespObj);
+                                console.log("TITLE:::"+apiRespObj.title);
+                            }
+                        break;
+                        case 2:// list
+                            if (!error && response.statusCode === 200) {
+
+                                var  apiRespObj = new apiResponsePOJO.apiResponseObject();
+                                apiRespObj.title=JSON.stringify(platform_msg.title);
+                                console.log("TITLEwwww:::"+apiRespObj.title);
+                                respObjArr.push(apiRespObj);
+                            }
+                        break;
+                        case 3://suggestion_chips
+                            if (!error &&response.statusCode === 200) {
+                                var  apiRespObj = new apiResponsePOJO.apiResponseObject();
+                                apiRespObj.imageUrl=JSON.stringify(platform_msg.imageUrl);
+                                respObjArr.push(apiRespObj);
+                            }
+                        break;
+
+                         case 4://link out chip
+                            if (!error &&response.statusCode === 200) {
+                                var  apiRespObj = new apiResponsePOJO.apiResponseObject();
+                                apiRespObj.imageUrl=JSON.stringify(platform_msg.imageUrl);
+                                respObjArr.push(apiRespObj);
+                            }
+                        break;
+                        case 5:// custom payload
+                                if (!error && response.statusCode === 200) {
+                                    apiRespObj.payload=JSON.stringify(platform_msg.payload);
+                                    respObjArr.push(apiRespObj);
+                              }
+                        break;
+                        default:
+                        break;
+                    }
+
             }
-                 break;
-        case 4:// custome payload
-            
-                    if (!error && response.statusCode === 200) {
-                        apiRespObj.payload=JSON.stringify(body.result.fulfillment.payload);
-                    return apiRespObj;
-                }
-                break;
-       default:
-
-           break;
-     }
+        }
+    }
 
 }
-
-//module.exports.fbResp= lookupResp; 
-
+  return respObjArr;
 }
-
 module.exports.lookupResp=lookupResp;
