@@ -9,8 +9,11 @@ function getApiResp(error,response,body,platform){
   else if(platform == "google"){
     return gAResp.getGaResp(error,response,body);
   }
-  else{
+  elseif(platform == "slack"){
      return slackResp.lookupResp(error,response,body);
+  }
+  else{
+    return slackResp.getApiResp(error,response,body);
   }
 }
 
