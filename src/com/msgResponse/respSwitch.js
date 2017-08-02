@@ -1,7 +1,7 @@
 let fbResp= require("./facebookApiResponse.js");
 let gAResp= require("./googleApiResponse.js");
 let slackResp= require("./slackApiResponse.js");
-let apiaiResp= require("./apiAiResponse.js");
+let apiRespose=require("./apiAiResponse.js")
 
 function getApiResp(error,response,body,platform){
   if(platform == "facebook"){
@@ -14,7 +14,7 @@ function getApiResp(error,response,body,platform){
      return slackResp.lookupResp(error,response,body);
   }
   else{
-    return apiaiResp.getApiResp(error,response,body);
+    return apiRespose.getApiAiResp(error,response,body);
   }
 }
 
