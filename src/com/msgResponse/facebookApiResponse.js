@@ -16,7 +16,7 @@ var lookupResp=function(error,response,body){
 
                switch(typeOf){
 
-                 case 0:// text response
+                  case 0:// text response
                        if(!error && response.statusCode === 200) {
                        var apiRespObj = new apiResponsePOJO.apiResponseObject();
                        apiRespObj.speech=JSON.stringify(body.result.fulfillment.speech).replace(/"/g, "");
@@ -25,7 +25,8 @@ var lookupResp=function(error,response,body){
                        responceObject.push(apiRespObj);
                      }
                      break;
-                case 1:// card
+
+                   case 1:// card
                         if(!error && response.statusCode === 200) {
                         var apiRespObj = new apiResponsePOJO.apiResponseObject();
                         apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
@@ -37,7 +38,7 @@ var lookupResp=function(error,response,body){
                      }
                      break;
 
-                case 2:// queck repl
+                   case 2:// queck repl
                         if(!error && response.statusCode === 200) {
                         var apiRespObj = new apiResponsePOJO.apiResponseObject();
                         apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
@@ -47,7 +48,7 @@ var lookupResp=function(error,response,body){
                       }
                       break;
 
-               case 3://imageUrl
+                  case 3://imageUrl
                        if(!error && response.statusCode === 200) {
                        var apiRespObj = new apiResponsePOJO.apiResponseObject();
                        apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
@@ -57,7 +58,7 @@ var lookupResp=function(error,response,body){
                       }
                       break;
 
-               case 4:// custome
+                  case 4:// custome
                         if(!error && response.statusCode === 200) {
                         var apiRespObj = new apiResponsePOJO.apiResponseObject();
                         apiRespObj.payload=JSON.stringify(body.result.fulfillment.payload);
