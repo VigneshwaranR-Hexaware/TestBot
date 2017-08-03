@@ -80,7 +80,7 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                   console.log(processingBotResp.respType);
                   switch (processingBotResp.respType) {
                     case responseType.SPEECH:
-                        tcResp = checkSpeechResponse(processingResp.speech, processingBotResp.expectedSpeech);
+                        tcResp = checkSpeechResponse(processingBotResp.speech, processingExpResp.expectedSpeech);
                       break;
                     default:
                         tcResp = logger.getTCFooter();
