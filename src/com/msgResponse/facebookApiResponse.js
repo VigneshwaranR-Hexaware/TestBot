@@ -76,4 +76,4 @@ var lookupResp=function(error,response,body){
             }
             return responceObject;
            };
-module.exports.fbResp= lookupResp;
+module.exports.lookupResp= lookupResp;

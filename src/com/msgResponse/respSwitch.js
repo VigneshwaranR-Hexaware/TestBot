@@ -5,7 +5,7 @@ let apiRespose=require("./apiAiResponse.js")
 
 function getApiResp(error,response,body,platform){
   if(platform == "facebook"){
-    return fbResp.getFbResp(error,response,body);
+    return fbResp.lookupResp(error,response,body);
   }
   else if(platform == "google"){
     return gAResp.getGaResp(error,response,body);
