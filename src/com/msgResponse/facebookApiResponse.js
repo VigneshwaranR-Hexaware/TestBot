@@ -20,7 +20,7 @@ var lookupResp=function(error,response,body){
                        if(!error && response.statusCode === 200) {
                        var apiRespObj = new apiResponsePOJO.apiResponseObject();
                        apiRespObj.speech=JSON.stringify(platform_msg.speech).replace(/"/g, "");
-                       console.log("SPEECH:::"+apiRespObj.speech);
+                       console.log("SPEECH FB:::"+apiRespObj.speech);
                        //  return apiRespObj;
                        responceObject.push(apiRespObj);
                      }
@@ -29,10 +29,10 @@ var lookupResp=function(error,response,body){
                    case 1:// card
                         if(!error && response.statusCode === 200) {
                         var apiRespObj = new apiResponsePOJO.apiResponseObject();
-                        apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
-                        apiRespObj.subtitle=JSON.stringify(body.result.fulfillment.subtitle);
-                        apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
-                        console.log("card:::"+apiRespObj.title);
+                        apiRespObj.title=platform_msg.title;
+                        apiRespObj.subtitle=platform_msg.subtitle;
+                        apiRespObj.imageUrl=platform_msg.imageUrl;
+                        console.log("card FB:::"+apiRespObj.title);
                         //return apiRespObj;
                         responceObject.push(apiRespObj);
                      }
@@ -41,8 +41,8 @@ var lookupResp=function(error,response,body){
                    case 2:// queck repl
                         if(!error && response.statusCode === 200) {
                         var apiRespObj = new apiResponsePOJO.apiResponseObject();
-                        apiRespObj.title=JSON.stringify(body.result.fulfillment.title);
-                        console.log("quest repl:::"+apiRespObj.title);
+                        apiRespObj.title=platform_msg.title;
+                        console.log("quest repl: FB::"+apiRespObj.title);
                         //return apiRespObj;
                         responceObject.push(apiRespObj);
                       }
@@ -51,7 +51,7 @@ var lookupResp=function(error,response,body){
                   case 3://imageUrl
                        if(!error && response.statusCode === 200) {
                        var apiRespObj = new apiResponsePOJO.apiResponseObject();
-                       apiRespObj.imageUrl=JSON.stringify(body.result.fulfillment.imageUrl);
+                       apiRespObj.imageUrl=platform_msg..imageUrl;
                        console.log("imageUrl:::"+apiRespObj.imageUrl);
                         //return apiRespObj;
                       responceObject.push(apiRespObj);
@@ -61,7 +61,7 @@ var lookupResp=function(error,response,body){
                   case 4:// custome
                         if(!error && response.statusCode === 200) {
                         var apiRespObj = new apiResponsePOJO.apiResponseObject();
-                        apiRespObj.payload=JSON.stringify(body.result.fulfillment.payload);
+                        apiRespObj.payload=platform_msg.payload;
                         console.log("custome:::"+apiRespObj.payload);
                         //return apiRespObj;
                         responceObject.push(apiRespObj);
