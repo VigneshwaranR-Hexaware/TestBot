@@ -1,5 +1,6 @@
 var apiResponsePOJO=require('../config/apiResponsePOJO.js');
 const logger= require('../service/logService.js');
+var responseType = require('../util/respType.js');
 
 var lookupResp=function(error,response,body){
     logMsg("INSIDE SLACK FILE");
