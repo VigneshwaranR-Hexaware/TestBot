@@ -75,9 +75,9 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
           for(var i=1; i <= expectedRespCount; i++) {
               var processingExpResp = expectedRespCount[i];
               var processingBotResp = botResponse[i];
-              if(processingResp) {
+              if(processingExpResp && processingBotResp) {
                   tcResp = logger.getRespHeader(i);
-                  switch (processingResp.respType) {
+                  switch (processingBotResp.respType) {
                     case responseType.SPEECH:
                         tcResp = checkSpeechResponse(processingResp.speech, processingBotResp.expectedSpeech);
                       break;
