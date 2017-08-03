@@ -50,13 +50,7 @@ function QueryProcessor(responseMap,questArray) {
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           var linetempno=questAndLine[0];
 
-          responseMap.forEach(function(value, key) {
-              console.log(key + ' = ' + JSON.stringify(value));
-          });
-
-
           expectedResponse= responseMap.get(parseInt(linetempno));
-
 
             logMsg("RESPONSE RECEIVED FROM File :::"+JSON.stringify(expectedResponse));
             var result=checkResponse(0, linetempno, questAndLine[1], respObjArrTemp, expectedResponse);
@@ -81,10 +75,9 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
           for(var i=0; i < expectedRespCount; i++) {
               var processingExpResp = expectedResp[i];
               var processingBotResp = botResponse[i];
-              console.log(processingExpResp);
-              console.log(processingBotResp);
               if(processingExpResp && processingBotResp) {
                   tcResp = logger.getRespHeader(i+1);
+                  console.log(processingBotResp.respType);
                   switch (processingBotResp.respType) {
                     case responseType.SPEECH:
                         tcResp = checkSpeechResponse(processingResp.speech, processingBotResp.expectedSpeech);
