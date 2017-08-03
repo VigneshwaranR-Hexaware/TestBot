@@ -24,6 +24,7 @@ var lookupResp=function(error,response,body){
                             if (!error && response.statusCode === 200) {
                                 var  apiRespObj = new apiResponsePOJO.apiResponseObject();
                                 apiRespObj.speech=JSON.stringify(platform_msg.speech);
+                                 apiRespObj.respType=responseType.SPEECH;
                                 logMsg("SPEECH:::"+apiRespObj.speech);
                                 respObjArr.push(apiRespObj);
                             }
@@ -34,6 +35,7 @@ var lookupResp=function(error,response,body){
                                 apiRespObj.title = platform_msg.title;
                                 apiRespObj.subtitle = platform_msg.subtitle;
                                 apiRespObj.imageUrl = platform_msg.imageUrl;
+                                  apiRespObj.respType=responseType.CAROUSEL;
                                 respObjArr.push(apiRespObj);
                                 logMsg("TITLE:::"+apiRespObj.title);
                             }
@@ -43,6 +45,7 @@ var lookupResp=function(error,response,body){
 
                                 var  apiRespObj = new apiResponsePOJO.apiResponseObject();
                                 apiRespObj.title=JSON.stringify(platform_msg.title);
+                                  apiRespObj.respType=responseType.QUICKREPLY;
                                 logMsg("TITLEwwww:::"+apiRespObj.title);
                                 respObjArr.push(apiRespObj);
                             }
@@ -51,12 +54,14 @@ var lookupResp=function(error,response,body){
                             if (!error &&response.statusCode === 200) {
                                 var  apiRespObj = new apiResponsePOJO.apiResponseObject();
                                 apiRespObj.imageUrl=JSON.stringify(platform_msg.imageUrl);
+                                 apiRespObj.respType=responseType.IMAGE;
                                 respObjArr.push(apiRespObj);
                             }
                         break;
                         case 4:// custome payload
                                 if (!error && response.statusCode === 200) {
                                     apiRespObj.payload=JSON.stringify(platform_msg.payload);
+                                      apiRespObj.respType=responseType.PAYLOAD;
                                     respObjArr.push(apiRespObj);
                               }
                         break;

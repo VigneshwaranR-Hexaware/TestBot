@@ -71,7 +71,7 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
       var tcResp = logger.getTCHeader(testUnitInd, lineNo, custSays);
       var expectedRespCount = expectedResp.length;
       //if(expectedRespCount == botResponse.length) {
-      console.log(expectedRespCount);
+
           for(var i=0; i < expectedRespCount; i++) {
               var processingExpResp = expectedResp[i];
               var processingBotResp = botResponse[i];
