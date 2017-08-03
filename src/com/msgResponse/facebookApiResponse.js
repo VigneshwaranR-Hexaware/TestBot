@@ -74,7 +74,8 @@ var lookupResp=function(error,response,body){
                 }
               }
             }
-            if(responceObject==null){
+            if(!responceObject){
+              console.log("INSIDE DEFAULT");
               var apiRespObj = new apiResponsePOJO.apiResponseObject();
               apiRespObj.speech=body.result.fulfillment.messages[0].speech.replace(/"/g, "");
               console.log("SPEECH FB DFAULT:::"+apiRespObj.speech);
