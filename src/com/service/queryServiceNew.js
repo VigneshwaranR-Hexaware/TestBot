@@ -49,6 +49,12 @@ function QueryProcessor(responseMap,questArray) {
 
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           var linetempno=questAndLine[0];
+
+          responseMap.forEach(function(value, key) {
+              console.log(key + ' = ' + JSON.stringify(value));
+          });
+
+
           expectedResponse= responseMap.get(parseInt(linetempno));
 
 
