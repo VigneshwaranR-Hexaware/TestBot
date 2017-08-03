@@ -59,7 +59,7 @@ function pushToMap(lineNumber, respString) {
       var expRespObj = parseExpectedResp(respString);
 
 
-      respPOJOArray.push(respString);
+      respPOJOArray.push(expRespObj);
     }
 }
 
