@@ -19,7 +19,7 @@ var lookupResp=function(error,response,body){
                   case 0:// text response
                        if(!error && response.statusCode === 200) {
                        var apiRespObj = new apiResponsePOJO.apiResponseObject();
-                       apiRespObj.speech=JSON.stringify(body.result.fulfillment.speech).replace(/"/g, "");
+                       apiRespObj.speech=JSON.stringify(platform_msg.speech).replace(/"/g, "");
                        console.log("SPEECH:::"+apiRespObj.speech);
                        //  return apiRespObj;
                        responceObject.push(apiRespObj);
@@ -75,5 +75,5 @@ var lookupResp=function(error,response,body){
               }
             }
             return responceObject;
-           };
+           }
 module.exports.lookupResp= lookupResp;
