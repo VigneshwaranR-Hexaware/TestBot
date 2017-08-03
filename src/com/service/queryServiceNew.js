@@ -45,7 +45,7 @@ function QueryProcessor(responseMap,questArray) {
           var respObjArrTemp=[];
          respObjArrTemp = switchRespose.getApiResp(error, response, body,platform);
          console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
-         var apiRespToCompare=processObj(apiRespObj);
+         var apiRespToCompare=processObj(respObjArrTemp);
          console.log("STRING TO BE COMPARED FROM API::;"+apiRespToCompare);
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           var linetempno=questAndLine[0];
@@ -63,26 +63,28 @@ function QueryProcessor(responseMap,questArray) {
 
 }
 
-function processObj(resp){
-    console.log(resp);
-    var response="";
+function processObj(respObjArrTemp){
+    console.log(respObjArrTemp);
+    var response=[];
+    for(i=0;i<respObjArrTemp.length;i++){
+      var resp=respObjArrTemp[i];
       if((resp.speech != null) || (resp.speech!=undefined)){
         console.log("Entered into loop");
-         response= JSON.stringify(resp.speech);
+         response.push(JSON.stringify(resp.speech));
          console.log("RESPONSE INSIDE PROCESSOBJ SPEEch:::"+response);
       }
       else if((resp.title || resp.subtitle != null)|| (resp.title || resp.subtitle != undefined)){
-          response = (resp.title && resp.subtitle != null)?JSON.stringify(resp.title) + JSON.stringify(resp.subtitle):JSON.stringify(resp.title);
+           response.push( (resp.title && resp.subtitle != null)?JSON.stringify(resp.title) + JSON.stringify(resp.subtitle):JSON.stringify(resp.title));
           console.log("RESPONSE INSIDE PROCESSOBJ CARD:::"+response);
       }
      else if((resp.imageUrl !=null)||(resp.imageUrl != undefined)){
-       response=resp.imageUrl;
+        response.push(resp.imageUrl);
        console.log("Image response ="+ response);
      }
     else if((resp.payload !=null)||(resp.payload != undefined)){
-        response=resp.payload;
+       response.push(resp.payload);
     }
-
+}
      return response;
 }
 
