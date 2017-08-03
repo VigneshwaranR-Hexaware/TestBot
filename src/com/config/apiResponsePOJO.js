@@ -7,6 +7,7 @@ function apiResponseObject() {
   var apispeech = null;
   var expectedSpeech = null;
   var printImage = false;
+  var respType = -1;
 }
 
   module.exports.apiResponseObject = apiResponseObject;

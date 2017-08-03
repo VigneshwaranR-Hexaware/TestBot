@@ -9,16 +9,28 @@ var str= "TestCases"+" "+"Passed =" + passcount + ','+ "Failed =" + failcount + 
 logResult(str);
 }
 
-function logConvResult(lineNo, quest, expResult, recResult, status) {
-    logOnConsole("Line Number :: "+lineNo
-          +"\n       Custumer Asks     : " + quest
-          +"\n       Bot Response      : " + recResult
-          +"\n       Expected Response : " + expResult
-          +"\n       Test Case Status  : " + status
-          +"\n_____________________________________________________");
+
+moduel.exports.getTCHeader = function(testUnitNum, lineNo, quest) {
+    return "Test Unit Index  :: "+testUnitNum
+                +"\n  Line Number  :: "+lineNo
+                +"\n  Custumer Asks : " + quest;
 }
 
-function logOnConsole(str) {
+module.exports.getRespHeader = function(responseIndex) {
+    return "\n\n  Response Index :: " + responseIndex
+}
+
+module.exports.getConvResult = function(expResult, recResult, status) {
+    return "\n       Bot Response      : " + recResult
+          +"\n       Expected Response : " + expResult
+          +"\n       Test Case Status  : " + status;
+}
+
+module.exports.getTCFooter() {
+    return "\n_____________________________________________________";
+}
+
+module.exports.logOnConsole = function(str) {
     console.log(str);
 }
 
@@ -40,5 +52,3 @@ function logResult(str){
 }
 
 module.exports.logResponse=logResponse;
-
-module.exports.logConvResult=logConvResult;

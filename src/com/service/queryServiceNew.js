@@ -13,6 +13,7 @@ const logger= require('./logService.js');
 var util=require('../config/util.js');
 var responsePojo=require('../config/apiResponsePOJO.js');
 var switchRespose=require('../msgResponse/respSwitch.js');
+var responseType = require('../util/respType.js');
 
 var expectedResponse=[];
 var tcPassCount=0;
@@ -55,7 +56,7 @@ function QueryProcessor(responseMap,questArray) {
             if(result) {
                 status = "Passed";
             }
-          logger.logConvResult(linetempno, questAndLine[1], expectedResponse, apiRespToCompare, status);
+        //  logger.logConvResult(linetempno, questAndLine[1], expectedResponse, apiRespToCompare, status);
           QueryProcessor(responseMap, questArray);
   }
       request(options,handleResp);
@@ -86,9 +87,29 @@ function processObj(resp){
      return response;
 }
 
-function checkResponse(botResponse, expectedResp) {
+function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp) {
+      var tcResp = logger.getTCHeader(testUnitInd, lineNo, custSays);
+      var expectedRespCount = expectedResp.length;
+      if(expectedRespCount == botResponse.length) {
 
-      
+          for(var i=1; i <= expectedRespCount; i++) {
+              var processingExpResp = expectedRespCount[i];
+              var processingBotResp = botResponse[i];
+              if(processingResp) {
+                  tcResp = logger.getRespHeader(i);
+                  switch (processingResp.respType) {
+                    case responseType.SPEECH:
+                        tcResp = checkSpeechResponse(processingResp.speech, processingBotResp.expectedSpeech);
+                      break;
+                    default:
+                        tcResp = logger.getTCFooter();
+                      break;
+                  }
+              }
+
+          }
+          logger.logOnConsole(tcResp);
+      }
 
 }
 
