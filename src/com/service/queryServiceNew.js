@@ -90,6 +90,7 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
               }
 
           }
+          tcResp = tcResp + logger.getTCFooter();
           logger.logOnConsole(tcResp);
       //}
 

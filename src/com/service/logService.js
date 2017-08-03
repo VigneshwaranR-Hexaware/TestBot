@@ -31,7 +31,7 @@ module.exports.getConvResult = function(expResult, recResult, status) {
 }
 
 module.exports.getTCFooter = function() {
-    return "\n_____________________________________________________";
+    return "\n_____________________________________________________\n\n";
 }
 
 module.exports.logOnConsole = function(str) {
