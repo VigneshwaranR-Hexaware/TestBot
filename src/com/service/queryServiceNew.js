@@ -77,12 +77,20 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
               var processingBotResp = botResponse[i];
               if(processingExpResp && processingBotResp) {
                   tcResp = tcResp + logger.getRespHeader(i+1);
-
+                    console.log("RESPONSE TYPE"+processingBotResp.respType);
                   switch (processingBotResp.respType) {
                     case responseType.SPEECH:
                         var testResult = checkSpeechResponse(processingBotResp.speech, processingExpResp.expectedSpeech);
                         tcResp = tcResp + logger.getConvResult(processingExpResp.expectedSpeech, processingBotResp.speech, testResult);
                       break;
+
+                      case responseType.CAROUSEL:
+                          var testTitleResult = checkCarouselResponse(processingBotResp.title, processingExpResp.title);
+                          var testSubtitleResult = checkCarouselResponse(processingBotResp.subtitle, processingExpResp.subtitle);
+                          tcResp = tcResp + logger.getCarouselResult(processingExpResp.title,processingBotResp.title,processingExpResp.subtitle,processingBotResp.subtitle,testTitleResult,testSubtitleResult);
+                        break;
+
+
                     default:
                         tcResp = tcResp + logger.getTCFooter();
                       break;
@@ -104,6 +112,19 @@ function checkSpeechResponse(responseFromApi,expectedResponse ){
         var bstMatch = stringSimilarity.findBestMatch(responseFromApi, expectedResponse);
         logMsg("RESULT COMPARE:"+bstMatch.bestMatch.rating );
         return (bstMatch.bestMatch.rating > 0.75);
+      }
+
+      return false;
+
+}
+
+function checkCarouselResponse(responseFromApi,expectedResponse ){
+      logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+
+      if(responseFromApi && expectedResponse) {
+        var bstMatchRating = stringSimilarity.compareTwoStrings(responseFromApi, expectedResponse);
+        logMsg("RESULT COMPARE:"+bstMatchRating );
+        return (bstMatchRating > 0.75);
       }
 
       return false;

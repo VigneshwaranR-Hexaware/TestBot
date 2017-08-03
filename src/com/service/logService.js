@@ -30,6 +30,28 @@ module.exports.getConvResult = function(expResult, recResult, status) {
           +"\n       Test Case Status  : " + testResult;
 }
 
+module.exports.getCarouselResult = function(expTitle,botTitle,expSubTitle,BotSubTitle,testTitleResult,testSubtitleResult) {
+    var testResult = "Passed";
+    if(!(testTitleResult && testSubtitleResult)) {
+        testResult = "Failed";
+    } else if(testTitleResult && testSubtitleResult) {
+        testResult = "Passed";
+    } else if(!testTitleResult) {
+       testResult="Title Failed";
+    } else if(!testSubtitleResult) {
+       testResult="SubTitle Failed";
+    }
+    return "\n       Bot Response      : "
+          +"\n            Title        :  "+botTitle
+          +"\n            SubTitle     :  "+BotSubTitle
+          +"\n       Expected Response : "
+          +"\n            Title        :  "+expTitle
+          +"\n            SubTitle     :  "+expSubTitle
+          +"\n       Test Case Status  : " + testResult;
+}
+
+
+
 module.exports.getTCFooter = function() {
     return "\n_____________________________________________________\n\n";
 }
