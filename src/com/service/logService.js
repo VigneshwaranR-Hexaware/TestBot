@@ -21,9 +21,13 @@ module.exports.getRespHeader = function(responseIndex) {
 }
 
 module.exports.getConvResult = function(expResult, recResult, status) {
+    var testResult = "Passed";
+    if(!status) {
+        testResult = "Failed";
+    }
     return "\n       Bot Response      : " + recResult
           +"\n       Expected Response : " + expResult
-          +"\n       Test Case Status  : " + status;
+          +"\n       Test Case Status  : " + testResult;
 }
 
 module.exports.getTCFooter = function() {
