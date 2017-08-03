@@ -75,6 +75,9 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
           for(var i=0; i < expectedRespCount; i++) {
               var processingExpResp = expectedResp[i];
               var processingBotResp = botResponse[i];
+              console.log("EXP RESPONSE::"+JSON.stringify(expectedResp[i]));
+                console.log("BOTT RESPONSE::"+JSON.stringify(botResponse[i]));
+
               if(processingExpResp && processingBotResp) {
                   tcResp = tcResp + logger.getRespHeader(i+1);
                     console.log("RESPONSE TYPE"+processingBotResp.respType);
