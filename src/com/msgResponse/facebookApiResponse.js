@@ -51,7 +51,7 @@ var lookupResp=function(error,response,body){
                   case 3://imageUrl
                        if(!error && response.statusCode === 200) {
                        var apiRespObj = new apiResponsePOJO.apiResponseObject();
-                       apiRespObj.imageUrl=platform_msg..imageUrl;
+                       apiRespObj.imageUrl=platform_msg.imageUrl;
                        console.log("imageUrl:::"+apiRespObj.imageUrl);
                         //return apiRespObj;
                       responceObject.push(apiRespObj);
