@@ -76,15 +76,15 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
               var processingExpResp = expectedResp[i];
               var processingBotResp = botResponse[i];
               if(processingExpResp && processingBotResp) {
-                  tcResp = logger.getRespHeader(i+1);
-                  console.log(processingBotResp.respType);
+                  tcResp = tcResp + logger.getRespHeader(i+1);
+
                   switch (processingBotResp.respType) {
                     case responseType.SPEECH:
                         var testResult = checkSpeechResponse(processingBotResp.speech, processingExpResp.expectedSpeech);
-                        tcResp = logger.getConvResult(processingExpResp.expectedSpeech, processingBotResp.speech, testResult);
+                        tcResp = tcResp + logger.getConvResult(processingExpResp.expectedSpeech, processingBotResp.speech, testResult);
                       break;
                     default:
-                        tcResp = logger.getTCFooter();
+                        tcResp = tcResp + logger.getTCFooter();
                       break;
                   }
               }
