@@ -46,12 +46,15 @@ function QueryProcessor(responseMap,questArray) {
           var respObjArrTemp=[];
          respObjArrTemp = switchRespose.getApiResp(error, response, body,platform);
          logMsg("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
-         var apiRespToCompare=processObj(apiRespObj);
-         logMsg("STRING TO BE COMPARED FROM API::;"+apiRespToCompare);
+
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
-            var result=checkResponse(apiRespToCompare,expectedResponse);
+
+
+            logMsg("RESPONSE RECEIVED FROM File :::"+JSON.stringify(expectedResponse));
+            var result=checkResponse(0, linetempno, questAndLine[1], respObjArrTemp, expectedResponse);
+
             var status = "failed";
             if(result) {
                 status = "Passed";
@@ -62,29 +65,6 @@ function QueryProcessor(responseMap,questArray) {
       request(options,handleResp);
   }
 
-}
-
-function processObj(resp){
-    logMsg(resp);
-    var response="";
-      if((resp.speech != null) || (resp.speech!=undefined)){
-        logMsg("Entered into loop");
-         response= JSON.stringify(resp.speech);
-         logMsg("RESPONSE INSIDE PROCESSOBJ SPEEch:::"+response);
-      }
-      else if((resp.title || resp.subtitle != null)|| (resp.title || resp.subtitle != undefined)){
-          response = (resp.title && resp.subtitle != null)?JSON.stringify(resp.title) + JSON.stringify(resp.subtitle):JSON.stringify(resp.title);
-          logMsg("RESPONSE INSIDE PROCESSOBJ CARD:::"+response);
-      }
-     else if((resp.imageUrl !=null)||(resp.imageUrl != undefined)){
-       response=resp.imageUrl;
-       logMsg("Image response ="+ response);
-     }
-    else if((resp.payload !=null)||(resp.payload != undefined)){
-        response=resp.payload;
-    }
-
-     return response;
 }
 
 function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp) {
