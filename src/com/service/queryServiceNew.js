@@ -45,7 +45,8 @@ function QueryProcessor(responseMap,questArray) {
           var respObjArrTemp=[];
          respObjArrTemp = switchRespose.getApiResp(error, response, body,platform);
          console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
-         var apiRespToCompare=processObj(respObjArrTemp);
+          var apiRespToCompare=[];
+      apiRespToCompare= processObj(respObjArrTemp);
          console.log("STRING TO BE COMPARED FROM API::;"+apiRespToCompare);
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           var linetempno=questAndLine[0];
