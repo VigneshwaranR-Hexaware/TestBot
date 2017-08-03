@@ -1,29 +1,30 @@
 var apiResponsePOJO=require('../config/apiResponsePOJO.js');
+const logger= require('./logService.js');
 
 var lookupResp=function(error,response,body){
-    console.log("INSIDE GOOGLE ACTIONS FILE");
+    logMsg("INSIDE GOOGLE ACTIONS FILE");
     var respObjArr=[];
     var obj=(body.result.fulfillment.messages.length);
-    console.log("INSIDE GOOGLE ACTIONS FILE--MESSAGE LENGTH::"+obj);
+    logMsg("INSIDE GOOGLE ACTIONS FILE--MESSAGE LENGTH::"+obj);
 
     for(i=0;i<=obj;i++){
-        console.log("INSIDE GOOGLE ACTIONS FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[i]));
+        logMsg("INSIDE GOOGLE ACTIONS FILE--MESSAGE::"+JSON.stringify(body.result.fulfillment.messages[i]));
         var platform_msg = body.result.fulfillment.messages[i];
         if(platform_msg) {
             var platform_compare=platform_msg.platform;
-            console.log("PLATFORM:::"+platform_compare);
+            logMsg("PLATFORM:::"+platform_compare);
             if(platform_compare){
                 if (platform_compare=="google")
                 {
                     var typeOf = body.result.fulfillment.messages[i].type;
-                    console.log("INSIDE GOOGLE ACTIONS FILE--TYPE::"+typeOf);
+                    logMsg("INSIDE GOOGLE ACTIONS FILE--TYPE::"+typeOf);
                     var  apiRespObj = new apiResponsePOJO.apiResponseObject();
                     switch(typeOf){
                         case 0:// simple_response
                             if (!error && response.statusCode === 200) {
                                 var  apiRespObj = new apiResponsePOJO.apiResponseObject();
                                 apiRespObj.speech=JSON.stringify(platform_msg.speech);
-                                console.log("SPEECH:::"+apiRespObj.speech);
+                                logMsg("SPEECH:::"+apiRespObj.speech);
                                 respObjArr.push(apiRespObj);
                             }
                         break;
@@ -34,7 +35,7 @@ var lookupResp=function(error,response,body){
                                 apiRespObj.subtitle = platform_msg.subtitle;
                                 apiRespObj.imageUrl = platform_msg.imageUrl;
                                 respObjArr.push(apiRespObj);
-                                console.log("TITLE:::"+apiRespObj.title);
+                                logMsg("TITLE:::"+apiRespObj.title);
                             }
                         break;
                         case 2:// list
@@ -42,7 +43,7 @@ var lookupResp=function(error,response,body){
 
                                 var  apiRespObj = new apiResponsePOJO.apiResponseObject();
                                 apiRespObj.title=JSON.stringify(platform_msg.title);
-                                console.log("TITLEwwww:::"+apiRespObj.title);
+                                logMsg("TITLEwwww:::"+apiRespObj.title);
                                 respObjArr.push(apiRespObj);
                             }
                         break;
@@ -78,4 +79,10 @@ var lookupResp=function(error,response,body){
 }
   return respObjArr;
 }
+
+var logMsg = function(str) {
+  logger.traceData(str);
+}
+
+
 module.exports.lookupResp=lookupResp;

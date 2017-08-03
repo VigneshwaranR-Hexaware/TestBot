@@ -45,9 +45,9 @@ function QueryProcessor(responseMap,questArray) {
         var platform="slack";
           var respObjArrTemp=[];
          respObjArrTemp = switchRespose.getApiResp(error, response, body,platform);
-         console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
+         logMsg("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
          var apiRespToCompare=processObj(apiRespObj);
-         console.log("STRING TO BE COMPARED FROM API::;"+apiRespToCompare);
+         logMsg("STRING TO BE COMPARED FROM API::;"+apiRespToCompare);
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           var linetempno=questAndLine[0];
           expectedResponse= responseMap.get(parseInt(linetempno));
@@ -65,20 +65,20 @@ function QueryProcessor(responseMap,questArray) {
 }
 
 function processObj(resp){
-    console.log(resp);
+    logMsg(resp);
     var response="";
       if((resp.speech != null) || (resp.speech!=undefined)){
-        console.log("Entered into loop");
+        logMsg("Entered into loop");
          response= JSON.stringify(resp.speech);
-         console.log("RESPONSE INSIDE PROCESSOBJ SPEEch:::"+response);
+         logMsg("RESPONSE INSIDE PROCESSOBJ SPEEch:::"+response);
       }
       else if((resp.title || resp.subtitle != null)|| (resp.title || resp.subtitle != undefined)){
           response = (resp.title && resp.subtitle != null)?JSON.stringify(resp.title) + JSON.stringify(resp.subtitle):JSON.stringify(resp.title);
-          console.log("RESPONSE INSIDE PROCESSOBJ CARD:::"+response);
+          logMsg("RESPONSE INSIDE PROCESSOBJ CARD:::"+response);
       }
      else if((resp.imageUrl !=null)||(resp.imageUrl != undefined)){
        response=resp.imageUrl;
-       console.log("Image response ="+ response);
+       logMsg("Image response ="+ response);
      }
     else if((resp.payload !=null)||(resp.payload != undefined)){
         response=resp.payload;
@@ -119,7 +119,7 @@ function checkSpeechResponse(responseFromApi,expectedResponse ){
 
       if(responseFromApi && expectedResponse) {
         var bstMatch = stringSimilarity.findBestMatch(responseFromApi, expectedResponse);
-        console.log("RESULT COMPARE:"+bstMatch.bestMatch.rating );
+        logMsg("RESULT COMPARE:"+bstMatch.bestMatch.rating );
         return (bstMatch.bestMatch.rating > 0.75);
       }
 
@@ -127,6 +127,8 @@ function checkSpeechResponse(responseFromApi,expectedResponse ){
 
 }
 
-var logMsg = function(str) {}
+var logMsg = function(str) {
+  logger.traceData(str);
+}
 
 module.exports.QueryProcessor=QueryProcessor;

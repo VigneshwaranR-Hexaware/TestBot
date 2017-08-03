@@ -2,23 +2,6 @@ Cust:Hi
 Bot:Hi welcome to vFS Global   Service. How can I help you today?
 Cust:I am So Frustrated with VFS.
 Bot:Sorry for the inconvenience caused to you. Can you please let me know where we lacked in our services so that we will try to improve on it in future? For example Visa Center, Service Quality, Staff behavior, help desk, Our website, Security Standards, Some other issues.
+
 Cust:Visa Center
 Bot:Can you please Provide me with some details on what went wrong?
-Cust:My Visa application document was missing.
-Bot:I will help you to log a complaint here but before proceeding any further will need some additional information?
-Cust:Proceed
-Bot:Can you please provide me your full name
-Cust:Jacob Allan
-Bot:Can you also help me with your contact number where we can reach you, If required.
-Cust:7894561230
-Bot:Please provide your email id
-Cust:jacoballan@gmail.com
-Bot:May i know which country you are applying the visa or service for?
-Cust:USA
-Bot:And your current Country of residence?
-Cust:India
-Bot:May i know the city where you availed or will avail VFS Service
-Cust:Chennai
-Bot:And finally any piece of evidence or information that you may want to include in your complaint? A Document or photograph?
-Cust:No
-Bot:Thank You for the above information. Your complaint has been successfully logged into our system and someone from our end will get back to you within 24 hours.

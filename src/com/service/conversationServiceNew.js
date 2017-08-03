@@ -63,7 +63,9 @@ function pushToMap(lineNumber, respString) {
     }
 }
 
-var logMsg = function(str) {}
+var logMsg = function(str) {
+    logger.traceData(str);
+}
 
 var parseExpectedResp = function(respString) {
     var expRespObj = new expectedRespObj.apiResponseObject();
