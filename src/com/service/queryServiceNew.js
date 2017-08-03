@@ -71,10 +71,12 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
       var tcResp = logger.getTCHeader(testUnitInd, lineNo, custSays);
       var expectedRespCount = expectedResp.length;
       //if(expectedRespCount == botResponse.length) {
-
+      console.log(expectedRespCount);
           for(var i=1; i <= expectedRespCount; i++) {
               var processingExpResp = expectedResp[i];
               var processingBotResp = botResponse[i];
+              console.log(processingExpResp);
+              console.log(processingBotResp);
               if(processingExpResp && processingBotResp) {
                   tcResp = logger.getRespHeader(i);
                   switch (processingBotResp.respType) {
