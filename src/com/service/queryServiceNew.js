@@ -31,7 +31,7 @@ function QueryProcessor(responseMap,questArray) {
      {
        'cache-control': 'no-cache',
        'content-type': 'application/json',
-       authorization: appConfig.vfsfacebookacces
+       authorization: appConfig.vfsfacebookaccess
      },
     body: {
         query: [questAndLine[1]], lang: 'en', sessionId: '1234567'
