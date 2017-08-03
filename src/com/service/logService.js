@@ -52,7 +52,7 @@ function logResult(str){
 }
 
 module.exports.traceData = function(str) {
-    console.log(str);
+    //console.log(str);
 }
 
 module.exports.logResponse=logResponse;
