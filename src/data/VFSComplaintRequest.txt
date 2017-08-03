@@ -2,6 +2,6 @@ Cust:Hi
 Bot:Hi welcome to vFS Global   Service. How can I help you today?
 Cust:I am So Frustrated with VFS.
 Bot:Sorry for the inconvenience caused to you. Can you please let me know where we lacked in our services so that we will try to improve on it in future? For example Visa Center, Service Quality, Staff behavior, help desk, Our website, Security Standards, Some other issues.
-Bot:IMAGE<::>Welcome to VFS Card<::>Test Card subtitle
+Bot:IMAGE--Welcome to VFS Card--Test Card subtitle
 Cust:Visa Center
 Bot:Can you please Provide me with some details on what went wrong?

@@ -9,8 +9,6 @@ var expectedRespObj = require('../config/apiResponsePOJO.js');
 
 const responseMap = new Map();
 
-processRequest();
-
 function processRequest() {
 const fs = require('fs');
 var currentLine=null;
@@ -37,6 +35,9 @@ var quest = new Array();
   });
 
 rl.on('end', function () {
+  /*responseMap.forEach(function(value, key) {
+  console.log(key + ' = ' + JSON.stringify(value));
+});*/
   var queryServ = new QueryService.QueryProcessor(responseMap, quest);
   });
 
@@ -93,3 +94,5 @@ var parseExpectedResp = function(respString) {
     }
     return expRespObj;
 }
+
+processRequest();
