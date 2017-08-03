@@ -74,6 +74,15 @@ var lookupResp=function(error,response,body){
                 }
               }
             }
+            if(responceObject==null){
+              var apiRespObj = new apiResponsePOJO.apiResponseObject();
+              apiRespObj.speech=body.result.fulfillment.messages[0].speech.replace(/"/g, "");
+              console.log("SPEECH FB DFAULT:::"+apiRespObj.speech);
+              //  return apiRespObj;
+              responceObject.push(apiRespObj);
+            }
+
+
             return responceObject;
            }
 module.exports.lookupResp= lookupResp;
