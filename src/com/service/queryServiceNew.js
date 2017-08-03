@@ -31,7 +31,7 @@ function QueryProcessor(responseMap,questArray) {
      {
        'cache-control': 'no-cache',
        'content-type': 'application/json',
-       authorization: appConfig.developerAccessToken
+       authorization: appConfig.vfsfacebookacces
      },
     body: {
         query: [questAndLine[1]], lang: 'en', sessionId: '1234567'
@@ -41,7 +41,7 @@ function QueryProcessor(responseMap,questArray) {
 
    var handleResp = function(error,response, body){
     var  apiRespObj = new responsePojo.apiResponseObject();
-        var platform="slack";
+        var platform="facebook";
           var respObjArrTemp=[];
          respObjArrTemp = switchRespose.getApiResp(error, response, body,platform);
          console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
