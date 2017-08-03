@@ -45,7 +45,7 @@ function QueryProcessor(responseMap,questArray) {
         var platform="slack";
           var respObjArrTemp=[];
          respObjArrTemp = switchRespose.getApiResp(error, response, body,platform);
-           console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
+           //console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
 
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           var linetempno=questAndLine[0];
@@ -75,12 +75,11 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
           for(var i=0; i < expectedRespCount; i++) {
               var processingExpResp = expectedResp[i];
               var processingBotResp = botResponse[i];
-              console.log("EXP RESPONSE::"+JSON.stringify(expectedResp[i]));
-                console.log("BOTT RESPONSE::"+JSON.stringify(botResponse[i]));
+
 
               if(processingExpResp && processingBotResp) {
                   tcResp = tcResp + logger.getRespHeader(i+1);
-                    console.log("RESPONSE TYPE"+processingBotResp.respType);
+
                   switch (processingBotResp.respType) {
                     case responseType.SPEECH:
                         var testResult = checkSpeechResponse(processingBotResp.speech, processingExpResp.expectedSpeech);
