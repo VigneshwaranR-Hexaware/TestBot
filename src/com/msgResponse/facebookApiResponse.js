@@ -1,6 +1,6 @@
 var apiResponsePOJO=require('../config/apiResponsePOJO.js');
 var responseType = require('../util/respType.js');
-const logger= require('./logService.js');
+const logger= require('../service/logService.js');
 
 var lookupResp=function(error,response,body){
 

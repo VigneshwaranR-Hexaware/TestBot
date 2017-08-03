@@ -1,5 +1,5 @@
 var apiResponsePOJO=require('../config/apiResponsePOJO.js');
-const logger= require('./logService.js');
+const logger= require('../service/logService.js');
 
 var getApiResp=function(error,response,body){
 var apiRespArray=[];

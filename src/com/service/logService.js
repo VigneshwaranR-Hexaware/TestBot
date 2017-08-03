@@ -10,7 +10,7 @@ logResult(str);
 }
 
 
-moduel.exports.getTCHeader = function(testUnitNum, lineNo, quest) {
+module.exports.getTCHeader = function(testUnitNum, lineNo, quest) {
     return "Test Unit Index  :: "+testUnitNum
                 +"\n  Line Number  :: "+lineNo
                 +"\n  Custumer Asks : " + quest;
