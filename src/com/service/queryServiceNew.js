@@ -73,7 +73,7 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
       if(expectedRespCount == botResponse.length) {
 
           for(var i=1; i <= expectedRespCount; i++) {
-              var processingExpResp = expectedRespCount[i];
+              var processingExpResp = expectedResp[i];
               var processingBotResp = botResponse[i];
               if(processingExpResp && processingBotResp) {
                   tcResp = logger.getRespHeader(i);
