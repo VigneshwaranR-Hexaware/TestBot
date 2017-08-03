@@ -26,7 +26,7 @@ module.exports.getConvResult = function(expResult, recResult, status) {
           +"\n       Test Case Status  : " + status;
 }
 
-module.exports.getTCFooter() {
+module.exports.getTCFooter = function() {
     return "\n_____________________________________________________";
 }
 
