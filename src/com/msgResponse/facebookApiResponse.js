@@ -74,6 +74,7 @@ var lookupResp=function(error,response,body){
                 }
               }
             }
+            console.log("TO PRINT THE RSP OBJ"+JSON.stringify(responceObject));
             if(!responceObject){
               console.log("INSIDE DEFAULT");
               var apiRespObj = new apiResponsePOJO.apiResponseObject();
