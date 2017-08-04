@@ -6,3 +6,4 @@ module.exports.tcInputfile='./src/data/inputFile.txt';
 module.exports.cityMicroAccessToken='Bearer 7842094f16b048ed9e53d81e0264bc87';
 module.exports.citiinputfile='./src/data/CityMicrostrategyTest.txt';
 module.exports.vfsfacebookaccess="Bearer 4b81cbd1686c416bad563b7ea2f4a36d";
+module.exports.platform='facebook';
