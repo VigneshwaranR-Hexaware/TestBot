@@ -152,7 +152,7 @@ function checkPayloadResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
       if(responseFromApi && expectedResponse) {
-        return assert(arrayequals(responseFromApi, expectedResponse)) ;
+        return(arrayequals(responseFromApi, expectedResponse)) ;
           }
 
       return false;
