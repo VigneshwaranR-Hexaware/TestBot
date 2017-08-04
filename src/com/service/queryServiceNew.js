@@ -94,9 +94,10 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                         break;
 
                         case responseType.PAYLOAD:
+                        console.log("going to compare payload");
                             var testTextResult = checkStringResponse(processingBotResp.speech, processingExpResp.title);
-                            var testpayloadtitleResult = checkStringResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
-                            tcResp = tcResp + logger.getCarouselResult(processingBotResp.speech,processingExpResp.expectedSpeech,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTitleResult,testSubtitleResult);
+                            var testpayloadtitleResult = checkPayloadResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
+                            tcResp = tcResp + logger.getCarouselResult(processingBotResp.speech,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTextResult,testpayloadtitleResult);
                           break;
 
                     default:
@@ -149,9 +150,10 @@ function checkPayloadResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
       if(responseFromApi && expectedResponse) {
-        var bstMatchRating = stringSimilarity.compareTwoStrings(responseFromApi, expectedResponse);
-        logMsg("RESULT COMPARE:"+bstMatchRating );
-        return (bstMatchRating > 0.75);
+      if(responseFromApi==expectedResponse){
+        return true;
+      }
+
       }
 
       return false;
