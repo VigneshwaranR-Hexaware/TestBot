@@ -88,14 +88,14 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                       break;
 
                       case responseType.CAROUSEL:
-                          var testTitleResult = checkCarouselResponse(processingBotResp.title, processingExpResp.title);
-                          var testSubtitleResult = checkCarouselResponse(processingBotResp.subtitle, processingExpResp.subtitle);
+                          var testTitleResult = checkStringResponse(processingBotResp.title, processingExpResp.title);
+                          var testSubtitleResult = checkStringResponse(processingBotResp.subtitle, processingExpResp.subtitle);
                           tcResp = tcResp + logger.getCarouselResult(processingExpResp.title,processingBotResp.title,processingExpResp.subtitle,processingBotResp.subtitle,testTitleResult,testSubtitleResult);
                         break;
 
                         case responseType.PAYLOAD:
-                            var testTextResult = checkSpeechResponse(processingBotResp.speech, processingExpResp.expectedSpeech);
-                            var testpayloadtitleResult = checkCarouselResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
+                            var testTextResult = checkStringResponse(processingBotResp.speech, processingExpResp.title);
+                            var testpayloadtitleResult = checkStringResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.speech,processingExpResp.expectedSpeech,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTitleResult,testSubtitleResult);
                           break;
 
@@ -131,7 +131,7 @@ function checkSpeechResponse(responseFromApi,expectedResponse ){
 
 }
 
-function checkCarouselResponse(responseFromApi,expectedResponse ){
+function checkStringResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
       if(responseFromApi && expectedResponse) {
@@ -143,6 +143,22 @@ function checkCarouselResponse(responseFromApi,expectedResponse ){
       return false;
 
 }
+
+
+function checkPayloadResponse(responseFromApi,expectedResponse ){
+      logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+
+      if(responseFromApi && expectedResponse) {
+        var bstMatchRating = stringSimilarity.compareTwoStrings(responseFromApi, expectedResponse);
+        logMsg("RESULT COMPARE:"+bstMatchRating );
+        return (bstMatchRating > 0.75);
+      }
+
+      return false;
+
+}
+
+
 
 var logMsg = function(str) {
   logger.traceData(str);
