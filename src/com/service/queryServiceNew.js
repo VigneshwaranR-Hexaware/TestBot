@@ -45,7 +45,7 @@ function QueryProcessor(responseMap,questArray) {
         var platform=appConfig.platform;
           var respObjArrTemp=[];
          respObjArrTemp = switchRespose.getApiResp(error, response, body,platform);
-           console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
+           //console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
 
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           var linetempno=questAndLine[0];
@@ -94,9 +94,10 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                         break;
 
                         case responseType.PAYLOAD:
-                        console.log("going to compare payload");
+
                             var testTextResult = checkStringResponse(processingBotResp.speech, processingExpResp.title);
                             var testpayloadtitleResult = checkPayloadResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
+                            console.log("RESULT::"+testTextResult+":::"+testpayloadtitleResult);
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.speech,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTextResult,testpayloadtitleResult);
                           break;
 
