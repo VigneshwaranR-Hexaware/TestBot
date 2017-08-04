@@ -95,7 +95,7 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
 
                         case responseType.PAYLOAD:
                             var testTextResult = checkCarouselResponse(processingBotResp.speech, processingExpResp.expectedSpeech);
-                            var testSubtitleResult = checkCarouselResponse(processingBotResp.subtitle, processingExpResp.subtitle);
+                            //var testSubtitleResult = checkCarouselResponse(processingBotResp.subtitle, processingExpResp.subtitle);
                             tcResp = tcResp + logger.getCarouselResult(processingExpResp.title,processingBotResp.title,processingExpResp.subtitle,processingBotResp.subtitle,testTitleResult,testSubtitleResult);
                           break;
 
