@@ -70,7 +70,8 @@ function QueryProcessor(responseMap,questArray) {
 function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp) {
       var tcResp = logger.getTCHeader(testUnitInd, lineNo, custSays);
       var expectedRespCount = expectedResp.length;
-    //  if(expectedRespCount == botResponse.length) {
+      var botRespCount = botResponse.length;
+     if(expectedRespCount == botRespCount) {
 
           for(var i=0; i < expectedRespCount; i++) {
               var processingExpResp = expectedResp[i];
@@ -94,15 +95,20 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
 
 
                     default:
-                        tcResp = tcResp + logger.getTCFooter();
+                        logMsg("Response type not found "+processingBotResp.respType)
                       break;
                   }
               }
 
           }
-          tcResp = tcResp + logger.getTCFooter();
-          logger.logOnConsole(tcResp);
-    //  }
+
+      } else{
+          tcResp = "\nExpected Response does not match with Bot responses. Expected Responses is / are "+expectedRespCount
+                    +" where recevied bot responses is / are "+botRespCount + "\n";
+      }
+
+      tcResp = tcResp + logger.getTCFooter();
+      logger.logOnConsole(tcResp);
 
 }
 
