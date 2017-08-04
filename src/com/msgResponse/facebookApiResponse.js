@@ -87,6 +87,7 @@ var lookupResp=function(error,response,body){
               var apiRespObj = new apiResponsePOJO.apiResponseObject();
               apiRespObj.speech=body.result.fulfillment.messages[0].speech.replace(/"/g, "");
               logMsg("SPEECH FB DFAULT:::"+apiRespObj.speech);
+               apiRespObj.respType=responseType.SPEECH;
               //  return apiRespObj;
               responceObject.push(apiRespObj);
             }
@@ -96,8 +97,8 @@ var lookupResp=function(error,response,body){
            }
 
 var logMsg = function(str) {
-  //  logger.traceData(str);
-  console.log(str);
+    logger.traceData(str);
+  //console.log(str);
 }
 
 
