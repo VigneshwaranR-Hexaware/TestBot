@@ -70,7 +70,7 @@ function QueryProcessor(responseMap,questArray) {
 function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp) {
       var tcResp = logger.getTCHeader(testUnitInd, lineNo, custSays);
       var expectedRespCount = expectedResp.length;
-      if(expectedRespCount == botResponse.length) {
+    //  if(expectedRespCount == botResponse.length) {
 
           for(var i=0; i < expectedRespCount; i++) {
               var processingExpResp = expectedResp[i];
@@ -102,7 +102,7 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
           }
           tcResp = tcResp + logger.getTCFooter();
           logger.logOnConsole(tcResp);
-      }
+    //  }
 
 }
 
