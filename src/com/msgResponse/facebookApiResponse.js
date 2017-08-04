@@ -96,7 +96,8 @@ var lookupResp=function(error,response,body){
            }
 
 var logMsg = function(str) {
-    logger.traceData(str);
+  //  logger.traceData(str);
+  console.log(str);
 }
 
 
