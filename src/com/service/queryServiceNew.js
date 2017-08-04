@@ -5,6 +5,7 @@ var apiai = require('apiai');
 const bodyParser = require('body-parser');
 var request = require("request");
 var stringSimilarity = require('string-similarity');
+var arrayequals = require('array-equal');
 
 const JSONbig = require('json-bigint');
 const assert = require('assert');
@@ -151,11 +152,8 @@ function checkPayloadResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
       if(responseFromApi && expectedResponse) {
-      if(responseFromApi==expectedResponse){
-        return true;
-      }
-
-      }
+        return assert(arrayequals(responseFromApi, expectedResponse)) ;
+          }
 
       return false;
 
