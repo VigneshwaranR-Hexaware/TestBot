@@ -151,19 +151,19 @@ function checkStringResponse(responseFromApi,expectedResponse ){
 function checkArrayResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
-for(i=0;i<responseFromApi.length;i++){
+/*for(i=0;i<responseFromApi.length;i++){
   var result;
-  if(expectedResponse.indexOf(responseFromApi[i]) > -1) {
+  if(responseFromApi[i].indexOf(expectedResponse) > -1) {
       result=true;
   }else{
     result=false;
     break;
       }
-}
-    /*  if(responseFromApi && expectedResponse) {
+}*/
+      if(responseFromApi && expectedResponse) {
         return(arrayequals(responseFromApi, expectedResponse)) ;
-      }*/
-      return result;
+      }
+      return false;
 
 }
 

@@ -6,7 +6,7 @@ const assert = require('assert');
 
 var arrayequals = require('array-equal');
 
-var arry1=['a','c','b','g'];
+var arry1=['a'];
 var arry2=['a','b','g','c'];
 var testpayloadtitleResult = checkPayloadResponse(arry1, arry2);
 console.log("result::"+testpayloadtitleResult);
@@ -15,7 +15,9 @@ function checkPayloadResponse(responseFromApi,expectedResponse ){
 
 for(i=0;i<responseFromApi.length;i++){
   var result;
-  if(expectedResponse.indexOf(responseFromApi[i]) > -1) {
+  console.log(responseFromApi[i]+responseFromApi.length);
+  if(responseFromApi[i].indexOf(expectedResponse) > -1) {
+    console.log("inside");
       result=true;
   }else{
     result=false;
