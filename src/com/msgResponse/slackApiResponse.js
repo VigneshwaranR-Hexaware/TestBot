@@ -61,9 +61,19 @@ var lookupResp=function(error,response,body){
                         break;
                         case 4:// custome payload
                                 if (!error && response.statusCode === 200) {
-                                    apiRespObj.payload=JSON.stringify(platform_msg.payload);
-                                      apiRespObj.respType=responseType.PAYLOAD;
-                                    respObjArr.push(apiRespObj);
+                                  var apiRespObj = new apiResponsePOJO.apiResponseObject();
+                                //  apiRespObj.payload=platform_msg.payload;
+                                  apiRespObj.speech=platform_msg.payload.facebook.text;
+                                  logMsg("customer speech:::"+platform_msg.payload.facebook.text);
+                                  var titlearray=[];
+                                  for(i=0;i<platform_msg.payload.facebook.quick_replies.length;i++){
+                                    titlearray.push(platform_msg.payload.facebook.quick_replies[i].title);
+                                  }
+                                  //return apiRespObj;
+                                  apiRespObj.custPayloadTitle=titlearray;
+                                  logMsg("customer title:::"+apiRespObj.custPayloadTitle);
+                                  apiRespObj.respType=responseType.PAYLOAD;
+                                  respObjArr.push(apiRespObj);
                               }
                         break;
                         default:
@@ -75,6 +85,18 @@ var lookupResp=function(error,response,body){
     }
 
 }
+
+logMsg("TO PRINT THE RSP OBJ"+JSON.stringify(respObjArr));
+if(!(respObjArr.length>0)){
+  logMsg("INSIDE DEFAULT");
+  var apiRespObj = new apiResponsePOJO.apiResponseObject();
+  apiRespObj.speech=body.result.fulfillment.messages[0].speech.replace(/"/g, "");
+  logMsg("SPEECH FB DFAULT:::"+apiRespObj.speech);
+   apiRespObj.respType=responseType.SPEECH;
+  //  return apiRespObj;
+  respObjArr.push(apiRespObj);
+}
+
   return respObjArr;
 }
 

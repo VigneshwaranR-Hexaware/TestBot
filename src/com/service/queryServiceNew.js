@@ -98,7 +98,6 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
 
                             var testTextResult = checkStringResponse(processingBotResp.speech, processingExpResp.title);
                             var testpayloadtitleResult = checkArrayResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
-                            console.log("RESULT::"+testTextResult+":::"+testpayloadtitleResult);
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.speech,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTextResult,testpayloadtitleResult);
                           break;
 
