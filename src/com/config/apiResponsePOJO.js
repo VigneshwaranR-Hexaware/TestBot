@@ -8,6 +8,7 @@ function apiResponseObject() {
   var expectedSpeech = null;
   var printImage = false;
   var respType = -1;
+  var custPayloadTitle = null; //Array of cutom payload array
 }
 
   module.exports.apiResponseObject = apiResponseObject;

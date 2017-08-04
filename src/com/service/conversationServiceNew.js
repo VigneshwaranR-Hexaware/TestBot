@@ -72,8 +72,9 @@ var parseExpectedResp = function(respString) {
     var expRespObj = new expectedRespObj.apiResponseObject();
     if(respString.startsWith(appConst.IMAGE_TOKEN)) {
         var imageTokens = respString.split(appConst.RESPONSE_SPLITER);
-        if(imageTokens.length > 1) {
-            if(imageTokens.length == 2) {
+        var imageTokenLen = imageTokens.length;
+        if(imageTokenLen > 1) {
+            if(imageTokenLen == 2) {
                 if(imageTokens[1].indexOf('//') >= 0) {
                     expRespObj.imageUrl = imageTokens[1];
                 } else {
@@ -82,6 +83,7 @@ var parseExpectedResp = function(respString) {
             } else {
                 expRespObj.title = imageTokens[1];
                 expRespObj.subtitle = imageTokens[2];
+                handleCustPayload(imageTokens, expRespObj)
             }
         } else if(respString === appConst.IMAGE_TOKEN) {
             expRespObj.printImage = true;
@@ -95,4 +97,14 @@ var parseExpectedResp = function(respString) {
     return expRespObj;
 }
 
-processRequest();
+var handleCustPayload = function(expectedResp, expRespObj) {
+    if(expectedResp) {
+        //Custom payload logic
+        expectedResp.shift(); //To remove the keyword IMAGE from index 0
+        expectedResp.shift(); //To remove the title from index 1
+        expRespObj.custPayloadTitle = expectedResp;
+    }
+}
+
+//processRequest();
+console.log(parseExpectedResp("IMAGE--Hi--Good Morning--Good Evening--Good Night--Good Afternoon"));
