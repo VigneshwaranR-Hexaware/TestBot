@@ -67,7 +67,7 @@ var lookupResp=function(error,response,body){
                   case 4:// custome
                         if(!error && response.statusCode === 200) {
                         var apiRespObj = new apiResponsePOJO.apiResponseObject();
-                        apiRespObj.payload=platform_msg.payload;
+                      //  apiRespObj.payload=platform_msg.payload;
                         apiRespObj.speech=platform_msg.payload.facebook.text;
                         logMsg("customer speech:::"+apiRespObj.payload.facebook.text);
                         var titlearray=[];
