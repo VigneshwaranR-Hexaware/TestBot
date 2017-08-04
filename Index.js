@@ -6,21 +6,27 @@ const assert = require('assert');
 
 var arrayequals = require('array-equal');
 
-var arry1=['a','d','c'];
-var arry2=['a','b','c'];
+var arry1=['a','c','b','g'];
+var arry2=['a','b','g','c'];
 var testpayloadtitleResult = checkPayloadResponse(arry1, arry2);
 console.log("result::"+testpayloadtitleResult);
 
 function checkPayloadResponse(responseFromApi,expectedResponse ){
-      console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
-      if(responseFromApi && expectedResponse) {
-        console.log(arrayequals(responseFromApi, expectedResponse));
-        return (arrayequals(responseFromApi, expectedResponse)) ;
-          }
-
-      return false;
+for(i=0;i<responseFromApi.length;i++){
+  var result;
+  if(expectedResponse.indexOf(responseFromApi[i]) > -1) {
+      result=true;
+  }else{
+    result=false;
+    break;
+      }
 
 }
+    /*  if(responseFromApi && expectedResponse) {
+        return(arrayequals(responseFromApi, expectedResponse)) ;
+      }*/
+      return result;
 
+}
 //queryService.preparingResponse();

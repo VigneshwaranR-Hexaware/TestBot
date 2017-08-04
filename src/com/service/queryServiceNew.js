@@ -97,7 +97,7 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                         case responseType.PAYLOAD:
 
                             var testTextResult = checkStringResponse(processingBotResp.speech, processingExpResp.title);
-                            var testpayloadtitleResult = checkPayloadResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
+                            var testpayloadtitleResult = checkArrayResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
                             console.log("RESULT::"+testTextResult+":::"+testpayloadtitleResult);
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.speech,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTextResult,testpayloadtitleResult);
                           break;
@@ -148,14 +148,22 @@ function checkStringResponse(responseFromApi,expectedResponse ){
 }
 
 
-function checkPayloadResponse(responseFromApi,expectedResponse ){
+function checkArrayResponse(responseFromApi,expectedResponse ){
       logMsg("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
-      if(responseFromApi && expectedResponse) {
+for(i=0;i<responseFromApi.length;i++){
+  var result;
+  if(expectedResponse.indexOf(responseFromApi[i]) > -1) {
+      result=true;
+  }else{
+    result=false;
+    break;
+      }
+}
+    /*  if(responseFromApi && expectedResponse) {
         return(arrayequals(responseFromApi, expectedResponse)) ;
-          }
-
-      return false;
+      }*/
+      return result;
 
 }
 
