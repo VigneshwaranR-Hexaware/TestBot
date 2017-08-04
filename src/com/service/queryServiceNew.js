@@ -45,7 +45,7 @@ function QueryProcessor(responseMap,questArray) {
         var platform=appConfig.platform;
           var respObjArrTemp=[];
          respObjArrTemp = switchRespose.getApiResp(error, response, body,platform);
-          // console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
+           console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
 
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           var linetempno=questAndLine[0];
@@ -93,6 +93,11 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                           tcResp = tcResp + logger.getCarouselResult(processingExpResp.title,processingBotResp.title,processingExpResp.subtitle,processingBotResp.subtitle,testTitleResult,testSubtitleResult);
                         break;
 
+                        case responseType.PAYLOAD:
+                            var testTextResult = checkCarouselResponse(processingBotResp.speech, processingExpResp.expectedSpeech);
+                            var testSubtitleResult = checkCarouselResponse(processingBotResp.subtitle, processingExpResp.subtitle);
+                            tcResp = tcResp + logger.getCarouselResult(processingExpResp.title,processingBotResp.title,processingExpResp.subtitle,processingBotResp.subtitle,testTitleResult,testSubtitleResult);
+                          break;
 
                     default:
                         logMsg("Response type not found "+processingBotResp.respType)

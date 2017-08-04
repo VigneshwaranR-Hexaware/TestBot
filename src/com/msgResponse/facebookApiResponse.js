@@ -68,8 +68,15 @@ var lookupResp=function(error,response,body){
                         if(!error && response.statusCode === 200) {
                         var apiRespObj = new apiResponsePOJO.apiResponseObject();
                         apiRespObj.payload=platform_msg.payload;
-                        logMsg("custome:::"+apiRespObj.payload);
+                        apiRespObj.speech=platform_msg.payload.facebook.text;
+                        logMsg("customer speech:::"+apiRespObj.payload.facebook.text);
+                        var titlearray=[];
+                        for(i=0;i<platform_msg.payload.facebook.quick_replies.length;i++){
+                          titlearray.push(platform_msg.payload.facebook.quick_replies[i].title);
+                        }
                         //return apiRespObj;
+                        apiRespObj.custPayloadTitle=titlearray;
+                        logMsg("customer title:::"+apiRespObj.custPayloadTitle);
                         apiRespObj.respType=responseType.PAYLOAD;
                         responceObject.push(apiRespObj);
                        }
@@ -97,8 +104,8 @@ var lookupResp=function(error,response,body){
            }
 
 var logMsg = function(str) {
-    logger.traceData(str);
-  //console.log(str);
+    //logger.traceData(str);
+  console.log(str);
 }
 
 
