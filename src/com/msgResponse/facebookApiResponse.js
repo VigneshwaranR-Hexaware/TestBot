@@ -81,12 +81,13 @@ var lookupResp=function(error,response,body){
                         apiRespObj.custPayloadTitle=titlearray;
                       //  logMsg("customer title:::"+apiRespObj.custPayloadTitle);
                     }else if(platform_msg.payload.facebook.attachment.payload.elements){
-                      if(platform_msg.payload.facebook.attachment.payload.elements.title)
-                    apiRespObj.title=platform_msg.payload.facebook.attachment.payload.elements.title;
-                    if(platform_msg.payload.facebook.attachment.payload.elements.subtitle)
-                    apiRespObj.subtitle=platform_msg.payload.facebook.attachment.payload.elements.subtitle;
-                    if(platform_msg.payload.facebook.attachment.payload.elements.image_url)
-                    apiRespObj.imageUrl=platform_msg.payload.facebook.attachment.payload.elements.image_url;
+                      logMsg("INSIDE ELEMENTS::"+platform_msg.payload.facebook.attachment.payload.elements);
+                      if(platform_msg.payload.facebook.attachment.payload.elements[0].title)
+                    apiRespObj.title=platform_msg.payload.facebook.attachment.payload.elements[0].title;
+                    if(platform_msg.payload.facebook.attachment.payload.elements[0].subtitle)
+                    apiRespObj.subtitle=platform_msg.payload.facebook.attachment.payload.elements[0].subtitle;
+                    if(platform_msg.payload.facebook.attachment.payload.elements[0].image_url)
+                    apiRespObj.imageUrl=platform_msg.payload.facebook.attachment.payload.elements[0].image_url;
 
                     }
 
