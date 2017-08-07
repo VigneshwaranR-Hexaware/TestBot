@@ -1,5 +1,5 @@
 Cust:Hi
-Bot:IMAGE--Greetings from Bi Service Agent!--We've got the solution to all your queries.
+Bot:IMAGE--Greetings from BI Service Agent!--We've got the solution to all your queries.
 Cust:Incident
 Bot:IMAGE--Incident Request(IR)
 Cust:Create IR
