@@ -50,6 +50,29 @@ module.exports.getCarouselResult = function(expTitle,botTitle,expSubTitle,BotSub
           +"\n       Test Case Status  : " + testResult;
 }
 
+module.exports.getQuickReplyResult = function(expTitle,botTitle,testTitleResult) {
+    var testResult = "Passed";
+    if(!testTitleResult) {
+        testResult = "Failed";
+    }
+    return "\n       Bot Response      : "
+          +"\n            Title        :  "+botTitle
+          +"\n       Expected Response : "
+          +"\n            Title        :  "+expTitle
+          +"\n       Test Case Status  : " + testResult;
+}
+
+module.exports.getImageResult = function(expTitle,botTitle,testImageResult) {
+    var testResult = "Passed";
+    if(!testImageResult) {
+        testResult = "Failed";
+    }
+    return "\n       Bot Response      : "
+          +"\n            ImageUrl        :  "+botTitle
+          +"\n       Expected Response : "
+          +"\n            ImageUrl        :  "+expTitle
+          +"\n       Test Case Status  : " + testResult;
+}
 
 
 module.exports.getTCFooter = function() {

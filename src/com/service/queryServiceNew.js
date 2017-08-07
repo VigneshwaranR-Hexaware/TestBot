@@ -101,6 +101,18 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.speech,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTextResult,testpayloadtitleResult);
                           break;
 
+                          case responseType.QUICKREPLY:
+
+                                var testTitleResult = checkStringResponse(processingBotResp.title, processingExpResp.title);
+                              tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,testTitleResult);
+                            break;
+
+                            case responseType.IMAGE:
+
+                                var testImageResult = checkStringResponse(processingBotResp.imageUrl, processingExpResp.imageUrl);
+                                tcResp = tcResp + logger.getCarouselResult(processingBotResp.imageUrl, processingExpResp.imageUrl,testImageResult);
+                              break;
+
                     default:
                         logMsg("Response type not found "+processingBotResp.respType)
                       break;
