@@ -78,7 +78,7 @@ var lookupResp=function(error,response,body){
                       }
                         //return apiRespObj;
                         apiRespObj.custPayloadTitle=titlearray;
-                        logMsg("customer title:::"+apiRespObj.custPayloadTitle);
+                      //  logMsg("customer title:::"+apiRespObj.custPayloadTitle);
                         apiRespObj.respType=responseType.PAYLOAD;
                         responceObject.push(apiRespObj);
                        }
@@ -106,8 +106,8 @@ var lookupResp=function(error,response,body){
            }
 
 var logMsg = function(str) {
-    logger.traceData(str);
-  //console.log(str);
+  //  logger.traceData(str);
+  console.log(str);
 }
 
 
