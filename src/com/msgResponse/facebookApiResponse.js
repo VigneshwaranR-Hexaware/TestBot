@@ -71,9 +71,11 @@ var lookupResp=function(error,response,body){
                         apiRespObj.speech=platform_msg.payload.facebook.text;
                         logMsg("customer speech:::"+platform_msg.payload.facebook.text);
                         var titlearray=[];
+                        if(platform_msg.payload.facebook.quick_replies){
                         for(i=0;i<platform_msg.payload.facebook.quick_replies.length;i++){
                           titlearray.push(platform_msg.payload.facebook.quick_replies[i].title);
                         }
+                      }
                         //return apiRespObj;
                         apiRespObj.custPayloadTitle=titlearray;
                         logMsg("customer title:::"+apiRespObj.custPayloadTitle);
