@@ -97,28 +97,31 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                         case responseType.PAYLOAD:
                           if(processingBotResp.title)
                             var testTextResult = checkStringResponse(processingBotResp.title, processingExpResp.title);
-                              if(processingBotResp.subtitle)
+                            if(processingBotResp.subtitle)
                             var testSubtitleResult = checkStringResponse(processingBotResp.subtitle, processingExpResp.subtitle);
 
                             if(processingBotResp.custPayloadTitle){
                             var testpayloadtitleResult = checkArrayResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTextResult,testpayloadtitleResult);
                           }else{
+                            if(!testSubtitleResult){
+                              tcResp = tcResp + logger.getQuickReplyResult(processingBotResp.title,processingExpResp.title,testTitleResult);
+                            }else{
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.subtitle,processingExpResp.subtitle,testTitleResult,testSubtitleResult);
-
+                          }
                           }
                           break;
 
                           case responseType.QUICKREPLY:
 
                                 var testTitleResult = checkStringResponse(processingBotResp.title, processingExpResp.title);
-                              tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,testTitleResult);
+                              tcResp = tcResp + logger.getQuickReplyResult(processingBotResp.title,processingExpResp.title,testTitleResult);
                             break;
 
                             case responseType.IMAGE:
 
                                 var testImageResult = checkStringResponse(processingBotResp.imageUrl, processingExpResp.imageUrl);
-                                tcResp = tcResp + logger.getCarouselResult(processingBotResp.imageUrl, processingExpResp.imageUrl,testImageResult);
+                                tcResp = tcResp + logger.getImageResult(processingBotResp.imageUrl, processingExpResp.imageUrl,testImageResult);
                               break;
 
                     default:
