@@ -46,7 +46,7 @@ function QueryProcessor(responseMap,questArray) {
         var platform=appConfig.platform;
           var respObjArrTemp=[];
          respObjArrTemp = switchRespose.getApiResp(error, response, body,platform);
-           //console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
+           console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
 
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           var linetempno=questAndLine[0];
@@ -95,10 +95,18 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                         break;
 
                         case responseType.PAYLOAD:
+                          if(processingBotResp.title)
+                            var testTextResult = checkStringResponse(processingBotResp.title, processingExpResp.title);
+                              if(processingBotResp.subtitle)
+                            var testSubtitleResult = checkStringResponse(processingBotResp.subtitle, processingExpResp.subtitle);
 
-                            var testTextResult = checkStringResponse(processingBotResp.speech, processingExpResp.title);
+                            if(processingBotResp.custPayloadTitle){
                             var testpayloadtitleResult = checkArrayResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
-                            tcResp = tcResp + logger.getCarouselResult(processingBotResp.speech,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTextResult,testpayloadtitleResult);
+                            tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTextResult,testpayloadtitleResult);
+                          }else{
+                            tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.subtitle,processingExpResp.subtitle,testTitleResult,testSubtitleResult);
+
+                          }
                           break;
 
                           case responseType.QUICKREPLY:

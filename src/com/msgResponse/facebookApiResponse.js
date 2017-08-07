@@ -69,7 +69,7 @@ var lookupResp=function(error,response,body){
                         var apiRespObj = new apiResponsePOJO.apiResponseObject();
                       //  apiRespObj.payload=platform_msg.payload;
                       if(platform_msg.payload.facebook.text){
-                        apiRespObj.speech=platform_msg.payload.facebook.text;
+                        apiRespObj.title=platform_msg.payload.facebook.text;
                         logMsg("customer speech:::"+platform_msg.payload.facebook.text);
                         var titlearray=[];
                         if(platform_msg.payload.facebook.quick_replies){
@@ -96,6 +96,7 @@ var lookupResp=function(error,response,body){
                         responceObject.push(apiRespObj);
                        }
                        break;
+
                        default:
                        break;
                        }
