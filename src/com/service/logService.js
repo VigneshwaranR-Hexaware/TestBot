@@ -20,7 +20,7 @@ module.exports.getRespHeader = function(responseIndex) {
     return "\n\n  Response Index :: " + responseIndex
 }
 
-module.exports.getConvResult = function(expResult, recResult, status) {
+module.exports.getConvResult = function(recResult,expResult,status) {
     var testResult = "Passed";
     if(!status) {
         testResult = "Failed";
@@ -30,7 +30,7 @@ module.exports.getConvResult = function(expResult, recResult, status) {
           +"\n       Test Case Status  : " + testResult;
 }
 
-module.exports.getCarouselResult = function(expTitle,botTitle,expSubTitle,BotSubTitle,testTitleResult,testSubtitleResult) {
+module.exports.getCarouselResult = function(botTitle,expTitle,BotSubTitle,expSubTitle,testTitleResult,testSubtitleResult) {
     var testResult = "Passed";
     if(!(testTitleResult && testSubtitleResult)) {
         testResult = "Failed";
@@ -50,7 +50,7 @@ module.exports.getCarouselResult = function(expTitle,botTitle,expSubTitle,BotSub
           +"\n       Test Case Status  : " + testResult;
 }
 
-module.exports.getQuickReplyResult = function(expTitle,botTitle,testTitleResult) {
+module.exports.getQuickReplyResult = function(botTitle,expTitle,testTitleResult) {
     var testResult = "Passed";
     if(!testTitleResult) {
         testResult = "Failed";
@@ -62,7 +62,7 @@ module.exports.getQuickReplyResult = function(expTitle,botTitle,testTitleResult)
           +"\n       Test Case Status  : " + testResult;
 }
 
-module.exports.getImageResult = function(expTitle,botTitle,testImageResult) {
+module.exports.getImageResult = function(botTitle,expTitle,testImageResult) {
     var testResult = "Passed";
     if(!testImageResult) {
         testResult = "Failed";

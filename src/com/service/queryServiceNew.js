@@ -85,13 +85,13 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                   switch (processingBotResp.respType) {
                     case responseType.SPEECH:
                         var testResult = checkSpeechResponse(processingBotResp.speech, processingExpResp.expectedSpeech);
-                        tcResp = tcResp + logger.getConvResult(processingExpResp.expectedSpeech, processingBotResp.speech, testResult);
+                        tcResp = tcResp + logger.getConvResult( processingBotResp.speech,processingExpResp.expectedSpeech,testResult);
                       break;
 
                       case responseType.CAROUSEL:
                           var testTitleResult = checkStringResponse(processingBotResp.title, processingExpResp.title);
                           var testSubtitleResult = checkStringResponse(processingBotResp.subtitle, processingExpResp.subtitle);
-                          tcResp = tcResp + logger.getCarouselResult(processingExpResp.title,processingBotResp.title,processingExpResp.subtitle,processingBotResp.subtitle,testTitleResult,testSubtitleResult);
+                          tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.subtitle,processingExpResp.subtitle,testTitleResult,testSubtitleResult);
                         break;
 
                         case responseType.PAYLOAD:
