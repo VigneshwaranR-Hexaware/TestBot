@@ -133,7 +133,7 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
           }
 
       } else{
-          tcResp = "\nExpected Response does not match with Bot responses. Expected Responses is / are "+expectedRespCount
+          tcResp = tcResp +"\nExpected Response does not match with Bot responses. Expected Responses is / are "+expectedRespCount
                     +" where recevied bot responses is / are "+botRespCount + "\n";
       }
 
