@@ -1,18 +1,18 @@
 Cust:Hi
-Bot:IMAGE--Greetings from Bi Service Agent!--We've got the solution to all your queries
+Bot:IMAGE--Greetings from Bi Service Agent!--We've got the solution to all your queries.
 Cust:Incident Req.(IR)
 Bot:IMAGE--Incident Request(IR)
 Cust:Create IR
 Bot:IMAGE--Please choose a Severity Level for the Incident Request.(If not sure,please select 'Low')--High--Medium--Low
 Cust:Low
-Bot:Please provide a description.(For ex:"My mouse is not working.")
+Bot:Please provide a description.(For ex My mouse is not working.)
 Cust:My keyboard is not working
-Bot:Your incident description is:My keyboard is not working
+Bot:Your incident description is My keyboard is not working
 Bot:IMAGE--Have i got you right--Yes--No--Cancel
 Cust:Yes
 Bot:IMAGE--We have logged your incident in our system with the incident id 'INC 0010367'
 Cust:Check status
-Bot:Below are the details for teh requested incident:-Incident ID:INC 0010367 Short Description:My keyboard is not working Status:New Assigned To:Yet to be assigned
+Bot:Below are the details for the requested incident:-Incident ID:INC 0010367 Short Description:My keyboard is not working Status:New Assigned To:Yet to be assigned
 Cust:Thanks
 Bot:OK as you say.Is there anything else i can help you with?
 Bot:IMAGE--Select No thanks to say goodbye--Yes--No Thanks
