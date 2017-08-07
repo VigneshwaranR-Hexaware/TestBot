@@ -102,7 +102,7 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
 
                             if(processingBotResp.custPayloadTitle){
                             var testpayloadtitleResult = checkArrayResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
-                            tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTextResult,testpayloadtitleResult);
+                            tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTitleResult,testpayloadtitleResult);
                           }else{
                             if(!testSubtitleResult){
                               tcResp = tcResp + logger.getQuickReplyResult(processingBotResp.title,processingExpResp.title,testTitleResult);
