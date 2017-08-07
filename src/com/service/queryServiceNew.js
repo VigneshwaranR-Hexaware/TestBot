@@ -95,8 +95,8 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                         break;
 
                         case responseType.PAYLOAD:
-                          if(processingBotResp.title)
-                            var testTextResult = checkStringResponse(processingBotResp.title, processingExpResp.title);
+                            if(processingBotResp.title)
+                            var testTitleResult = checkStringResponse(processingBotResp.title, processingExpResp.title);
                             if(processingBotResp.subtitle)
                             var testSubtitleResult = checkStringResponse(processingBotResp.subtitle, processingExpResp.subtitle);
 
