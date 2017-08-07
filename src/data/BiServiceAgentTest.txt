@@ -16,5 +16,5 @@ Bot:Below are the details for the requested incident -Incident ID-INC 0010367 Sh
 Cust:Thanks
 Bot:OK as you say.Is there anything else i can help you with?
 Bot:IMAGE--Select No thanks to say goodbye--Yes--No Thanks
-Cust:No Thanks
+Cust:bye
 Bot:Thanks for chatting with me.
