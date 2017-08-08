@@ -63,7 +63,10 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
           var failed = false;
 
           //Logic to check the intent should come here
+          var platform=appConfig.intentplatform;
 
+          var respObj = switchRespose.getApiResp(error, response, body,platform);
+             //console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
 
           if(failed || error) {
               failedUtterances.push(utteranceToTest);

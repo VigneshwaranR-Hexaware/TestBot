@@ -6,14 +6,14 @@ const assert = require('assert');
 
 var arrayequals = require('array-equal');
 
-var arry1=['a'];
-var arry2=['a','b','g','c'];
+var arry1=['Watch on Youtube,What to do?,What causes this?,Another query,Thats all,Contact Us'];
+var arry2=['Watch on Youtube,What to do?,What causes this?,Another query,Thats all,Contact Us'];
 var testpayloadtitleResult = checkPayloadResponse(arry1, arry2);
 console.log("result::"+testpayloadtitleResult);
 
 function checkPayloadResponse(responseFromApi,expectedResponse ){
 
-for(i=0;i<responseFromApi.length;i++){
+/*for(i=0;i<responseFromApi.length;i++){
   var result;
   console.log(responseFromApi[i]+responseFromApi.length);
   if(responseFromApi[i].indexOf(expectedResponse) > -1) {
@@ -24,10 +24,10 @@ for(i=0;i<responseFromApi.length;i++){
     break;
       }
 
-}
-    /*  if(responseFromApi && expectedResponse) {
+}*/
+      if(responseFromApi && expectedResponse) {
         return(arrayequals(responseFromApi, expectedResponse)) ;
-      }*/
+      }
       return result;
 
 }

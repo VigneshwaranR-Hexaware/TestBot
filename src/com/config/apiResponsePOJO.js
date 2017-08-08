@@ -9,6 +9,8 @@ function apiResponseObject() {
   var printImage = false;
   var respType = -1;
   var custPayloadTitle = null; //Array of cutom payload array
+  var actionName=null;
+  var intentName=null;
 }
 
   module.exports.apiResponseObject = apiResponseObject;
