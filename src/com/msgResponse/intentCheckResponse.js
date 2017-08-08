@@ -10,7 +10,7 @@ var lookupResp=function(error,response,body){
  apiRespObj.actionName=body.result.action;
  apiRespObj.intentName=body.result.metadata.intentName;
 
-  console.log("action and intent::"+apiRespObj.actionName+"::::"+apiRespObj.intentName);
+  //console.log("action and intent::"+apiRespObj.actionName+"::::"+apiRespObj.intentName);
 return apiRespObj;
 
 }
