@@ -25,7 +25,7 @@ function processRequest() {
             var tcPassedCount = 0;
             var tcFailedCount = 0;
             var totalTC = 0;
-            var queryServ = new QueryService.QueryProcessor(responseMap, quest);
+            checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC);
       });
 
       reader.on('error',function(err){
