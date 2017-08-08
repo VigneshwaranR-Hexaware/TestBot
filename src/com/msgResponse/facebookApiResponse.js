@@ -85,12 +85,12 @@ var lookupResp=function(error,response,body){
                           }else if(platform_msg.payload.facebook.attachment.payload.elements){
                             logMsg("INSIDE ELEMENTS::"+platform_msg.payload.facebook.attachment.payload.elements);
                             for(i=0;i<platform_msg.payload.facebook.attachment.payload.elements.length;i++){
-                              if(platform_msg.payload.facebook.attachment.payload.elements[0].title)
-                                apiRespObj.title=platform_msg.payload.facebook.attachment.payload.elements[0].title;
-                              if(platform_msg.payload.facebook.attachment.payload.elements[0].subtitle)
-                                apiRespObj.subtitle=platform_msg.payload.facebook.attachment.payload.elements[0].subtitle;
-                              if(platform_msg.payload.facebook.attachment.payload.elements[0].image_url)
-                                apiRespObj.imageUrl=platform_msg.payload.facebook.attachment.payload.elements[0].image_url;
+                              if(platform_msg.payload.facebook.attachment.payload.elements[i].title)
+                                apiRespObj.title=platform_msg.payload.facebook.attachment.payload.elements[i].title;
+                              if(platform_msg.payload.facebook.attachment.payload.elements[i].subtitle)
+                                apiRespObj.subtitle=platform_msg.payload.facebook.attachment.payload.elements[i].subtitle;
+                              if(platform_msg.payload.facebook.attachment.payload.elements[i].image_url)
+                                apiRespObj.imageUrl=platform_msg.payload.facebook.attachment.payload.elements[i].image_url;
                                 apiRespObj.respType=responseType.PAYLOAD;
                                   responceObject.push(apiRespObj);
 
@@ -123,8 +123,8 @@ var lookupResp=function(error,response,body){
            }
 
 var logMsg = function(str) {
-  //  logger.traceData(str);
-  console.log(str);
+   logger.traceData(str);
+  //console.log(str);
 }
 
 

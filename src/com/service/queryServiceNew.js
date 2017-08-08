@@ -102,6 +102,7 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
 
                             if(processingBotResp.custPayloadTitle){
                             var testpayloadtitleResult = checkArrayResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
+                            console.log("testpayloadtitle result::"+testpayloadtitleResult);
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTitleResult,testpayloadtitleResult);
                           }else{
                             if(!testSubtitleResult){
@@ -161,7 +162,7 @@ function checkStringResponse(responseFromApi,expectedResponse ){
 
       if(responseFromApi && expectedResponse) {
         var bstMatchRating = stringSimilarity.compareTwoStrings(responseFromApi, expectedResponse);
-        console.log("RESULT COMPARE:"+bstMatchRating );
+        logMsg("RESULT COMPARE:"+bstMatchRating );
         return (bstMatchRating > 0.75);
       }
 
