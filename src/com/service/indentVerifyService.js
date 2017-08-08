@@ -73,7 +73,7 @@ console.log("INTENT FROM API:"+respObj.intentName+"EXPECTED:::"+appConfig.TEST_I
                  failedUtterances.push(utteranceToTest);
                  tcFailedCount++;
              } else {
-                 tcPassCount ++;
+                 tcPassedCount ++;
              }
 
           checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC);
