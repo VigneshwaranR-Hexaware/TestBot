@@ -73,13 +73,13 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
 
           //Logic to check the intent should come here
           var respObj = switchRespose.getApiResp(error, response, body, appConfig.PLATFORM_INTENT);
-<<<<<<< HEAD
+
 //console.log("INTENT FROM API:"+respObj.intentName+"EXPECTED:::"+appConfig.TEST_INTENT_NAME);
              if(respObj.intentName != appConfig.TEST_INTENT_NAME || error) {
-=======
+
 
              if((respObj.intentName != expectedIndent) || error) {
->>>>>>> ce4ef0fa7c44218528231b413a9eba3710e2e812
+
                  failedUtterances.push(utteranceToTest);
                  tcFailedCount++;
                  console.log("INTENT FROM API: "+respObj.intentName+" EXPECTED::: "+expectedIndent);
