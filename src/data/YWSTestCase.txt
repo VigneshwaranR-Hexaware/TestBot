@@ -1,0 +1,24 @@
+Cust:Hi
+Bot:Hi, I am YW Assistant. I can help you on queries regarding water issues or taste and smell.--Hi, how's it going? I'm YW Assistant from Yorkshire water
+Bot:IMAGE--Water Quality Issue--Please choose the type of issue you may be having with the water quality
+Cust:Water Taste or Smell
+Bot:Looks like you are having issues with water taste or smell. Please help me by choosing one of the exact issue from below.
+Bot:IMAGE--Chlorine Taste or Smell--The water has an identifiable chlorine-like taste or smell www.yorkshirewater.com
+Bot:IMAGE--Chemical Taste or Smell--The water has an odd chemical like taste or smell www.yorkshirewater.com
+Bot:IMAGE--Petrol or Diesel Taste or Smell--The water has a recognisable fuel like taste or smell like petrol or diesel www.yorkshirewater.com
+Bot:IMAGE--Metallic/Bitter Taste or Smell--The water has an unique alkaline bitter or metallic taste or smell www.yorkshirewater.com
+Bot:IMAGE--Earthy/Musty Taste or Smell--The water is an earth or dirt-like taste or smell www.yorkshirewater.com
+Cust:chlorine
+Bot:IMAGE--Chlorine Taste or Smell--Choose an option for more info or tap here to view website www.yorkshirewater.com
+Cust:chlorine_to_do
+Bot:To minimise the taste fill a glass jug or bottle with tap water, cover it and place it in the fridge. After an hour the smell or taste should have gone. We recommend using the chilled water within 24 hours
+Bot:IMAGE--Anything else?--Watch on Youtube--What causes this--Is it harmful?--Another query--That's all--Contact Us
+Cust:chlorine_cause
+Bot:By law we must disinfect all public water supplies. Most of the time we use chlorine-based chemicals to ensure water is safe to drink and contains no organisms which could cause illness. We only add just enough chlorine to disinfect it to minimise the taste and smell
+Bot:Washing machines and dishwashers: A chlorine-like tastes can be cause by the hose which carries water from the supply pipe to your dishwasher and washing machine. Increases in water pressure can cause the flexi-hose to expand like a balloon. When the pressure is released, the hose collapses and can squirt water back into your supply pipe
+Bot:IMAGE--Anything else?--Watch on Youtube--What causes this--Is it harmful?--Another query--That's all--Contact Us
+Cust:chlorine_harmful
+Bot:No. We only add enough chlorine to disinfect, whilst minimising taste and smell
+Bot:IMAGE--Anything else?--Watch on Youtube--What causes this--Is it harmful?--Another query--That's all--Contact Us
+Cust:that's all
+Bot:Thank you for contacting Yorkshire Water. Have a nice day.
