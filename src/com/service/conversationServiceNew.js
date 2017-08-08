@@ -26,11 +26,13 @@ var quest = new Array();
         var prefix=currentLine.split(":");
         if(prefix[0]=='Cust'){
                 custLineNo = lineno;
-                quest.push(lineno+'::'+prefix[1]);
+                currentLine = currentLine.replace("Cust:", "");
+                quest.push(lineno+'::'+ currentLine);
                 readQuestiong++;
         }
         else if (prefix[0]=='Bot') {
-                pushToMap(custLineNo, prefix[1]);
+                currentLine = currentLine.replace("Bot:", "");
+                pushToMap(custLineNo, currentLine);
         }
   });
 
