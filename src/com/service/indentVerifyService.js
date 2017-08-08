@@ -12,12 +12,11 @@ var switchRespose=require('../msgResponse/respSwitch.js');
 var responseType = require('../util/respType.js');
 
 
-function processRequest() {
+function processRequest(expIndentName) {
     const fs = require('fs');
 
     var utterances = new Array();;
 
-    var expIndentName = process.argv[2];
     var reader = new LineReader(appConfig.YWSinputfile);
 
     var quest = new Array();
@@ -35,7 +34,7 @@ function processRequest() {
             var tcFailedCount = 0;
             var totalTC = 0;
 
-            checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC);
+            checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expIndentName);
       });
 
       reader.on('error',function(err){
@@ -98,4 +97,4 @@ console.log("INTENT FROM API:"+respObj.intentName+"EXPECTED:::"+expectedIndent);
 
 
 
-processRequest();
+processRequest(process.argv[2]);
