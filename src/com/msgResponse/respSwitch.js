@@ -14,7 +14,7 @@ function getApiResp(error,response,body,platform){
   else if(platform == "slack"){
      return slackResp.lookupResp(error,response,body);
   }
-  else if(platform=="check intent"){
+  else if(platform=="checkintent"){
     return intentResp.lookupResp(error,response,body);
   }
   else{

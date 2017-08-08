@@ -63,10 +63,8 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
           var failed = false;
 
           //Logic to check the intent should come here
-          var platform=appConfig.intentplatform;
+          var respObj = switchRespose.getApiResp(error, response, body, appConfig.PLATFORM_INTENT);
 
-          var respObj = switchRespose.getApiResp(error, response, body,platform);
-             //console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
              if(respObj.intentName != appConfig.TEST_INTENT_NAME || error) {
                  failedUtterances.push(utteranceToTest);
                  tcFailedCount++;
@@ -78,6 +76,12 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
      }
 
       request(options,handleResp);
+  } else {
+        console.log("Testing has been completed. Please find the summary"
+                    +"\n   Total TC Count     :: "+totalTC
+                    +"\n   Passed TC Count    :: "+tcPassedCount
+                    +"\n   Failed TC Count    :: "+tcFailedCount
+                    +"\n   Failed utterances  :: "+failedUtterances);
   }
 
 }

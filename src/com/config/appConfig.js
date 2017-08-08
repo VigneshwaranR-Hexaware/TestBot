@@ -12,3 +12,4 @@ module.exports.biagentAccessToken='Bearer 7f8b1e54bc5a4a1a93e0fe776d0ce0bb';
 module.exports.YWSinputfile='./src/data/YWSTestCase.txt';
 module.exports.YWSaccesstoken='Bearer c857028100e04eb2b0e9cbe15c779146';
 module.exports.TEST_INTENT_NAME="";
+module.exports.PLATFORM_INTENT="checkintent";
