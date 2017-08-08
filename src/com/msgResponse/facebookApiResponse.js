@@ -85,6 +85,7 @@ var lookupResp=function(error,response,body){
                           }else if(platform_msg.payload.facebook.attachment.payload.elements){
                             logMsg("INSIDE ELEMENTS::"+platform_msg.payload.facebook.attachment.payload.elements);
                             for(i=0;i<platform_msg.payload.facebook.attachment.payload.elements.length;i++){
+                              var apiRespObj = new apiResponsePOJO.apiResponseObject();
                               if(platform_msg.payload.facebook.attachment.payload.elements[i].title)
                                 apiRespObj.title=platform_msg.payload.facebook.attachment.payload.elements[i].title;
                               if(platform_msg.payload.facebook.attachment.payload.elements[i].subtitle)
@@ -107,7 +108,7 @@ var lookupResp=function(error,response,body){
                 }
               }
             }
-            logMsg("TO PRINT THE RSP OBJ"+JSON.stringify(responceObject));
+            console.log("TO PRINT THE RSP OBJ"+JSON.stringify(responceObject));
             if(!(responceObject.length>0)){
               logMsg("INSIDE DEFAULT");
               var apiRespObj = new apiResponsePOJO.apiResponseObject();
