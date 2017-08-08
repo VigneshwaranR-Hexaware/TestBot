@@ -3,7 +3,7 @@ var jsUtil=require('util');
 var appConfig = require('../config/appConfig.js');
 var logService=require('./logService');
 var QueryService=require('./queryServiceNew');
-var util=require('../config/util.js');
+var appConfig=require('../config/appConfig');
 var appConst = require('../util/appConstants.js');
 var expectedRespObj = require('../config/apiResponsePOJO.js');
 
@@ -67,13 +67,12 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
 
           var respObj = switchRespose.getApiResp(error, response, body,platform);
              //console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
-
-          if(failed || error) {
-              failedUtterances.push(utteranceToTest);
-              tcFailedCount++;
-          } else {
-              tcPassCount ++;
-          }
+             if(respObj.intentName != appConfig.TEST_INTENT_NAME || error) {
+                 failedUtterances.push(utteranceToTest);
+                 tcFailedCount++;
+             } else {
+                 tcPassCount ++;
+             }
 
           checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC);
      }
