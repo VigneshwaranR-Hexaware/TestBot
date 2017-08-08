@@ -7,6 +7,9 @@ var appConfig=require('../config/appConfig');
 var appConst = require('../util/appConstants.js');
 var expectedRespObj = require('../config/apiResponsePOJO.js');
 var request = require("request");
+var responsePojo=require('../config/apiResponsePOJO.js');
+var switchRespose=require('../msgResponse/respSwitch.js');
+var responseType = require('../util/respType.js');
 
 function processRequest() {
     const fs = require('fs');
