@@ -85,3 +85,4 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
   }
 
 }
+processRequest();
