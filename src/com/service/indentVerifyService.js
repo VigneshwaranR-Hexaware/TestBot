@@ -96,7 +96,7 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
         console.log("      Failed utterances are as follows ");
               for(var i=0; i < failedUtterances.length; i++) {
                   var lineDetail = failedUtterances[i];
-                  console.log("     "+lineDetail.lineNo +" :: "+lineDetail.line);
+                  console.log(lineDetail.line);
               }
 
   }
