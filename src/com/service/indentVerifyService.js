@@ -41,7 +41,7 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
     var processCompleted = false;
     if(utterances.length > 0 ) {
           totalTC ++;
-          var utteranceToTest = questArray.shift();
+          var utteranceToTest = utterances.shift();
           var options = {
               method: 'POST',
               url: 'https://api.api.ai/v1/query',
