@@ -6,6 +6,7 @@ var QueryService=require('./queryServiceNew');
 var appConfig=require('../config/appConfig');
 var appConst = require('../util/appConstants.js');
 var expectedRespObj = require('../config/apiResponsePOJO.js');
+var request = require("request");
 
 function processRequest() {
     const fs = require('fs');
