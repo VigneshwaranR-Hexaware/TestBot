@@ -11,17 +11,21 @@ var responsePojo=require('../config/apiResponsePOJO.js');
 var switchRespose=require('../msgResponse/respSwitch.js');
 var responseType = require('../util/respType.js');
 
-function processRequest() {
+
+function processRequest(expIndentName, dataFile) {
     const fs = require('fs');
 
     var utterances = new Array();;
 
-
-    var reader = new LineReader(appConfig.YWSinputfile);
+    var reader = new LineReader(dataFile);
 
     var quest = new Array();
       reader.on('line',function(lineno,line) {
-            utterances.push(line);
+          var lineDetails = {
+              "lineNo" : lineno,
+              "line" : line
+          };
+            utterances.push(lineDetails);
       });
 
       reader.on('end', function () {
@@ -29,7 +33,8 @@ function processRequest() {
             var tcPassedCount = 0;
             var tcFailedCount = 0;
             var totalTC = 0;
-            checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC);
+
+            checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expIndentName);
       });
 
       reader.on('error',function(err){
@@ -41,7 +46,7 @@ var logMsg = function(str) {
     logger.traceData(str);
 }
 
-function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC) {
+function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent) {
     var processCompleted = false;
     if(utterances.length > 0 ) {
           totalTC ++;
@@ -57,7 +62,7 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
                   authorization: appConfig.developerAccessToken
               },
               body: {
-                  query: [utteranceToTest], lang: 'en', sessionId: '1234567'
+                  query: [utteranceToTest.line], lang: 'en', sessionId: '1234567'
               },
               json: true
           };
@@ -68,15 +73,21 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
 
           //Logic to check the intent should come here
           var respObj = switchRespose.getApiResp(error, response, body, appConfig.PLATFORM_INTENT);
+<<<<<<< HEAD
 //console.log("INTENT FROM API:"+respObj.intentName+"EXPECTED:::"+appConfig.TEST_INTENT_NAME);
              if(respObj.intentName != appConfig.TEST_INTENT_NAME || error) {
+=======
+
+             if((respObj.intentName != expectedIndent) || error) {
+>>>>>>> ce4ef0fa7c44218528231b413a9eba3710e2e812
                  failedUtterances.push(utteranceToTest);
                  tcFailedCount++;
+                 console.log("INTENT FROM API: "+respObj.intentName+" EXPECTED::: "+expectedIndent);
              } else {
                  tcPassedCount ++;
              }
 
-          checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC);
+          checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent);
      }
 
       request(options,handleResp);
@@ -84,9 +95,14 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
         console.log("Testing has been completed. Please find the summary"
                     +"\n   Total TC Count     :: "+totalTC
                     +"\n   Passed TC Count    :: "+tcPassedCount
-                    +"\n   Failed TC Count    :: "+tcFailedCount
-                    +"\n   Failed utterances  :: "+failedUtterances);
+                    +"\n   Failed TC Count    :: "+tcFailedCount);
+        console.log("      Failed utterances are as follows ");
+              for(var i=0; i < failedUtterances.length; i++) {
+                  console.log("     "+failedUtterances.lineNo +" :: "+failedUtterances.line);
+              }
+
   }
 
 }
-processRequest();
+
+processRequest(process.argv[2], appConfig.INDENT_VERIFY_PATH+process.argv[3]);

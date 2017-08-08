@@ -13,3 +13,5 @@ module.exports.YWSinputfile='./src/data/YWSIntentTestCase.txt';
 module.exports.YWSaccesstoken='Bearer c857028100e04eb2b0e9cbe15c779146';
 module.exports.TEST_INTENT_NAME="WaterAppearanceIssue";
 module.exports.PLATFORM_INTENT="checkintent";
+
+module.exports.INDENT_VERIFY_PATH="./src/data/ywsindentdatas/"
