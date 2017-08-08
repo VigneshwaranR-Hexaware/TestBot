@@ -12,12 +12,12 @@ var switchRespose=require('../msgResponse/respSwitch.js');
 var responseType = require('../util/respType.js');
 
 
-function processRequest(expIndentName) {
+function processRequest(expIndentName, dataFile) {
     const fs = require('fs');
 
     var utterances = new Array();;
 
-    var reader = new LineReader(appConfig.YWSinputfile);
+    var reader = new LineReader(dataFile);
 
     var quest = new Array();
       reader.on('line',function(lineno,line) {
@@ -73,10 +73,11 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
 
           //Logic to check the intent should come here
           var respObj = switchRespose.getApiResp(error, response, body, appConfig.PLATFORM_INTENT);
-console.log("INTENT FROM API:"+respObj.intentName+"EXPECTED:::"+expectedIndent);
+
              if((respObj.intentName != expectedIndent) || error) {
                  failedUtterances.push(utteranceToTest);
                  tcFailedCount++;
+                 console.log("INTENT FROM API: "+respObj.intentName+" EXPECTED::: "+expectedIndent);
              } else {
                  tcPassedCount ++;
              }
@@ -89,12 +90,14 @@ console.log("INTENT FROM API:"+respObj.intentName+"EXPECTED:::"+expectedIndent);
         console.log("Testing has been completed. Please find the summary"
                     +"\n   Total TC Count     :: "+totalTC
                     +"\n   Passed TC Count    :: "+tcPassedCount
-                    +"\n   Failed TC Count    :: "+tcFailedCount
-                    +"\n   Failed utterances  :: "+failedUtterances);
+                    +"\n   Failed TC Count    :: "+tcFailedCount);
+        console.log("      Failed utterances are as follows ");
+              for(var i=0; i < failedUtterances.length; i++) {
+                  console.log("     "+failedUtterances.lineNo +" :: "+failedUtterances.line);
+              }
+
   }
 
 }
 
-
-
-processRequest(process.argv[2]);
+processRequest(process.argv[2], appConfig.INDENT_VERIFY_PATH+process.argv[3]);
