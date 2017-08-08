@@ -1,5 +1,5 @@
 Cust:Hi
-Bot:Hi, I am YW Assistant. I can help you on queries regarding water issues or taste and smell.--Hi, how's it going? I'm YW Assistant from Yorkshire water
+Bot:Hi, I am YW Assistant. I can help you on queries regarding water issues or taste and smell.--Hi, how's it going? I'm YW Assistant from Yorkshire water--Hi! I am YW Assistant. I can help you with inquiries on water quality
 Bot:IMAGE--Water Quality Issue--Please choose the type of issue you may be having with the water quality
 Cust:Water Taste or Smell
 Bot:Looks like you are having issues with water taste or smell. Please help me by choosing one of the exact issue from below.

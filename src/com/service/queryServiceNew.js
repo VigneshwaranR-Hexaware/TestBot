@@ -161,7 +161,7 @@ function checkStringResponse(responseFromApi,expectedResponse ){
 
       if(responseFromApi && expectedResponse) {
         var bstMatchRating = stringSimilarity.compareTwoStrings(responseFromApi, expectedResponse);
-        logMsg("RESULT COMPARE:"+bstMatchRating );
+        console.log("RESULT COMPARE:"+bstMatchRating );
         return (bstMatchRating > 0.75);
       }
 
