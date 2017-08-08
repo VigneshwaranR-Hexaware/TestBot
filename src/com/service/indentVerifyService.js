@@ -11,17 +11,22 @@ var responsePojo=require('../config/apiResponsePOJO.js');
 var switchRespose=require('../msgResponse/respSwitch.js');
 var responseType = require('../util/respType.js');
 
+
 function processRequest() {
     const fs = require('fs');
 
     var utterances = new Array();;
 
-
+    var expIndentName = process.argv[2];
     var reader = new LineReader(appConfig.YWSinputfile);
 
     var quest = new Array();
       reader.on('line',function(lineno,line) {
-            utterances.push(line);
+          var lineDetails = {
+              "lineNo" : lineno,
+              "line" : line
+          };
+            utterances.push(lineDetails);
       });
 
       reader.on('end', function () {
@@ -29,6 +34,7 @@ function processRequest() {
             var tcPassedCount = 0;
             var tcFailedCount = 0;
             var totalTC = 0;
+
             checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC);
       });
 
@@ -41,7 +47,7 @@ var logMsg = function(str) {
     logger.traceData(str);
 }
 
-function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC) {
+function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent) {
     var processCompleted = false;
     if(utterances.length > 0 ) {
           totalTC ++;
@@ -57,7 +63,7 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
                   authorization: appConfig.developerAccessToken
               },
               body: {
-                  query: [utteranceToTest], lang: 'en', sessionId: '1234567'
+                  query: [utteranceToTest.line], lang: 'en', sessionId: '1234567'
               },
               json: true
           };
@@ -67,8 +73,8 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
           var failed = false;
 
           //Logic to check the intent should come here
-          var respObj = switchRespose.getApiResp(error, response, body, appConfig.PLATFORM_INTENT);
-console.log("INTENT FROM API:"+respObj.intentName+"EXPECTED:::"+appConfig.TEST_INTENT_NAME);
+          var respObj = switchRespose.getApiResp(error, response, body, expectedIndent);
+console.log("INTENT FROM API:"+respObj.intentName+"EXPECTED:::"+expectedIndent);
              if(respObj.intentName != appConfig.TEST_INTENT_NAME || error) {
                  failedUtterances.push(utteranceToTest);
                  tcFailedCount++;
@@ -76,7 +82,7 @@ console.log("INTENT FROM API:"+respObj.intentName+"EXPECTED:::"+appConfig.TEST_I
                  tcPassedCount ++;
              }
 
-          checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC);
+          checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent);
      }
 
       request(options,handleResp);
@@ -89,4 +95,7 @@ console.log("INTENT FROM API:"+respObj.intentName+"EXPECTED:::"+appConfig.TEST_I
   }
 
 }
+
+
+
 processRequest();
