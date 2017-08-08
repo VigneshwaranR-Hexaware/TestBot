@@ -68,32 +68,36 @@ var lookupResp=function(error,response,body){
                         if(!error && response.statusCode === 200) {
                         var apiRespObj = new apiResponsePOJO.apiResponseObject();
                       //  apiRespObj.payload=platform_msg.payload;
-                      if(platform_msg.payload.facebook.text){
-                        apiRespObj.title=platform_msg.payload.facebook.text;
-                        logMsg("customer speech:::"+platform_msg.payload.facebook.text);
-                        var titlearray=[];
-                        if(platform_msg.payload.facebook.quick_replies){
-                        for(i=0;i<platform_msg.payload.facebook.quick_replies.length;i++){
-                          titlearray.push(platform_msg.payload.facebook.quick_replies[i].title);
-                        }
-                      }
-                        //return apiRespObj;
-                        apiRespObj.custPayloadTitle=titlearray;
-                      //  logMsg("customer title:::"+apiRespObj.custPayloadTitle);
-                    }else if(platform_msg.payload.facebook.attachment.payload.elements){
-                      logMsg("INSIDE ELEMENTS::"+platform_msg.payload.facebook.attachment.payload.elements);
-                      if(platform_msg.payload.facebook.attachment.payload.elements[0].title)
-                    apiRespObj.title=platform_msg.payload.facebook.attachment.payload.elements[0].title;
-                    if(platform_msg.payload.facebook.attachment.payload.elements[0].subtitle)
-                    apiRespObj.subtitle=platform_msg.payload.facebook.attachment.payload.elements[0].subtitle;
-                    if(platform_msg.payload.facebook.attachment.payload.elements[0].image_url)
-                    apiRespObj.imageUrl=platform_msg.payload.facebook.attachment.payload.elements[0].image_url;
+                          if(platform_msg.payload.facebook.text){
+                              apiRespObj.title=platform_msg.payload.facebook.text;
+                              logMsg("customer speech:::"+platform_msg.payload.facebook.text);
+                              var titlearray=[];
+                              if(platform_msg.payload.facebook.quick_replies){
+                               for(i=0;i<platform_msg.payload.facebook.quick_replies.length;i++){
+                                titlearray.push(platform_msg.payload.facebook.quick_replies[i].title);
+                               }
+                              }
+                              //return apiRespObj;
+                              apiRespObj.respType=responseType.PAYLOAD;
+                              apiRespObj.custPayloadTitle=titlearray;
+                              responceObject.push(apiRespObj);
+                            //  logMsg("customer title:::"+apiRespObj.custPayloadTitle);
+                          }else if(platform_msg.payload.facebook.attachment.payload.elements){
+                            logMsg("INSIDE ELEMENTS::"+platform_msg.payload.facebook.attachment.payload.elements);
+                            for(i=0;i<platform_msg.payload.facebook.attachment.payload.elements.length;i++){
+                              var apiRespObj = new apiResponsePOJO.apiResponseObject();
+                              if(platform_msg.payload.facebook.attachment.payload.elements[i].title)
+                                apiRespObj.title=platform_msg.payload.facebook.attachment.payload.elements[i].title;
+                              if(platform_msg.payload.facebook.attachment.payload.elements[i].subtitle)
+                                apiRespObj.subtitle=platform_msg.payload.facebook.attachment.payload.elements[i].subtitle;
+                              if(platform_msg.payload.facebook.attachment.payload.elements[i].image_url)
+                                apiRespObj.imageUrl=platform_msg.payload.facebook.attachment.payload.elements[i].image_url;
+                                apiRespObj.respType=responseType.PAYLOAD;
+                                  responceObject.push(apiRespObj);
 
-                    }
+                            }
+                          }
 
-
-                        apiRespObj.respType=responseType.PAYLOAD;
-                        responceObject.push(apiRespObj);
                        }
                        break;
 
@@ -104,7 +108,7 @@ var lookupResp=function(error,response,body){
                 }
               }
             }
-            logMsg("TO PRINT THE RSP OBJ"+JSON.stringify(responceObject));
+            console.log("TO PRINT THE RSP OBJ"+JSON.stringify(responceObject));
             if(!(responceObject.length>0)){
               logMsg("INSIDE DEFAULT");
               var apiRespObj = new apiResponsePOJO.apiResponseObject();
@@ -120,8 +124,8 @@ var lookupResp=function(error,response,body){
            }
 
 var logMsg = function(str) {
-  //  logger.traceData(str);
-  console.log(str);
+   logger.traceData(str);
+  //console.log(str);
 }
 
 
