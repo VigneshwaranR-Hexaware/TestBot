@@ -7,8 +7,8 @@ var lookupResp=function(error,response,body){
 
  var apiRespObj = new apiResponsePOJO.apiResponseObject();
 
- var apiRespObj.actionName=body.result.action;
- var apiRespObj.intentName=body.result.metadata.intentName;
+ apiRespObj.actionName=body.result.action;
+ apiRespObj.intentName=body.result.metadata.intentName;
 
   console.log("action and intent::"+apiRespObj.actionName+"::::"+apiRespObj.intentName);
 return apiRespObj;
