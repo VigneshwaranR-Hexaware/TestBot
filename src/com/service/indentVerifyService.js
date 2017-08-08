@@ -1,7 +1,7 @@
 var LineReader = require('linereader');
 var jsUtil=require('util');
 var appConfig = require('../config/appConfig.js');
-var logService=require('./logService');
+var logger=require('./logService');
 var QueryService=require('./queryServiceNew');
 var appConfig=require('../config/appConfig');
 var appConst = require('../util/appConstants.js');
