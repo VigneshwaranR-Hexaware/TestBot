@@ -106,7 +106,7 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTitleResult,testpayloadtitleResult);
                           }else{
                             console.log("SUBTITLE RESULT::"+testSubtitleResult);
-                            if(!testSubtitleResult){
+                            if(!processingBotResp.subtitle){
                               tcResp = tcResp + logger.getQuickReplyResult(processingBotResp.title,processingExpResp.title,testTitleResult);
                             }else{
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.subtitle,processingExpResp.subtitle,testTitleResult,testSubtitleResult);
