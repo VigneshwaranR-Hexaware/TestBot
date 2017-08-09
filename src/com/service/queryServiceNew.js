@@ -172,7 +172,7 @@ function checkStringResponse(responseFromApi,expectedResponse ){
 
 
 function checkArrayResponse(responseFromApi,expectedResponse ){
-      console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+    //  console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
 /*for(i=0;i<responseFromApi.length;i++){
   var result;
