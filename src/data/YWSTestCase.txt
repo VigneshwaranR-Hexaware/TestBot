@@ -12,14 +12,14 @@ Cust:chlorine
 Bot:IMAGE--Chlorine Taste or Smell--Choose an option for more info or tap here to view website www.yorkshirewater.com
 Cust:chlorine_to_do
 Bot:To minimise the taste fill a glass jug or bottle with tap water, cover it and place it in the fridge. After an hour the smell or taste should have gone. We recommend using the chilled water within 24 hours
-Bot:IMAGE--Anything else?--Watch on Youtube--What causes this?--Is it harmful?--Another query--That's all--Contact Us
+Bot:IMAGE--Anything else?--Watch on YouTube--What causes this?--Is it harmful?--Another query--That's all--Contact Us
 Cust:chlorine_cause
 Bot:By law we must disinfect all public water supplies. Most of the time we use chlorine-based chemicals to ensure water is safe to drink and contains no organisms which could cause illness. We only add just enough chlorine to disinfect it to minimise the taste and smell
 Bot:Washing machines and dishwashers: A chlorine-like tastes can be cause by the hose which carries water from the supply pipe to your dishwasher and washing machine. Increases in water pressure can cause the flexi-hose to expand like a balloon. When the pressure is released, the hose collapses and can squirt water back into your supply pipe
-Bot:IMAGE--Anything else?--Watch on Youtube--What to do?--Is it harmful?--Another query--That's all--Contact Us
+Bot:IMAGE--Anything else?--Watch on YouTube--What to do?--Is it harmful?--Another query--That's all--Contact Us
 Cust:chlorine_harmful
 Bot:No. We only add enough chlorine to disinfect, whilst minimising taste and smell
-Bot:IMAGE--Anything else?--Watch on Youtube--What to do?--What causes this?--Another query--That's all--Contact Us
+Bot:IMAGE--Anything else?--Watch on YouTube--What to do?--What causes this?--Another query--That's all--Contact Us
 Cust:contact us
 Bot:IMAGE--Contact Us--We are here 24/7 to handle your customer queries. www.yorkshirewater.com
 Cust:that's all
