@@ -37,9 +37,9 @@ var quest = new Array();
   });
 
 rl.on('end', function () {
-  responseMap.forEach(function(value, key) {
+  /*responseMap.forEach(function(value, key) {
   console.log(key + ' = ' + JSON.stringify(value));
-});
+});*/
   var queryServ = new QueryService.QueryProcessor(responseMap, quest);
   });
 

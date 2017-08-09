@@ -9,9 +9,9 @@ module.exports.vfsfacebookaccess="Bearer 4b81cbd1686c416bad563b7ea2f4a36d";
 module.exports.platform='facebook';
 module.exports.biinputfile='./src/data/BiServiceAgentTest.txt';
 module.exports.biagentAccessToken='Bearer 7f8b1e54bc5a4a1a93e0fe776d0ce0bb';
-module.exports.YWSinputfile='./src/data/YWSIntentTestCase.txt';
+module.exports.YWSIntentinputfile='./src/data/YWSIntentTestCase.txt';
 module.exports.YWSaccesstoken='Bearer c857028100e04eb2b0e9cbe15c779146';
 module.exports.TEST_INTENT_NAME="WaterAppearanceIssue";
 module.exports.PLATFORM_INTENT="checkintent";
-
+module.exports.YWSinputfile='./src/data/YWSTestCase.txt';
 module.exports.INDENT_VERIFY_PATH="./src/data/ywsindentdatas/"
