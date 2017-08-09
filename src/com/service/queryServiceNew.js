@@ -102,13 +102,14 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
 
                             if(processingBotResp.custPayloadTitle){
                             var testpayloadtitleResult = checkArrayResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
-                            console.log("testpayloadtitle result::"+testpayloadtitleResult);
+                          //  console.log("testpayloadtitle result::"+testpayloadtitleResult);
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTitleResult,testpayloadtitleResult);
                           }else{
                             console.log("SUBTITLE RESULT::"+testSubtitleResult);
                             if(!processingBotResp.subtitle){
                               tcResp = tcResp + logger.getQuickReplyResult(processingBotResp.title,processingExpResp.title,testTitleResult);
                             }else{
+                              console.log("SUBTITLE inside RESULT::"+testSubtitleResult);
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.subtitle,processingExpResp.subtitle,testTitleResult,testSubtitleResult);
                             }
                           }
@@ -159,7 +160,7 @@ function checkSpeechResponse(responseFromApi,expectedResponse ){
 }
 
 function checkStringResponse(responseFromApi,expectedResponse ){
-      console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
+    //  console.log("API::"+responseFromApi+"EXPECTED::"+expectedResponse);
 
       if(responseFromApi && expectedResponse) {
         var bstMatchRating = stringSimilarity.compareTwoStrings(responseFromApi, expectedResponse);
