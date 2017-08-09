@@ -33,12 +33,14 @@ module.exports.getConvResult = function(recResult,expResult,status) {
 module.exports.getCarouselResult = function(botTitle,expTitle,BotSubTitle,expSubTitle,testTitleResult,testSubtitleResult) {
     var testResult = "Passed";
     if(!(testTitleResult && testSubtitleResult)) {
+      console.log("in log service tests");
         testResult = "Failed";
     } else if(testTitleResult && testSubtitleResult) {
         testResult = "Passed";
     } else if(!testTitleResult) {
        testResult="Title Failed";
     } else if(!testSubtitleResult) {
+      console.log("in log service");
        testResult="SubTitle Failed";
     }
     return "\n       Bot Response      : "
