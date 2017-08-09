@@ -32,7 +32,7 @@ module.exports.getConvResult = function(recResult,expResult,status) {
 
 module.exports.getCarouselResult = function(botTitle,expTitle,BotSubTitle,expSubTitle,testTitleResult,testSubtitleResult) {
     var testResult = "Passed";
-    if(!(testTitleResult && testSubtitleResult)) {
+    if((!testTitleResult) && (!testSubtitleResult)) {
       console.log("in log service tests");
         testResult = "Failed";
     } else if(testTitleResult && testSubtitleResult) {

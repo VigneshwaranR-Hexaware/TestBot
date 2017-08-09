@@ -95,19 +95,16 @@ function checkResponse(testUnitInd, lineNo, custSays, botResponse, expectedResp)
                         break;
 
                         case responseType.PAYLOAD:
-                            if(processingBotResp.title){
+                            if(processingBotResp.title)
                             var testTitleResult = checkStringResponse(processingBotResp.title, processingExpResp.title);
-                            console.log("title result"+testTitleResult);
-                          }
-                            if(processingBotResp.subtitle){
+                            if(processingBotResp.subtitle)
                             var testSubtitleResult = checkStringResponse(processingBotResp.subtitle, processingExpResp.subtitle);
-                            console.log("subtitle result"+testSubtitleResult);
-                          }
+
                             if(processingBotResp.custPayloadTitle){
                             var testpayloadtitleResult = checkArrayResponse(processingBotResp.custPayloadTitle, processingExpResp.custPayloadTitle);
                           //  console.log("testpayloadtitle result::"+testpayloadtitleResult);
                             tcResp = tcResp + logger.getCarouselResult(processingBotResp.title,processingExpResp.title,processingBotResp.custPayloadTitle,processingExpResp.custPayloadTitle,testTitleResult,testpayloadtitleResult);
-                          }else{
+                            }else{
                             if(!processingBotResp.subtitle){
                               tcResp = tcResp + logger.getQuickReplyResult(processingBotResp.title,processingExpResp.title,testTitleResult);
                             }else{
