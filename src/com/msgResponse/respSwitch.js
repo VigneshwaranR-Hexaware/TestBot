@@ -21,5 +21,4 @@ function getApiResp(error,response,body,platform){
     return apiRespose.getApiAiResp(error,response,body);
   }
 }
-
 module.exports.getApiResp=getApiResp;
