@@ -1,4 +1,5 @@
 var apiResponsePOJO=require('../config/apiResponsePOJO.js');
+var responseType = require('../util/respType.js');
 const logger= require('../service/logService.js');
 
 var getApiResp=function(error,response,body){
@@ -12,6 +13,7 @@ var obj=(body.result.fulfillment.messages.length);
                     var  apiRespObj = new apiResponsePOJO.apiResponseObject();
                     apiRespObj.speech=JSON.stringify(body.result.fulfillment.messages[i].speech);
                     logMsg("SPEECH:::"+apiRespObj.speech);
+                    apiRespObj.respType=responseType.SPEECH;
                     apiRespArray.push(apiRespObj);
                 }
             }
@@ -19,6 +21,7 @@ var obj=(body.result.fulfillment.messages.length);
                 if (!error && response.statusCode === 200) {
                     var  apiRespObj = new apiResponsePOJO.apiResponseObject();
                     apiRespObj.payload=JSON.stringify(body.result.fulfillment.messages[i].payload);
+                    apiRespObj.respType=responseType.PAYLOAD;
                     apiRespArray.push(apiRespObj);
                 }
             }
