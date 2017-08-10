@@ -19,6 +19,7 @@ function getApiResp(error,response,body,platform){
   }
   else{
     return apiRespose.getApiAiResp(error,response,body);
+    console.log("comeing inside");
   }
 }
 
