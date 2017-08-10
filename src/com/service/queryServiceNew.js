@@ -39,7 +39,7 @@ function QueryProcessor(responseMap,questArray) {
         query: [questAndLine[1]], lang: 'en', sessionId: '1234567'
     },
     json: true
-  };biagentAccessToken
+  };
 
    var handleResp = function(error,response, body){
     var  apiRespObj = new responsePojo.apiResponseObject();
