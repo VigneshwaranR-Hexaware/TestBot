@@ -9,20 +9,17 @@ function getApiResp(error,response,body,platform){
     return fbResp.lookupResp(error,response,body);
   }
   else if(platform == "google"){
-    console.log("comeing inside");
-    return gAResp.getGaResp(error,response,body);
+        return gAResp.getGaResp(error,response,body);
   }
   else if(platform == "slack"){
-    console.log("comeing inside");
-     return slackResp.lookupResp(error,response,body);
+         return slackResp.lookupResp(error,response,body);
   }
   else if(platform=="checkintent"){
-    console.log("comeing inside");
+
     return intentResp.lookupResp(error,response,body);
   }
   else if (platform=="agent"){
-    console.log("comeing inside");
-    return apiRespose.getApiResp(error,response,body);
+        return apiRespose.getApiResp(error,response,body);
 
   }
 }
