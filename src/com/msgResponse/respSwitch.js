@@ -22,7 +22,7 @@ function getApiResp(error,response,body,platform){
   }
   else if (platform=="agent"){
     console.log("comeing inside");
-    return apiRespose.getApiAiResp(error,response,body);
+    return apiRespose.getApiResp(error,response,body);
 
   }
 }
