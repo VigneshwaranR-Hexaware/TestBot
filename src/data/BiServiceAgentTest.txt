@@ -8,7 +8,7 @@ Cust:Low
 Bot:Please provide a description.(For ex My mouse is not working.)
 Cust:My keyboard is not working
 Bot:Your incident description is My keyboard is not working
-Bot:IMAGE--Have i got you right--Yes--No--Cancel
+Bot:IMAGE--Have i got you right--Yes--No--I want to edit--Cancel
 Cust:yes proceed
 Bot:IMAGE--We have logged your incident in our system with the incident id 'INC 0010367'
 Cust:Check status
