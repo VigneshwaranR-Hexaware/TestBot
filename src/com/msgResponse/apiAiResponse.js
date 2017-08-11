@@ -6,9 +6,15 @@ var getApiResp=function(error,response,body){
 var apiRespArray=[];
 var obj=(body.result.fulfillment.messages.length);
     for(i=0;i<=obj;i++){
-      console.log("INSIDE SLACK FILE--TYPEdsadsa::"+body.result.fulfillment.messages[i]);
-        var typeOf = body.result.fulfillment.messages[i].type;
-        console.log("INSIDE SLACK FILE--TYPE::"+typeOf);
+      var platform_msg = body.result.fulfillment.messages[i];
+      if(platform_msg) {
+          var platform_compare=platform_msg.platform;
+          logMsg("PLATFORM:::"+platform_compare);
+          if(platform_compare){
+              if (platform_compare=="agent")
+              {
+                    var typeOf = body.result.fulfillment.messages[i].type;
+                  console.log("INSIDE SLACK FILE--TYPE::"+typeOf);
             if(typeOf == 0){
                 if (!error && response.statusCode === 200) {
                     var  apiRespObj = new apiResponsePOJO.apiResponseObject();
@@ -26,7 +32,7 @@ var obj=(body.result.fulfillment.messages.length);
                     apiRespArray.push(apiRespObj);
                 }
             }
-    }
+    }}}}
     return apiRespArray;
 }
 
