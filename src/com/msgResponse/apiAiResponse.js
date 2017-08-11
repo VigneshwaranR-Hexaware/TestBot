@@ -32,3 +32,4 @@ var obj=(body.result.fulfillment.messages.length);
 var logMsg = function(str) {
     logger.traceData(str);
 }
+module.exports.getApiResp= getApiResp;
