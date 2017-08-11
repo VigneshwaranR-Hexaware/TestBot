@@ -20,7 +20,7 @@ function getApiResp(error,response,body,platform){
     console.log("comeing inside");
     return intentResp.lookupResp(error,response,body);
   }
-  else{
+  else if (platform=="agent"){
     console.log("comeing inside");
     return apiRespose.getApiAiResp(error,response,body);
 
