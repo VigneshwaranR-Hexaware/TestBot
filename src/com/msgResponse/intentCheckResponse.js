@@ -11,7 +11,7 @@ if((apiRespObj.actionName)||(body.result.metadata.intentName)){
  apiRespObj.intentName=body.result.metadata.intentName;
  }
 
-  //console.log("action and intent::"+apiRespObj.actionName+"::::"+apiRespObj.intentName);
+  console.log("action and intent::"+apiRespObj.actionName+"::::"+apiRespObj.intentName);
 return apiRespObj;
 
 }
