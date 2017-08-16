@@ -83,7 +83,7 @@ module.exports.logOnConsole = function(str) {
     console.log(str);
 }
 
-function logResult(str){
+module.exports.logOnFile = function(str){
     if(!(fs.existsSync('logfile.txt'))){
         fs.writeFile("logfile.txt",str, function(err) {
         if(err) {
