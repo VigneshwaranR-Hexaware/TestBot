@@ -79,7 +79,7 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
 
                  failedUtterances.push(utteranceToTest);
                  tcFailedCount++;
-                 console.log(utteranceToTest.lineNo+ ":::INTENT FROM API: "+respObj.intentName+" EXPECTED::: "+expectedIndent);
+                 //console.log(utteranceToTest.lineNo+ ":::INTENT FROM API: "+respObj.intentName+" EXPECTED::: "+expectedIndent);
              } else {
                  tcPassedCount ++;
              }
