@@ -21,7 +21,7 @@ function processRequest(expIndentName, dataFile) {
     var reader = new LineReader(dataFile);
     var tcId = 1;
     var quest = new Array();
-      int bucketSize = 0;
+      var bucketSize = 0;
       reader.on('line',function(lineno,line) {
           var lineDetails = {
               "lineNo" : lineno,
