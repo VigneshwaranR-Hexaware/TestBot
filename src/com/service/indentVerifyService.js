@@ -16,7 +16,7 @@ var responseType = require('../util/respType.js');
 var testSummary = new Array();
 var tcId = 1;
 
-function processRequest(expIndentName, dataFile) {
+function processRequest(expIndentName, dataFile, logFile) {
     const fs = require('fs');
 
     var utterances = new Array();
@@ -116,10 +116,13 @@ function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFail
   } else {
 
           console.log("Failed utterances are as follows ");
+          logger.logOnFile("Line Number, utterance, Expected Indent, API's Indent");
           var lineWrote = 0;
               for(var i=0; i < failedUtterances.length; i++) {
                   var lineDetail = failedUtterances[i];
-                  console.log(lineDetail.line +" Expected "+lineDetail.expectedIndent+" API's "+lineDetail.APIsIndent);
+                  //console.log(lineDetail.line +" Expected "+lineDetail.expectedIndent+" API's "+lineDetail.APIsIndent);
+                  var resultText = lineDetail.lineNo +", " + lineDetail.line +", " + lineDetail.expectedIndent +", " + lineDetail.APIsIndent
+                  logger.logOnFile(resultText, logFile);
                 /*  lineWrote++;
                   if(lineWrote >= 50) {
                       console.log("Waiting for you to copy the line")
@@ -144,5 +147,5 @@ function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFail
   }
 
 }
-
-processRequest(process.argv[2], appConfig.INDENT_VERIFY_PATH+process.argv[3]);
+var logFile = (process.argv[4] || 'result.log');
+processRequest(process.argv[2], appConfig.INDENT_VERIFY_PATH+process.argv[3], logFile);

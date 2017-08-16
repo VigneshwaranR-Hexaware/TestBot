@@ -83,19 +83,17 @@ module.exports.logOnConsole = function(str) {
     console.log(str);
 }
 
-module.exports.logOnFile = function(str){
-    if(!(fs.existsSync('logfile.txt'))){
-        fs.writeFile("logfile.txt",str, function(err) {
+module.exports.logOnFile = function(str, resultFile){
+    if(!(fs.existsSync(resultFile))){
+        fs.writeFile(resultFile,str, function(err) {
         if(err) {
             console.log(err);
         }
-            console.log("The file was saved!");
         });
     }
     else{
-        fs.appendFile('logfile.txt', '\n' + str, function (err) {
-        if (err) throw err;
-        console.log('Saved!');
+        fs.appendFile(resultFile, '\n' + str, function (err) {
+            if (err) throw err;
         });
     }
 }
