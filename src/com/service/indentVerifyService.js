@@ -120,18 +120,13 @@ function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFail
               }
               */
 
-          testSummary.push("Testing has been completed. Please find the summary"
+          console.log("Testing has been completed. Please find the summary"
                           +"\n   Test Case ID       :: " + id
                           +"\n   Total TC Count     :: " + totalTC
                           +"\n   Passed TC Count    :: " + tcPassedCount
                           +"\n   Failed TC Count    :: " + tcFailedCount);
 
-          if(id == tcId) {
-              console.log(testSummary);
-          } else {
-              console.log(testSummary);
-              console.log("Process competed ");
-          }
+
 
           //var passPercentage=(tcPassedCount/totalTC)*100;
           //console.log("\n  PASS PERCENTAGE    :: "+passPercentage+"%");
