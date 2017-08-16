@@ -79,7 +79,7 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
 
                  failedUtterances.push(utteranceToTest);
                  tcFailedCount++;
-                 console.log("INTENT FROM API: "+respObj.intentName+" EXPECTED::: "+expectedIndent);
+                 console.log(utteranceToTest.lineNo+ ":::INTENT FROM API: "+respObj.intentName+" EXPECTED::: "+expectedIndent);
              } else {
                  tcPassedCount ++;
              }
@@ -93,7 +93,10 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
                     +"\n   Total TC Count     :: "+totalTC
                     +"\n   Passed TC Count    :: "+tcPassedCount
                     +"\n   Failed TC Count    :: "+tcFailedCount);
-        console.log("      Failed utterances are as follows ");
+
+        var passPercentage=(tcPassedCount/totalTC)*100;
+          console.log("\n  PASS PERCENTAGE    :: "+passPercentage+"%");
+          console.log("      Failed utterances are as follows ");
               for(var i=0; i < failedUtterances.length; i++) {
                   var lineDetail = failedUtterances[i];
                   console.log(lineDetail.line);
