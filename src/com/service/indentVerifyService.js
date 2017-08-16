@@ -1,5 +1,7 @@
 var LineReader = require('linereader');
+var timer = require('sleep');
 var jsUtil=require('util');
+
 var appConfig = require('../config/appConfig.js');
 var logger=require('./logService');
 var QueryService=require('./queryServiceNew');
@@ -31,7 +33,7 @@ function processRequest(expIndentName, dataFile) {
               "APIsIndent" : ""
           };
             utterances.push(lineDetails);
-            bucketSize++;
+            /*bucketSize++;
             if(bucketSize == appConst.BUFFER_OFSET) {
                 var failedUtterances = new Array();;
                 var tcPassedCount = 0;
@@ -41,7 +43,7 @@ function processRequest(expIndentName, dataFile) {
                 utterances = new Array();
                 bucketSize = 0;
                 tcId++;
-            }
+            }*/
       });
 
       reader.on('end', function () {
@@ -113,12 +115,19 @@ function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFail
       request(options,handleResp);
   } else {
 
-          /*console.log("      Failed utterances are as follows ");
+          console.log("Failed utterances are as follows ");
+          var lineWrote = 0;
               for(var i=0; i < failedUtterances.length; i++) {
                   var lineDetail = failedUtterances[i];
                   console.log(lineDetail.lineNo +" Expected "+lineDetail.expectedIndent+" API's "+lineDetail.APIsIndent);
+                  lineWrote++;
+                  if(lineWrote >= 50) {
+                      console.log("Waiting for you to copy the line")
+                      timer.sleep(60);
+                      lineWrote = 0;
+                  }
               }
-              */
+
 
           console.log("Testing has been completed. Please find the summary"
                           +"\n   Test Case ID       :: " + id
