@@ -137,8 +137,8 @@ function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFail
 
 
 
-          //var passPercentage=(tcPassedCount/totalTC)*100;
-          //console.log("\n  PASS PERCENTAGE    :: "+passPercentage+"%");
+          var passPercentage=(tcPassedCount/totalTC)*100;
+              console.log("\n  PASS PERCENTAGE    :: "+passPercentage+"%");
 
 
   }

@@ -4,12 +4,27 @@ logger.logOnFile("Hi I am ok");
 logger.logOnFile("Hi I am ok");
 logger.logOnFile("Hi I am ok");*/
 
-if(200 % 100 == 0) {
-    console.log("processing.... Lines to process "+new Date());
-} else {
-  console.log(200 % 100);
+
+var test = new Array();
+var tempArr = new Array();
+
+for(var i=0; i<35; i++) {
+    test.push(i);
+}
+console.log(test);
+var i=10;
+var j=0;
+while(i <= test.length) {
+    tempArr.push(test.slice(j, i));
+    j += 10;
+    i += 10;
 }
 
+if(j <= test.length) {
+    tempArr.push(test.slice(j, test.length));
+}
+
+console.log(tempArr);
 
 /*const express = require('express');
 const https= require('https');
