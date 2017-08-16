@@ -120,12 +120,12 @@ function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFail
               for(var i=0; i < failedUtterances.length; i++) {
                   var lineDetail = failedUtterances[i];
                   console.log(lineDetail.line +" Expected "+lineDetail.expectedIndent+" API's "+lineDetail.APIsIndent);
-                  lineWrote++;
+                /*  lineWrote++;
                   if(lineWrote >= 50) {
                       console.log("Waiting for you to copy the line")
                       timer.sleep(60);
                       lineWrote = 0;
-                  }
+                  }*/
               }
 
 
