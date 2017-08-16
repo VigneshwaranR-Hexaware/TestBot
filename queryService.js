@@ -1,5 +1,5 @@
 
-var logger = require('.src/com/service/logService');
+var logger = require('./src/com/service/logService');
 logger.logOnFile("Hi I am ok");
 logger.logOnFile("Hi I am ok");
 logger.logOnFile("Hi I am ok");
