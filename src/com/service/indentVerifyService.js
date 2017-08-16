@@ -12,6 +12,7 @@ var switchRespose=require('../msgResponse/respSwitch.js');
 var responseType = require('../util/respType.js');
 
 var testSummary = new Array();
+var tcId = 1;
 
 function processRequest(expIndentName, dataFile) {
     const fs = require('fs');
@@ -19,7 +20,7 @@ function processRequest(expIndentName, dataFile) {
     var utterances = new Array();
 
     var reader = new LineReader(dataFile);
-    var tcId = 1;
+
     var quest = new Array();
       var bucketSize = 0;
       reader.on('line',function(lineno,line) {
