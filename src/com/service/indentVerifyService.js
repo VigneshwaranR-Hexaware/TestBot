@@ -50,7 +50,11 @@ var logMsg = function(str) {
 
 function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent) {
     var processCompleted = false;
-    if(utterances.length > 0 ) {
+    var utteranceLen = utterances.length;
+    if(utteranceLen / 100 == 0) {
+        console.log("processing.... Lines to process "+utteranceLen);
+    }
+    if(utteranceLen > 0 ) {
           totalTC ++;
           var utteranceToTest = utterances.shift();
           var options = {
