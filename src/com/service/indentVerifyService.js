@@ -23,7 +23,9 @@ function processRequest(expIndentName, dataFile) {
       reader.on('line',function(lineno,line) {
           var lineDetails = {
               "lineNo" : lineno,
-              "line" : line
+              "line" : line,
+              "expectedIndent" : "",
+              "APIsIndent" : ""
           };
             utterances.push(lineDetails);
       });
@@ -77,9 +79,12 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
 //console.log("INTENT FROM API:"+respObj.intentName+"EXPECTED:::"+appConfig.TEST_INTENT_NAME);
              if((respObj.intentName != expectedIndent) || error) {
 
+                utteranceToTest.expectedIndent = expectedIndent;
+                utteranceToTest.APIsIndent = respObj.intentName;
+
                  failedUtterances.push(utteranceToTest);
                  tcFailedCount++;
-                 logger.logOnFile(utteranceToTest.lineNo+ ":::INTENT FROM API: "+respObj.intentName+" EXPECTED::: "+expectedIndent);
+                 //logger.logOnFile(utteranceToTest.lineNo+ ":::INTENT FROM API: "+respObj.intentName+" EXPECTED::: "+expectedIndent);
              } else {
                  tcPassedCount ++;
              }
@@ -89,18 +94,20 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
 
       request(options,handleResp);
   } else {
-        console.log("Testing has been completed. Please find the summary"
-                    +"\n   Total TC Count     :: "+totalTC
-                    +"\n   Passed TC Count    :: "+tcPassedCount
-                    +"\n   Failed TC Count    :: "+tcFailedCount);
 
-        var passPercentage=(tcPassedCount/totalTC)*100;
-          console.log("\n  PASS PERCENTAGE    :: "+passPercentage+"%");
           console.log("      Failed utterances are as follows ");
               for(var i=0; i < failedUtterances.length; i++) {
                   var lineDetail = failedUtterances[i];
-                  console.log(lineDetail.line);
+                  console.log(lineDetail.lineNo +" Expected "+lineDetail.expectedIndent+" API's "+lineDetail.APIsIndent);
               }
+
+          console.log("Testing has been completed. Please find the summary"
+                          +"\n   Total TC Count     :: "+totalTC
+                          +"\n   Passed TC Count    :: "+tcPassedCount
+                          +"\n   Failed TC Count    :: "+tcFailedCount);
+
+          var passPercentage=(tcPassedCount/totalTC)*100;
+          console.log("\n  PASS PERCENTAGE    :: "+passPercentage+"%");
 
   }
 
