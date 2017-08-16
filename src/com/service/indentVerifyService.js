@@ -31,7 +31,7 @@ function processRequest(expIndentName, dataFile) {
           };
             utterances.push(lineDetails);
             bucketSize++;
-            if(bucketSize == BUFFER_OFSET) {
+            if(bucketSize == appConst.BUFFER_OFSET) {
                 var failedUtterances = new Array();;
                 var tcPassedCount = 0;
                 var tcFailedCount = 0;
