@@ -7,7 +7,7 @@ var lookupResp=function(error,response,body){
 
  var apiRespObj = new apiResponsePOJO.apiResponseObject();
 
-console.log("RESPONSE::"+response);
+console.log("RESPONSE::"+JSON.stringify(response));
 
 if(body.result.metadata.intentName){
 
