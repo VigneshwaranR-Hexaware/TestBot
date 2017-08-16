@@ -11,15 +11,17 @@ var responsePojo=require('../config/apiResponsePOJO.js');
 var switchRespose=require('../msgResponse/respSwitch.js');
 var responseType = require('../util/respType.js');
 
+var testSummary = new Array();
 
 function processRequest(expIndentName, dataFile) {
     const fs = require('fs');
 
-    var utterances = new Array();;
+    var utterances = new Array();
 
     var reader = new LineReader(dataFile);
-
+    var tcId = 1;
     var quest = new Array();
+      int bucketSize = 0;
       reader.on('line',function(lineno,line) {
           var lineDetails = {
               "lineNo" : lineno,
@@ -28,6 +30,17 @@ function processRequest(expIndentName, dataFile) {
               "APIsIndent" : ""
           };
             utterances.push(lineDetails);
+            bucketSize++;
+            if(bucketSize == BUFFER_OFSET) {
+                var failedUtterances = new Array();;
+                var tcPassedCount = 0;
+                var tcFailedCount = 0;
+                var totalTC = 0;
+                checkUtterances(tcId, utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expIndentName);
+                utterances = new Array();
+                bucketSize = 0;
+                tcId++;
+            }
       });
 
       reader.on('end', function () {
@@ -36,7 +49,7 @@ function processRequest(expIndentName, dataFile) {
             var tcFailedCount = 0;
             var totalTC = 0;
 
-            checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expIndentName);
+            checkUtterances(tcId, utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expIndentName);
       });
 
       reader.on('error',function(err){
@@ -48,7 +61,7 @@ var logMsg = function(str) {
     logger.traceData(str);
 }
 
-function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent) {
+function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent) {
     var processCompleted = false;
     var utteranceLen = utterances.length;
     if(utteranceLen % 100 == 0) {
@@ -93,25 +106,28 @@ function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCo
                  tcPassedCount ++;
              }
 
-          checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent);
+          checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent);
      }
 
       request(options,handleResp);
   } else {
 
-          console.log("      Failed utterances are as follows ");
+          /*console.log("      Failed utterances are as follows ");
               for(var i=0; i < failedUtterances.length; i++) {
                   var lineDetail = failedUtterances[i];
                   console.log(lineDetail.lineNo +" Expected "+lineDetail.expectedIndent+" API's "+lineDetail.APIsIndent);
               }
+              */
 
-          console.log("Testing has been completed. Please find the summary"
-                          +"\n   Total TC Count     :: "+totalTC
-                          +"\n   Passed TC Count    :: "+tcPassedCount
-                          +"\n   Failed TC Count    :: "+tcFailedCount);
+          testSummary.push("Testing has been completed. Please find the summary"
+                          +"\n   Test Case ID       :: " + id
+                          +"\n   Total TC Count     :: " + totalTC
+                          +"\n   Passed TC Count    :: " + tcPassedCount
+                          +"\n   Failed TC Count    :: " + tcFailedCount);
 
-          var passPercentage=(tcPassedCount/totalTC)*100;
-          console.log("\n  PASS PERCENTAGE    :: "+passPercentage+"%");
+          //var passPercentage=(tcPassedCount/totalTC)*100;
+          //console.log("\n  PASS PERCENTAGE    :: "+passPercentage+"%");
+
 
   }
 
