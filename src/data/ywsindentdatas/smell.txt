@@ -7423,6 +7423,7 @@ The outgoing water could be extremely noisome
 The outgoing water could be extremely stinking
 The outgoing water could be extremely ill-scented
 The outgoing water could be extremely smelly
+My house water would be pretty noisome
 My incoming water is pretty fetid
 My incoming water is pretty foetid
 My incoming water is pretty foul
@@ -7455,7 +7456,6 @@ My house water would be pretty foetid
 My house water would be pretty foul
 My house water would be pretty funky
 My house water would be pretty foul-smelling
-My house water would be pretty noisome
 My house water would be pretty stinking
 My house water would be pretty smelly
 My house water would be pretty ill-scented

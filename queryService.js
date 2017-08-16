@@ -1,4 +1,10 @@
-const express = require('express');
+
+var logger = require('.src/com/service/logService');
+logger.logOnFile("Hi I am ok");
+logger.logOnFile("Hi I am ok");
+logger.logOnFile("Hi I am ok");
+
+/*const express = require('express');
 const https= require('https');
 var http = require('http');
 var apiai = require('apiai');
@@ -43,4 +49,4 @@ request(options, function (error, response, body) {
       callback(message);
 });
 
-}
+}*/
