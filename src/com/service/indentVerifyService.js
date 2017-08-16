@@ -51,8 +51,8 @@ var logMsg = function(str) {
 function checkUtterances(utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent) {
     var processCompleted = false;
     var utteranceLen = utterances.length;
-    if(utteranceLen / 100 == 0) {
-        console.log("processing.... Lines to process "+utteranceLen);
+    if(utteranceLen % 100 == 0) {
+        console.log(new Date()+"processing.... Lines to process "+utteranceLen);
     }
     if(utteranceLen > 0 ) {
           totalTC ++;

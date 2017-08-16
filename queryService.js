@@ -1,8 +1,15 @@
 
-var logger = require('./src/com/service/logService');
+/*var logger = require('./src/com/service/logService');
 logger.logOnFile("Hi I am ok");
 logger.logOnFile("Hi I am ok");
-logger.logOnFile("Hi I am ok");
+logger.logOnFile("Hi I am ok");*/
+
+if(200 % 100 == 0) {
+    console.log("processing.... Lines to process "+new Date());
+} else {
+  console.log(200 % 100);
+}
+
 
 /*const express = require('express');
 const https= require('https');
