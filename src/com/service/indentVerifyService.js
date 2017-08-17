@@ -120,7 +120,7 @@ function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFail
           var lineWrote = 0;
               for(var i=0; i < failedUtterances.length; i++) {
                   var lineDetail = failedUtterances[i];
-                  console.log(lineDetail.lineNo +", " +lineDetail.line +" Expected "+lineDetail.expectedIndent+" API's "+lineDetail.APIsIndent);
+                  //console.log(lineDetail.lineNo +", " +lineDetail.line +" Expected "+lineDetail.expectedIndent+" API's "+lineDetail.APIsIndent);
                   var resultText = lineDetail.lineNo +", " + lineDetail.line +", " + lineDetail.expectedIndent +", " + lineDetail.APIsIndent
                   logger.logOnFile(resultText, logFile);
                 /*  lineWrote++;
