@@ -15,6 +15,11 @@ if((body.result.action)||(body.result.metadata.intentName)){
  //console.log("action and intent::::::"+apiRespObj.intentName);
  }
 
+ if(error){
+   apiRespObj.errorMsg=error;
+  console.log("Error at api response"+error);
+ }
+
   //console.log("action and intent::"+apiRespObj.actionName+"::::"+apiRespObj.intentName);
 return apiRespObj;
 
