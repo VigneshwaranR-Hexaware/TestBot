@@ -11,7 +11,7 @@ function apiResponseObject() {
   var custPayloadTitle = null; //Array of cutom payload array
   var actionName=null;
   var intentName=null;
-  var errorMsg=null;
+  
 }
 
   module.exports.apiResponseObject = apiResponseObject;
