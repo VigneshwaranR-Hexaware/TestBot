@@ -107,5 +107,5 @@ var handleCustPayload = function(expectedResp, expRespObj) {
         expRespObj.custPayloadTitle = expectedResp;
     }
 }
-processRequest();
+Module.exports = processRequest();
 //console.log(parseExpectedResp("IMAGE--Hi--Good Morning--Good Evening--Good Night--Good Afternoon"));
