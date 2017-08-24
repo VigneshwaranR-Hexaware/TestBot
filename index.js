@@ -12,3 +12,4 @@ queryService.processRequest();
 };
 
 
+queryService.processRequest();
