@@ -9,7 +9,8 @@ var expectedRespObj = require('../config/apiResponsePOJO.js');
 
 const responseMap = new Map();
 
-function processRequest() {
+module.exports={
+ processRequest() {
 const fs = require('fs');
 var currentLine=null;
 var expectedResponse=[];
@@ -46,6 +47,7 @@ rl.on('end', function () {
 rl.on('error',function(err){
     logMsg(err);
 });
+}
 }
 
 
@@ -108,7 +110,8 @@ var handleCustPayload = function(expectedResp, expRespObj) {
     }
 }
 
-
-
 processRequest();
+
+//module.exports.QueryProcessor=QueryProcessor;
+
 //console.log(parseExpectedResp("IMAGE--Hi--Good Morning--Good Evening--Good Night--Good Afternoon"));
