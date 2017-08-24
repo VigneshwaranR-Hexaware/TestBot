@@ -18,7 +18,7 @@ var failedLines=[];
 var responseFromApi=null;
 var tcPassCount=0;
 var tcFailCount=0;
-var rl = new LineReader(appConfig.YWSinputfile);
+var rl = new LineReader(appConfig.inputfile);
 var custLineNo = -1;
 var readQuestiong = -1;
 var quest = new Array();
@@ -108,6 +108,7 @@ var handleCustPayload = function(expectedResp, expRespObj) {
         expectedResp.shift(); //To remove the title from index 1
         expRespObj.custPayloadTitle = expectedResp;
     }
+
 }
 
 processRequest();

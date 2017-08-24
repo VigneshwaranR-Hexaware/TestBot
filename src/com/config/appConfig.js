@@ -1,4 +1,5 @@
-module.exports.developerAccessToken='Bearer 1139eb0f68c84915990fb9345d148aa2';
+module.exports.developerAccessToken='Bearer 4b81cbd1686c416bad563b7ea2f4a36d';
+module.exports.developerAccessToken_yws='Bearer 1139eb0f68c84915990fb9345d148aa2';
 module.exports.vfsAccessToken='Bearer 2236694c3ac943ce93d21afe990b841d';
 module.exports.expectedOutputFile='./data/sampleExpectedResponse.txt';
 module.exports.inputfile='./src/data/VFSComplaintRequestFB.txt';
