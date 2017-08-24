@@ -111,7 +111,7 @@ var handleCustPayload = function(expectedResp, expRespObj) {
 
 }
 
-processRequest();
+//processRequest();
 
 //module.exports.QueryProcessor=QueryProcessor;
 
