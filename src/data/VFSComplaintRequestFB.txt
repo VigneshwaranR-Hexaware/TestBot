@@ -6,7 +6,7 @@ Cust:visa center
 Bot:Can you please Provide me with some details on what went wrong?
 Cust:My Visa application document was missing.
 Bot:IMAGE--I will help you to log a complaint here but before proceeding any further will need some additional information?--proceed
-Cust:continue
+Cust:proceed
 Bot:Can you please provide me your full name
 Cust:Jacob Allan
 Bot:Can you also help me with your contact number where we can reach you, If required.
