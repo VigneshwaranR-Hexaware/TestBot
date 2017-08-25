@@ -30,7 +30,7 @@ var lookupResp=function(error,response,body){
                                 respObjArr.push(apiRespObj);
                             }
                         break;
-                        case 1:// basic_card
+                        case 'basic_card':// basic_card
                             if ( !error &&response.statusCode === 200) {
                                 var  apiRespObj = new apiResponsePOJO.apiResponseObject();
                                 apiRespObj.title = platform_msg.title;
@@ -41,7 +41,7 @@ var lookupResp=function(error,response,body){
                                 logMsg("TITLE:::"+apiRespObj.title);
                             }
                         break;
-                        case 2:// list
+                        case 'list':// list
                             if (!error && response.statusCode === 200) {
 
                                 var  apiRespObj = new apiResponsePOJO.apiResponseObject();
