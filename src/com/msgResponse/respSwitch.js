@@ -9,7 +9,7 @@ function getApiResp(error,response,body,platform){
     return fbResp.lookupResp(error,response,body);
   }
   else if(platform == "google"){
-    return gAResp.getGaResp(error,response,body);
+    return gAResp.lookupResp(error,response,body);
   }
   else if(platform == "slack"){
      return slackResp.lookupResp(error,response,body);
