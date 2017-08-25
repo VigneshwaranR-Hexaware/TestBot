@@ -1,4 +1,5 @@
 var apiResponsePOJO=require('../config/apiResponsePOJO.js');
+var responseType = require('../util/respType.js');
 const logger= require('../service/logService.js');
 
 var lookupResp=function(error,response,body){
@@ -20,11 +21,12 @@ var lookupResp=function(error,response,body){
                     logMsg("INSIDE GOOGLE ACTIONS FILE--TYPE::"+typeOf);
                     var  apiRespObj = new apiResponsePOJO.apiResponseObject();
                     switch(typeOf){
-                        case 0:// simple_response
+                        case 'simple_response':// simple_response
                             if (!error && response.statusCode === 200) {
                                 var  apiRespObj = new apiResponsePOJO.apiResponseObject();
-                                apiRespObj.speech=JSON.stringify(platform_msg.speech);
+                                apiRespObj.speech=JSON.stringify(platform_msg.textToSpeech);
                                 logMsg("SPEECH:::"+apiRespObj.speech);
+                                 apiRespObj.respType=responseType.SPEECH;
                                 respObjArr.push(apiRespObj);
                             }
                         break;
@@ -35,6 +37,7 @@ var lookupResp=function(error,response,body){
                                 apiRespObj.subtitle = platform_msg.subtitle;
                                 apiRespObj.imageUrl = platform_msg.imageUrl;
                                 respObjArr.push(apiRespObj);
+                                  apiRespObj.respType=responseType.CAROUSEL;
                                 logMsg("TITLE:::"+apiRespObj.title);
                             }
                         break;
@@ -47,10 +50,17 @@ var lookupResp=function(error,response,body){
                                 respObjArr.push(apiRespObj);
                             }
                         break;
-                        case 3://suggestion_chips
+                        case 'suggestion_chips'://suggestion_chips
                             if (!error &&response.statusCode === 200) {
                                 var  apiRespObj = new apiResponsePOJO.apiResponseObject();
-                                apiRespObj.imageUrl=JSON.stringify(platform_msg.imageUrl);
+                                var titlearray=[];
+                                if(platform_msg.suggestions){
+                                 for(i=0;i<platform_msg.suggestions.length;i++){
+                                  titlearray.push(platform_msg.suggestions[i].title);
+                                 }
+                                }
+                                apiRespObj.respType=responseType.PAYLOAD;
+                                apiRespObj.custPayloadTitle=titlearray;
                                 respObjArr.push(apiRespObj);
                             }
                         break;
@@ -77,11 +87,22 @@ var lookupResp=function(error,response,body){
     }
 
 }
+//  console.log("TO PRINT THE RSP OBJ"+JSON.stringify(respObjArr));
+  if(!(respObjArr.length>0)){
+    logMsg("INSIDE DEFAULT");
+    var apiRespObj = new apiResponsePOJO.apiResponseObject();
+    apiRespObj.speech=body.result.fulfillment.speech.replace(/"/g, "");
+    logMsg("SPEECH GA DFAULT:::"+apiRespObj.speech);
+     apiRespObj.respType=responseType.SPEECH;
+    //  return apiRespObj;
+    respObjArr.push(apiRespObj);
+  }
   return respObjArr;
 }
 
 var logMsg = function(str) {
-  logger.traceData(str);
+  //logger.traceData(str);
+  console.log(str);
 }
 
 
