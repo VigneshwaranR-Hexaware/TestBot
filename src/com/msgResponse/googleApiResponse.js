@@ -36,8 +36,8 @@ var lookupResp=function(error,response,body){
                                 apiRespObj.title = platform_msg.title;
                                 apiRespObj.subtitle = platform_msg.subtitle;
                                 apiRespObj.imageUrl = platform_msg.imageUrl;
+                                apiRespObj.respType=responseType.CAROUSEL;
                                 respObjArr.push(apiRespObj);
-                                  apiRespObj.respType=responseType.CAROUSEL;
                                 logMsg("TITLE:::"+apiRespObj.title);
                             }
                         break;
@@ -102,7 +102,7 @@ var lookupResp=function(error,response,body){
 
 var logMsg = function(str) {
   //logger.traceData(str);
-  console.log(str);
+  //console.log(str);
 }
 
 
