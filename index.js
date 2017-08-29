@@ -7,9 +7,7 @@ var arrayequals = require('array-equal');
 var queryService=require('./src/com/service/conversationServiceNew.js');
 
 exports.handler = function(event, context, callback){
-  console.log("Hello World");
+  console.log("inside event");
 queryService.processRequest();
 };
-
-
 queryService.processRequest();
