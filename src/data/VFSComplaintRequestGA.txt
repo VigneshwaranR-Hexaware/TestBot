@@ -2,7 +2,7 @@ Cust:Hi
 Bot:IMAGE--Welcome to VFS Global Services.How can i help you today?--This is indeed a proud moment for us at VFS Global as we have achieved another milestone – crossing 100 million applications!
 Cust:I am So Frustrated with VFS.
 Bot:Sorry for the inconvenience caused to you. Can you please let me know where we lacked in our services so that we will try to improve on it in future?
-Bot:IMAGE--Visa Center--Service Quality--Staff behavior--help desk--Our website--Security Standards--Some other issues.
+Bot:IMAGE----Visa Center--Service Quality--Staff behavior--help desk--Our website--Security Standards--Some other issues.
 Cust:visa center
 Bot:Can you please Provide me with some details on what went wrong?
 Cust:My Visa application document was missing.
