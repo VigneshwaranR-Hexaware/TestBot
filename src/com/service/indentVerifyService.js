@@ -1,5 +1,4 @@
 var LineReader = require('linereader');
-var timer = require('sleep');
 var jsUtil=require('util');
 
 var appConfig = require('../config/appConfig.js');
@@ -52,7 +51,7 @@ function processRequest(expIndentName, dataFile, logFile) {
             var tcFailedCount = 0;
             var totalTC = 0;
 
-            checkUtterances(tcId, utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expIndentName);
+            checkUtterances(tcId, utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expIndentName, logFile);
       });
 
       reader.on('error',function(err){
@@ -64,7 +63,7 @@ var logMsg = function(str) {
     logger.traceData(str);
 }
 
-function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent) {
+function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent, logFile) {
     var processCompleted = false;
     var utteranceLen = utterances.length;
     if(utteranceLen % 100 == 0) {
@@ -109,14 +108,18 @@ function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFail
                  tcPassedCount ++;
              }
 
-          checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent);
+          checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFailedCount, totalTC, expectedIndent, logFile);
      }
 
       request(options,handleResp);
   } else {
 
           console.log("Failed utterances are as follows ");
+<<<<<<< HEAD
+          logger.logOnFile("Line Number, utterance, Expected Indent, API's Indent", logFile);
+=======
           logger.logOnFile("Line Number, utterance, Expected Indent, API's Indent",logFile);
+>>>>>>> 28cabf70eca4c7b2e1cffce3664b290656be0a06
           var lineWrote = 0;
               for(var i=0; i < failedUtterances.length; i++) {
                   var lineDetail = failedUtterances[i];
@@ -131,16 +134,17 @@ function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFail
                   }*/
               }
 
+          var passPercentage=(tcPassedCount/totalTC)*100;
 
-          console.log("Testing has been completed. Please find the summary"
+          logger.logOnFile("Testing has been completed. Please find the summary"
                           +"\n   Test Case ID       :: " + id
                           +"\n   Total TC Count     :: " + totalTC
                           +"\n   Passed TC Count    :: " + tcPassedCount
-                          +"\n   Failed TC Count    :: " + tcFailedCount);
+                          +"\n   Failed TC Count    :: " + tcFailedCount
+                          +"\n   PASS PERCENTAGE    :: " + passPercentage+"%", "statistics.log");
 
 
 
-          var passPercentage=(tcPassedCount/totalTC)*100;
               console.log("\n  PASS PERCENTAGE    :: "+passPercentage+"%");
 
 
