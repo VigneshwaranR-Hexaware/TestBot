@@ -46,7 +46,7 @@ function QueryProcessor(responseMap,questArray) {
         var platform=appConfig.platform;
           var respObjArrTemp=[];
          respObjArrTemp = switchRespose.getApiResp(error, response, body,platform);
-           console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
+           //console.log("RESPONSE RECEIVED FROM SLACK IN QUERYSERVICE:::"+JSON.stringify(respObjArrTemp));
 
           logMsg("RESP MAP SIZE IN in query servixce::"+responseMap.size);
           var linetempno=questAndLine[0];
