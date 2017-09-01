@@ -12,4 +12,4 @@ queryService.processRequest();
 };
 
 
-//queryService.processRequest();
+queryService.processRequest();
