@@ -1,4 +1,32 @@
-const express = require('express');
+
+/*var logger = require('./src/com/service/logService');
+logger.logOnFile("Hi I am ok");
+logger.logOnFile("Hi I am ok");
+logger.logOnFile("Hi I am ok");*/
+
+
+var test = new Array();
+var tempArr = new Array();
+
+for(var i=0; i<35; i++) {
+    test.push(i);
+}
+console.log(test);
+var i=10;
+var j=0;
+while(i <= test.length) {
+    tempArr.push(test.slice(j, i));
+    j += 10;
+    i += 10;
+}
+
+if(j <= test.length) {
+    tempArr.push(test.slice(j, test.length));
+}
+
+console.log(tempArr);
+
+/*const express = require('express');
 const https= require('https');
 var http = require('http');
 var apiai = require('apiai');
@@ -43,4 +71,4 @@ request(options, function (error, response, body) {
       callback(message);
 });
 
-}
+}*/

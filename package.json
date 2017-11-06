@@ -2,10 +2,9 @@
   "name": "testbot",
   "version": "1.0.0",
   "description": "testbotintegration",
-  "main": "Index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node Index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "Vigneshwaran Ramanathan",
   "license": "ISC",
@@ -19,7 +18,10 @@
     "nodejs-websocket": "^1.7.1",
     "prompt": "^0.2.13",
     "request": "^2.79.0",
-    "save": "^2.3.1"
+    "save": "^2.3.1",
+    "string-similarity":"1.2.0",
+    "array-equal":"1.0.0",
+    "sleep":"5.1.1"
   },
   "repository": {
     "type": "git",
