@@ -115,11 +115,10 @@ function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFail
   } else {
 
           console.log("Failed utterances are as follows ");
-<<<<<<< HEAD
-          logger.logOnFile("Line Number, utterance, Expected Indent, API's Indent", logFile);
-=======
+
+
           logger.logOnFile("Line Number, utterance, Expected Indent, API's Indent",logFile);
->>>>>>> 28cabf70eca4c7b2e1cffce3664b290656be0a06
+
           var lineWrote = 0;
               for(var i=0; i < failedUtterances.length; i++) {
                   var lineDetail = failedUtterances[i];
