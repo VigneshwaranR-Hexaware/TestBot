@@ -134,13 +134,13 @@ function checkUtterances(id, utterances, failedUtterances, tcPassedCount, tcFail
               }
 
           var passPercentage=(tcPassedCount/totalTC)*100;
-
-          logger.logOnFile("Testing has been completed. Please find the summary"
+//logger.logOnFile
+          console.log("Testing has been completed. Please find the summary"
                           +"\n   Test Case ID       :: " + id
                           +"\n   Total TC Count     :: " + totalTC
                           +"\n   Passed TC Count    :: " + tcPassedCount
                           +"\n   Failed TC Count    :: " + tcFailedCount
-                          +"\n   PASS PERCENTAGE    :: " + passPercentage+"%", "statistics.log");
+                          +"\n   PASS PERCENTAGE    :: " + passPercentage+"%");//, "statistics.log");
 
 
 
